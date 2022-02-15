@@ -1,12 +1,11 @@
-
 import './App.css';
+import './global.css';
+import Admindash from './components/Admindash';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        welcome
-      </header>
+    <div>
+        <Admindash/>
     </div>
   );
 }

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+*{
+    font-family: 'montserrat';
+    margin: 0;
+    padding: 0;
+    --white: #fff;
+    --offwhite: #eaeaea;
+    --blue: #1e71b7;
+    --lightblue: #1e77ba;
+    --sidebarblue: #113a59;
+    --gray: #636363;
+    --darkestgray: #252525;
+    --blackish: #464646;
+    --backgroundgray: #f4f4f4;
+    --green: #2f986d;
+    --messages: #c8ecde;
+    --pillgreen: #d9e7e1;
+    --headerblue: #addaec;
+    --danger: #e83f56;
+    --pinkish: #f0bfbf;
+    --pillred: #e8d8d8;
+}
+ul{
+    list-style: none;
+}
