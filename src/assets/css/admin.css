@@ -1,0 +1,74 @@
+
+
+  .admindash{
+    display: flex;
+    background-color: var(--backgroundgray);
+}
+.board{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+.nav{
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    right: 50px;
+    top: 50px;
+}
+.nav li{
+    margin: 0 20px ;
+}
+.nav-img{
+    width: 70%;
+} 
+.main{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    position: absolute;
+    right: 50px;
+    top: 200px;
+    left: 200px;
+    padding: 50px;
+}
+
+.welcome{
+    background-color: var(--sidebarblue);
+    color: var(--backgroundgray);
+    border-radius: 5px;
+    padding: 50px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    box-shadow: -5px 5px;
+    height: 150px;
+}
+.welcome h2{
+    margin-bottom: 50px;
+    font-size: 2rem;
+}
+.welcome p{
+    font-size: 1.1rem;
+    line-height: 25px;
+}
+.widget{
+    background-color: var(--lightblue);
+    color: var(--white);
+    border-radius: 5px;
+    padding: 50px;
+    display: flex;
+    align-items: baseline;
+    align-items: flex-end;
+    position: relative;
+    box-shadow: -5px 5px var(--offwhite);
+    height: 150px;
+}
+.widget h1{
+    font-size: 4rem;
+}
+.widget-img{
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+}

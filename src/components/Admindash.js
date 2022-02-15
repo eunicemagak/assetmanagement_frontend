@@ -8,13 +8,13 @@ const admindash = () => {
       <div className='board'>
         <ul className='nav'>
           <li>
-            <img className='nav-img' src={require("../assets/search.png")}></img>
+            <img className='nav-img' src={require("../assets/images/search.png")}></img>
           </li>
           <li>
-            <img className='nav-img' src={require("../assets/bell.png")}></img>
+            <img className='nav-img' src={require("../assets/images/bell.png")}></img>
           </li>
           <li>
-            <img className='nav-img' src={require("../assets/user.png")}></img>
+            <img className='nav-img' src={require("../assets/images/user.png")}></img>
           </li>
         </ul>
         <div className='main'>
@@ -27,28 +27,28 @@ const admindash = () => {
               <h1>36</h1>
               <p>total assets</p>
             </div>
-            <img className='widget-img' src={require("../assets/laptop.png")}></img>
+            <img className='widget-img' src={require("../assets/images/laptop.png")}></img>
           </div>
           <div className='widget'>
             <div className='data'>
               <h1>24</h1>
               <p>assigned assets</p>
             </div>
-            <img className='widget-img' src={require("../assets/assigned.png")}></img>
+            <img className='widget-img' src={require("../assets/images/assigned.png")}></img>
           </div>
           <div className='widget'>
             <div className='data'>
               <h1>12</h1>
               <p>unassigned assets</p>
             </div>
-            <img className='widget-img' src={require("../assets/unassigned.png")}></img>
+            <img className='widget-img' src={require("../assets/images/unassigned.png")}></img>
           </div>
           <div className='widget'>
             <div className='data'>
               <h1>4</h1>
               <p>new complaints</p>
             </div>
-            <img className='widget-img' src={require("../assets/complaints.png")}></img>
+            <img className='widget-img' src={require("../assets/images/complaints.png")}></img>
           </div>
           
         </div>

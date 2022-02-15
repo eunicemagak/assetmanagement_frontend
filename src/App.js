@@ -1,13 +1,16 @@
-import './App.css';
-import './global.css';
+import React from 'react'
+import './assets/css/global.css'; 
+import './assets/css/sidebar.css'
+import './assets/css/admin.css'
 import Admindash from './components/Admindash';
 
-function App() {
+const App = () => {
   return (
     <div>
-        <Admindash/>
+    <Admindash/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
+
