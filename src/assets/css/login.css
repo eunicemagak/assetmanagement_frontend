@@ -1,0 +1,36 @@
+.right {
+   background-color: #1e71b7;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.form-group{
+    background-position: center;
+    background-color: var(--white);
+    height: 300px;
+    width: 70%;
+    padding: 20px;
+    padding-left: 20px;
+    text-align: left;
+    border-radius: 5px;
+}
+.input-container{
+    padding: 20px; 
+    width: fit-content;
+}
+.btn-default{
+    background-color: var(--blue);
+    border-radius: 5px;
+    width: fit-content;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.psw{
+    text-align:center;
+}
