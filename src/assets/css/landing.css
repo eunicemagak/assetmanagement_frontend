@@ -18,10 +18,11 @@
     color: var(--lightblue);
     left: 20px;
   }
-    .App-pragraph{
+    .App-paragraph{
 
 position: relative;
-top: 200px;
+top: 40px;
+width: 80%;
     }
   
   .split {
@@ -53,10 +54,10 @@ top: 200px;
       align-items: center;
       justify-content: center;
       text-align: center;
+   
+    
   }
-  .App-paragraph{
-      width: 80%;
-  }
+  
   .centered {
     position: relative;
     top: 50%;

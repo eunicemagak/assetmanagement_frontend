@@ -6,24 +6,25 @@ const Login= () => {
     return (
 <div className='right'>
         <div className="form-group">
-                <p className="para-form">LOG IN TO THE ACCESS PORTAL</p>
+                <h3 className="para-form">LOG IN TO THE ACCESS PORTAL</h3>
         <form>
-          <div className="input-container">
+          <div className="formEmail">
             <label for ="username">Email Adress </label>
-            <input type="text" name="uname" required />
+            <input type="email" placeholder="enter email" required />
            
           </div>
-          <div className="input-container">
+          <div className="formPass">
             <label for="password">Password </label>
-            <input type="password" name="pass" required />
+            <input type="password" placeholder="Password" required />
             
           </div>
-          <button type="submit" class="btn btn-default"> login</button>
-            <span class="psw"> <a href="#"> Forgot password?</a></span>
+          <button type="submit" class="btn btn-default"> LOG IN</button>
           
         </form>
-      
+        <a href="#" class="forgot-link"> Forgot password?</a>
+          
       </div>
+      
     </div>
     )};
 export default Login;

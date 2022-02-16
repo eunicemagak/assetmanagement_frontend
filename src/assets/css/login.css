@@ -8,29 +8,57 @@
     align-items: center;
   }
 
+  
+
 .form-group{
+    display: flex;
+    flex-direction: column;
     background-position: center;
     background-color: var(--white);
     height: 300px;
-    width: 70%;
+    width: 50%;
     padding: 20px;
     padding-left: 20px;
     text-align: left;
     border-radius: 5px;
 }
-.input-container{
-    padding: 20px; 
-    width: fit-content;
+    .form{
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+ 
+
+.formEmail, .formPass{
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    border-radius: 15px;
+    width: 100%;
+   
 }
 .btn-default{
     background-color: var(--blue);
+    border:2px solid#1e71b7;
+    margin-top: 20px;
+  padding: 10px;
+    align-self: center;
     border-radius: 5px;
-    width: fit-content;
+    width: 100%;
+   color: var(--white);
+   
 }
-.form{
-    display: flex;
-    flex-direction: column;
+input{
+    padding: 10px;
+    border-radius: 5px;
 }
-.psw{
-    text-align:center;
+.forgot-link{
+    margin-top: 20px;
+    color: blue;
+    text-align: center;
+
 }
+
+
+
