@@ -1,0 +1,51 @@
+.popup{
+    z-index: 9999;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .5);
+}
+.popup-content{
+    background-color: var(--white);
+    padding: 50px;
+    border-radius: 5px;
+}
+.popupheader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    color: var(--gray);
+}
+.close{
+    border: none;
+    background-color: var(--white) ;
+}
+.close:hover{
+    color: var(var--backgroundgray);
+}
+input{
+    width: 350px;
+    padding: 15px 10px;
+    background-color: var(--white);
+    border: 1px solid var(--offwhite);
+}
+select{
+    width: 370px;
+    padding: 15px 10px;
+    background-color: var(--white);
+    border: 1px solid var(--offwhite);
+}
+.createuser{
+    background-color: var(--green);
+    color: var(--white);
+    font-weight: bold;
+    padding: 15px 10px;
+    width: 370px;
+    font-size: 1rem;
+}
+.email, .password,.username, .accessories, .assign-assets{
+    margin-bottom: 20px ;
+}
+.email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
+    margin-bottom: 10px ;
+    color: var(--gray);
+}

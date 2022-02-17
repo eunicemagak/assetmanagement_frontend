@@ -1,0 +1,15 @@
+.nav-wrapper{
+    position: absolute;
+    right: 50px;
+    top: 50px;
+}
+.nav{
+    display: flex;
+    align-items: flex-end;
+}
+.nav li{
+    margin: 0 20px ;
+}
+.nav-img{
+    width: 70%;
+} 

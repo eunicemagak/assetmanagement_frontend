@@ -6,4 +6,4 @@ const Complaints = () => {
   )
 }
 
-export default Complaints
+export default Complaints;

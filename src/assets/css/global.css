@@ -23,3 +23,19 @@
 ul{
     list-style: none;
 }
+.wrapper{
+    background-color: var(--backgroundgray);
+    height: 100vh;
+    overflow: scroll;
+}
+#fixed{
+    position: fixed;
+    z-index: 999;
+}
+.bg{
+    position: relative;
+}
+button{
+    border: none;
+    cursor: pointer;
+}

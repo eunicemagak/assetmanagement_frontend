@@ -1,0 +1,94 @@
+.users-wrapper{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 18vh;
+  right: 50px;
+}
+.users-header{
+  display: flex;
+  margin-bottom: 50px;
+  position: sticky;
+  top: 18vh;
+}
+.users-title{
+  font-size: 2rem;
+  color: var(--blackish);
+  margin-right: 40vw;
+}
+.users-buttons{
+ display: flex;
+}
+.addusers{
+  display: flex;
+  background-color: var(--green);
+  padding: 10px;
+  color: var(--white);
+  align-items: center;
+  margin: 0 50px;
+  border-radius: 5px;
+  box-shadow: -3px 3px var(--offwhite);
+  text-decoration: none;
+}
+.adduser{
+  margin-left: 20px;
+}
+.filterusers{
+  display: flex;
+  background-color: var(--sidebarblue);
+  padding: 10px;
+  color: var(--white);
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: -3px 3px var(--offwhite);
+}
+.filterby{
+  margin-right: 20px;
+}
+.table{
+  height: 570px;
+  overflow: scroll;
+}
+table{
+  width: 100%;
+  box-shadow: -3px 3px var(--offwhite);
+  text-align: center;
+  border-collapse: collapse;
+}
+thead{
+  position: sticky;
+  top: 0;
+}
+th{
+  background-color: var(--headerblue);
+  border: 2px solid var(--offwhite);
+  padding: 20px;
+  font-weight: normal;
+}
+tr:nth-child(odd){
+  background-color: var(--backgroundgray);
+}
+tr:nth-child(even){
+  background-color: var(--white);
+}
+td{
+  border: 2px solid var(--offwhite);
+  padding: 20px;
+}
+.paganation{
+  position: absolute;
+  bottom: -100px;
+  right: 50%;
+}
+.page{
+  background-color: var(--blue);
+  margin: 5px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  color: var(--offwhite);
+  text-decoration: none;
+  font-weight: bold;
+}
+.onpage{
+  background-color: var(--headerblue) !important;
+}

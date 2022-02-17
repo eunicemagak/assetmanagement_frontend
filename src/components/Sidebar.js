@@ -1,13 +1,19 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { ImUsers, ImFilesEmpty } from "react-icons/im";
+import { FiMessageCircle, FiLogOut } from "react-icons/fi";
 
 const Sidebar = () => {
   return (
-    <div className='sidebar'>
+    <div className='sidebar' id='fixed'>
       <div className='logo'>
-        roamtech
+          <img className='logo' 
+            src={require("../assets/images/logowhite.png")}alt=''> 
+          </img>
       </div>
       <ul className='navigation'>
-        <li className='active'>
+        <li>
+          <NavLink activeClassName='active' className='nav-link' exact to='/dashboard'>
           <img className='profile-img' 
             src={require("../assets/images/user.jpg")}alt=''> 
           </img>
@@ -15,23 +21,32 @@ const Sidebar = () => {
             <h4>JUMA MAJUMBA</h4>
             <p className='title'>ADMINISTRATOR</p>
           </div>
+          </NavLink>
         </li>
         <li>
-          <img className='sidebar-img' src={require("../assets/images/userwhite.png")}alt='' ></img>
+          <NavLink activeClassName='active' className='nav-link' exact to='/users'>
+          <ImUsers size='2rem' className='sidebar-icon'/>
           USERS
+          </NavLink>
         </li>
         <li>
-          <img className='sidebar-img' src={require("../assets/images/filewhite.png")}alt='' ></img>
+          <NavLink activeClassName='active' className='nav-link' exact to='/assets'>
+          <ImFilesEmpty size='2rem' className='sidebar-icon'/>
           ASSETS
+          </NavLink>
         </li>
         <li>
-          <img className='sidebar-img' src={require("../assets/images/messagewhite.png")}alt='' ></img>
+          <NavLink activeClassName='active' className='nav-link' exact to='/complaints'>
+          <FiMessageCircle size='2rem' className='sidebar-icon'/>
           COMPLAINTS
-          </li>
+          </NavLink>
+        </li>
         <li>
-          <img className='sidebar-img' src={require("../assets/images/logoutwhite.png")}alt='' ></img>
+          <NavLink activeClassName='active' className='nav-link' exact to='/logout'>
+          <FiLogOut size='2rem' className='sidebar-icon'/>
           LOG OUT
-          </li>
+          </NavLink>
+        </li>
       </ul>
     </div>
   )
