@@ -3,26 +3,32 @@
   flex-direction: column;
   position: absolute;
   top: 18vh;
-  right: 50px;
+  right: 5vw;
+  width: 70vw;
 }
 .users-header{
   display: flex;
   margin-bottom: 50px;
-  position: sticky;
+  position: relative;
   top: 18vh;
 }
 .users-title{
-  font-size: 2rem;
+  font-size: clamp(1rem, 2vw, 3rem); 
   color: var(--blackish);
-  margin-right: 40vw;
+  position: absolute;
+  left: 0;
+  top: -18vh;
 }
 .users-buttons{
  display: flex;
+ position: absolute;
+ right: 0;
+ top: -18vh;
 }
 .addusers{
   display: flex;
   background-color: var(--green);
-  padding: 10px;
+  padding: 20px;
   color: var(--white);
   align-items: center;
   margin: 0 50px;
@@ -46,14 +52,16 @@
   margin-right: 20px;
 }
 .table{
-  height: 570px;
+  height: 60vh;
   overflow: scroll;
+  margin-top: 20px;
 }
 table{
   width: 100%;
   box-shadow: -3px 3px var(--offwhite);
   text-align: center;
   border-collapse: collapse;
+  margin-bottom: 50px;
 }
 thead{
   position: sticky;
@@ -64,6 +72,7 @@ th{
   border: 2px solid var(--offwhite);
   padding: 20px;
   font-weight: normal;
+  font-size: clamp(.8rem, 1vw, 2rem); 
 }
 tr:nth-child(odd){
   background-color: var(--backgroundgray);
@@ -74,10 +83,11 @@ tr:nth-child(even){
 td{
   border: 2px solid var(--offwhite);
   padding: 20px;
+  font-size: clamp(.8rem, 1vw, 2rem); 
 }
 .paganation{
   position: absolute;
-  bottom: -100px;
+  bottom: -50px;
   right: 50%;
 }
 .page{
@@ -91,4 +101,19 @@ td{
 }
 .onpage{
   background-color: var(--headerblue) !important;
+}
+@media only screen and (min-width: 992px) {
+  .users-header{
+    margin-bottom: 30px;
+    top: 15vh;
+  }
+  td, th{
+    border: 2px solid var(--offwhite);
+    padding: 10px;
+  }
+  .filterusers,
+  .addusers{
+    padding: 10px;
+    margin: 0 30px;
+  }
 }

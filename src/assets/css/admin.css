@@ -3,26 +3,27 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 50px;
     position: absolute;
-    top: 200px;
+    top: 30%;
+    transform: translateY(30%);
+    right: 5vw;
     left: 30vw;
-    padding: 50px;
 }
-
 .welcome{
     background-color: var(--sidebarblue);
     color: var(--backgroundgray);
     border-radius: 5px;
-    padding: 50px 100px 50px 50px;
+    padding: 50px 50px 50px 50px;
     grid-column-start: 1;
     grid-column-end: 3;
     box-shadow: -5px 5px;
 }
 .welcome h2{
     margin-bottom: 10px;
-    font-size: 2rem;
+    font-size: clamp(1rem, 2vw, 2.6rem); 
 }
-.welcome p{
-    font-size: 1.1rem;
+.welcome p,
+.widget p{
+    font-size: clamp(.8rem, 3vw, 1rem); 
     line-height: 25px;
 }
 .widget{
@@ -37,10 +38,24 @@
     box-shadow: -5px 5px var(--offwhite);
 }
 .widget h1{
-    font-size: 4rem;
+    font-size: clamp(2rem, 5vw, 4rem); 
 }
 .widget-img{
     position: absolute;
     bottom: 50px;
     right: 50px;
+}
+@media only screen and (min-width: 992px) {
+    .main{
+        left: 25vw;
+    }
+    .widget{
+        padding: 50px 30px 30px 30px;
+        display: flex;
+    }
+    .widget-img{
+        width: 20%;
+        bottom: 20px;
+        right: 30px;
+    }
 }

@@ -18,7 +18,7 @@ const Users = () => {;
           <div className='users-buttons'>
           <Popup trigger={
             <button className='addusers'> 
-              <IoMdAddCircle size='2rem'/>
+              <IoMdAddCircle size='1.5vw'/>
               <p className='adduser'>
                 ADD NEW USER
               </p>
@@ -32,7 +32,7 @@ const Users = () => {;
               <p className='filterby'>
                 FILTER BY
               </p>
-              <FaFilter size='1.8rem'/>
+              <FaFilter size='1.5vw'/>
             </button>
           </div>
         </div>

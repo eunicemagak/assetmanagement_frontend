@@ -15,6 +15,9 @@
     margin-bottom: 30px;
     color: var(--gray);
 }
+.popupheader h2{
+    font-size: clamp(1rem, 1vw, 1.3rem); 
+}
 .close{
     border: none;
     background-color: var(--white) ;
@@ -40,7 +43,7 @@ select{
     font-weight: bold;
     padding: 15px 10px;
     width: 370px;
-    font-size: 1rem;
+    font-size: clamp(.8rem, 1vw, 1rem); 
 }
 .email, .password,.username, .accessories, .assign-assets{
     margin-bottom: 20px ;
@@ -48,4 +51,16 @@ select{
 .email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
     margin-bottom: 10px ;
     color: var(--gray);
+    font-size: clamp(.8rem, 1vw, 1rem); 
+}
+@media only screen and (min-width: 992px) { 
+    .popup-content{
+        padding: 10px;
+    }
+    .email, .password,.username, .accessories, .assign-assets{
+        margin-bottom: 10px ;
+    }
+    .email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
+        margin-bottom: 5px ;
+    }
 }

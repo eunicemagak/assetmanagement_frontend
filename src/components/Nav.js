@@ -7,13 +7,13 @@ const Nav = () => {
     <div className='nav-wrapper' id='fixed'>
     <ul className='nav'>
       <li>
-        <FaSearch size='2rem' />
+        <FaSearch size='1.5vw' />
       </li>
       <li>
-          <FaBell size='2rem'/>
+          <FaBell size='1.5vw'/>
       </li>
       <li>
-        <FaUser size='2rem'/>
+        <FaUser size='1.5vw'/>
       </li>
     </ul>
     </div>

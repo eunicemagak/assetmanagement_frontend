@@ -18,32 +18,32 @@ const Sidebar = () => {
             src={require("../assets/images/user.jpg")}alt=''> 
           </img>
           <div className='Name'>
-            <h4>JUMA MAJUMBA</h4>
+            <p className='name-main'>JUMA MAJUMBA</p>
             <p className='title'>ADMINISTRATOR</p>
           </div>
           </NavLink>
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/users'>
-          <ImUsers size='2rem' className='sidebar-icon'/>
+          <ImUsers size='1.5vw' className='sidebar-icon'/>
           USERS
           </NavLink>
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/assets'>
-          <ImFilesEmpty size='2rem' className='sidebar-icon'/>
+          <ImFilesEmpty size='1.5vw' className='sidebar-icon'/>
           ASSETS
           </NavLink>
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/complaints'>
-          <FiMessageCircle size='2rem' className='sidebar-icon'/>
+          <FiMessageCircle size='1.5vw' className='sidebar-icon'/>
           COMPLAINTS
           </NavLink>
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/logout'>
-          <FiLogOut size='2rem' className='sidebar-icon'/>
+          <FiLogOut size='1.5vw' className='sidebar-icon'/>
           LOG OUT
           </NavLink>
         </li>
