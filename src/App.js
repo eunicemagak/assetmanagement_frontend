@@ -10,6 +10,7 @@ import Assets from './components/Assets';
 import Complaints from './components/Complaints';
 import Sidebar from './components/Sidebar';
 import Nav from './components/Nav';
+import Landing from './components/Landing'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Sidebar/>
       <div className='bg'>
         <Routes>
+          <Route path='/' element={<Landing/>} />
           <Route path='/dashboard' element={<Admindash/>} />
           <Route path='/users' element={<Users/>} />
           <Route path='/assets' element={<Assets/>} />

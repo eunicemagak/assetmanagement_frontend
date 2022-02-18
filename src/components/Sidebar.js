@@ -25,25 +25,25 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/users'>
-          <ImUsers size='1.5vw' className='sidebar-icon'/>
+          <ImUsers size='calc(1vw + .5vw)' className='sidebar-icon'/>
           USERS
           </NavLink>
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/assets'>
-          <ImFilesEmpty size='1.5vw' className='sidebar-icon'/>
+          <ImFilesEmpty size='calc(1vw + .5vw)' className='sidebar-icon'/>
           ASSETS
           </NavLink>
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/complaints'>
-          <FiMessageCircle size='1.5vw' className='sidebar-icon'/>
+          <FiMessageCircle size='calc(1vw + .5vw)' className='sidebar-icon'/>
           COMPLAINTS
           </NavLink>
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/logout'>
-          <FiLogOut size='1.5vw' className='sidebar-icon'/>
+          <FiLogOut size='calc(1vw + .5vw)' className='sidebar-icon'/>
           LOG OUT
           </NavLink>
         </li>

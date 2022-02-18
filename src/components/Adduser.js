@@ -1,16 +1,22 @@
 import React from 'react'
 import '../assets/css/popup.css';
 import { IoIosCloseCircle } from "react-icons/io";
-import close from 'reactjs-popup'
 
 const Adduser = () => {
   return (
+    /**
+     * *Add new user interface with a form to capture user details
+     * *This will play off as a popup module on the ALL USERS page and once all fields are inserted, redirect back to ALL USERS page
+     * TODO: implement add user functionality
+     * TODO: connet to DB to push new user details to DB
+     */
+    <div>
     <div className='popup'>
       <div className='popup-content'>
         <div className='popupheader'>
-          <h2>ADD NEW ASSET</h2>
+          <h>ADD NEW ASSET</h>
           <button className='close'>
-            <IoIosCloseCircle size='2rem' color='var(--gray)' className='closebtn' onClick={close}/>
+            <IoIosCloseCircle size='2rem' color='var(--gray)' className='closebtn'/>
           </button>
         </div>
         <div className='popup-main'>
@@ -31,12 +37,19 @@ const Adduser = () => {
               <h4>ASSIGN ASSET</h4>
               <select required>
                 <option disabled selected value="">select asset to assign</option>
+                <option value="">HP SPECTRE</option>
+                <option value="">Lenovo Thinkpad</option>
+                <option value="">Macbook Air</option>
+                <option value="">Hp Probook</option>
               </select>
             </div>
             <div className='accessories'>
               <h4>ACCOMPANING ACCESSORIES</h4>
               <select required>
                 <option disabled selected value="">select accessories to assign</option>
+                <input type="radio" name="gender" value="male"/>
+               <input type="radio" name="gender" value="female"/>
+                <input type="radio" name="gender" value="other"/>
               </select>
             </div>
             <button className='createuser'>
@@ -45,6 +58,7 @@ const Adduser = () => {
           </form>
         </div>
       </div>
+    </div>
     </div>
   )
 }
