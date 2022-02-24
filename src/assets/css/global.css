@@ -19,6 +19,8 @@
     --danger: #e83f56;
     --pinkish: #f0bfbf;
     --pillred: #e8d8d8;
+    --pillpurple: #D2D6EE;
+    --pillblue: #D7E4F5;
     font-size: 14px;
 }
 ul{
@@ -50,7 +52,7 @@ h3{
     font-size: calc(1rem + .3vw);
 }
 h4{
-    font-size: calc(1rem + .1vw);
+    font-size: calc(.8rem + .1vw);
 }
 p{
     font-size: calc(1rem + .02vw);

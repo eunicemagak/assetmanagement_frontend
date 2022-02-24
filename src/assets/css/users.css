@@ -98,6 +98,22 @@ td{
 .onpage{
   background-color: var(--headerblue) !important;
 }
+.pill{
+  margin: 0 25%;
+  border-radius: 2vw;
+}
+.green{
+  background-color: var(--pillgreen);
+}
+.purple{
+  background-color: var(--pillpurple);
+}
+.red{
+  background-color: var(--pillred);
+}
+.blue{
+  background-color: var(--pillblue);
+}
 @media only screen and (min-width: 992px) {
   .users-header{
     margin-bottom: 3vw;

@@ -15,17 +15,17 @@ const Users = () => {;
      * TODO: implement filter users by department functionality
      * TODO: connet to DB to get all adta straight from the database
      * TODO: work on linking each user to their user profile
-     * TODO: work on the popup module display
+     * TODO: work on the popup module display {done}
      */
     <div>
-      {showComponent && <Adduser/>}
+      {showComponent && <Adduser closeComponent={setShowComponent}/>}
       <div className='users-wrapper'>
         <div className='users-header'>
           <h2 className='users-title'>
               ALL USERS
           </h2>
           <div className='users-buttons'>
-            <button className='addusers'onClick={() => setShowComponent(true)}> 
+            <button className='addusers' onClick={() => setShowComponent(true)}> 
               <IoMdAddCircle size='calc(1vw + .5vw)'/>
               <p className='adduser'>
                 ADD NEW USER

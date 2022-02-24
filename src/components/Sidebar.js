@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { ImUsers, ImFilesEmpty } from "react-icons/im";
 import { FiMessageCircle, FiLogOut } from "react-icons/fi";
+import '../assets/css/sidebar.css'
 
 const Sidebar = () => {
   return (
