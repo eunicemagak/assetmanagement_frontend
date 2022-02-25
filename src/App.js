@@ -12,29 +12,31 @@ import Assets from './components/Assets';
 import Complaints from './components/Complaints';
 import Assetprofile from './components/Assetprofile';
 import Landing from './components/Landing';
-
+import Nav from './components/Nav';
+import Sidebar from './components/Sidebar';
 
 const App = () => {
 
-  
   return (
-    //<Route path ='/' element={<Landing/>} />
+    <div className='wrapper'>
       <Router>
+          <Nav />
+          <Sidebar/>
+      <div className='bg'>
         <Routes>
-          <Route path='/admindash' element={<Admindash/>} />
-          <Route path='/' element={<Landing/>} />
+        <Route path='/' element={<Landing/>} />
           <Route path='/dashboard' element={<Admindash/>} />
           <Route path='/users' element={<Users/>} />
           <Route path='/assets' element={<Assets/>} />
           <Route path='/complaints' element={<Complaints/>} />
-          <Route path='/' element={<Assetprofile/>} />
+          <Route path='/assetprofile' element={<Assetprofile/>} />
         </Routes>
-  
+      </div>
       </Router>
-  
-
+    </div>
   )
 }
+  
 
 export default App;
 

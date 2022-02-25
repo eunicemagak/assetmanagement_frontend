@@ -13,7 +13,7 @@ import Nav from './Nav';
                     <div class="main-assetprof">
                         <div className='assetprof'>
                             <div class='assetprof-item'><a href='assets'>
-                                <img className='widget-img' src={require("../assets/images/back.png")} alt=''></img></a>
+                                <img className='asset-img' src={require("../assets/images/back.png")} alt=''></img></a>
                             </div>
                             <div class='asset-item'>
                                 <h4>ASSET PROFILE</h4>
@@ -86,9 +86,13 @@ import Nav from './Nav';
                                     <h6 class="mb-0">COMPLAINTS</h6>
                                 </div>
                                 <div>
-                                <div class="col-sm-9 text-secondary">Faulty charger<br/>Failed drivers<br/>Heating up</div>
+                                    <div class="col-sm-9 text-secondary">
+                                        Faulty charger<br/>Failed drivers<br/>Heating up
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        Suzan Suzie<br/>Thomas Tom<br/>Charles Charlie
+                                    </div>
                                 </div>
-                                    <div class="col-sm-9 text-secondary">Suzan Suzie<br/>Thomas Tom<br/>Charles Charlie</div>
                             </div>  
                             <div class='row'>
                                 <div class='col-sm-3'>
