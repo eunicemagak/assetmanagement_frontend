@@ -4,17 +4,20 @@ import './assets/css/global.css';
 import './assets/css/sidebar.css';
 import './assets/css/admin.css';
 import './assets/css/nav.css'
-import './assets/css/landing.css'
 import './assets/css/login.css'
+import './assets/css/landing.css'
+import './assets/css/assetprofile.css'
 import Admindash from './components/Admindash';
 import Users from './components/Users';
 import Assets from './components/Assets';
 import Complaints from './components/Complaints';
-import Sidebar from './components/Sidebar';
+import Assetprofile from './components/Assetprofile';
+import Landing from './components/Landing';
 import Nav from './components/Nav';
-import Landing from './components/Landing'
+import Sidebar from './components/Sidebar';
 
 const App = () => {
+
   return (
     <div className='wrapper'>
       <Router>
@@ -22,17 +25,19 @@ const App = () => {
           <Sidebar/>
       <div className='bg'>
         <Routes>
-          <Route path='/' element={<Landing/>} />
+        <Route path='/' element={<Landing/>} />
           <Route path='/dashboard' element={<Admindash/>} />
           <Route path='/users' element={<Users/>} />
           <Route path='/assets' element={<Assets/>} />
           <Route path='/complaints' element={<Complaints/>} />
+          <Route path='/assetprofile' element={<Assetprofile/>} />
         </Routes>
       </div>
       </Router>
     </div>
   )
 }
+  
 
 export default App;
 

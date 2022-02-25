@@ -40,7 +40,7 @@
 }
 .btn-default{
     background-color: var(--blue);
-    border:2px solid#1e71b7;
+    border:2px;
     margin-top: 1vw;
   padding: .5vw;
     align-self: center;

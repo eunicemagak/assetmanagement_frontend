@@ -1,7 +1,24 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Login from './Login'
 
 const Landing = () => {
+
+    const [token, setToken] = useState();
+
+    useEffect(() => {
+        (
+            async () => {
+                const response = await fetch('http://localhost:8000/api/v1/login', {
+                    headers: {'Content-Type': 'application/json'},
+                
+                });
+
+                const content = await response.json();
+
+                setToken(content.token);
+            }
+        )();
+    });
   return (
     <div className='split'>
         <div class="left">
@@ -19,10 +36,9 @@ const Landing = () => {
                 </div>
         </div>
         
-            
-        
             <div class="centered">
-                <Login />
+                
+                <Login setToken={setToken}/>
             </div>
     </div>
   )
