@@ -17,10 +17,10 @@
     background-color: var(--white);
     height: 300px;
     width: 50%;
-    padding: 20px;
-    padding-left: 20px;
+    padding: 1vw;
+    padding-left: 1vwx;
     text-align: left;
-    border-radius: 5px;
+    border-radius: .5vw;
 }
     .form{
         display: flex;
@@ -33,28 +33,28 @@
 
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
-    border-radius: 15px;
+    margin-top: vwpx;
+    border-radius: 1.5vw;
     width: 100%;
    
 }
 .btn-default{
     background-color: var(--blue);
     border:2px solid#1e71b7;
-    margin-top: 20px;
-  padding: 10px;
+    margin-top: 1vw;
+  padding: .5vw;
     align-self: center;
-    border-radius: 5px;
+    border-radius: .5vw;
     width: 100%;
    color: var(--white);
    
 }
 input{
-    padding: 10px;
-    border-radius: 5px;
+    padding: .5vw;
+    border-radius: .5vw;
 }
 .forgot-link{
-    margin-top: 20px;
+    margin-top: 1vw;
     color: blue;
     text-align: center;
 
