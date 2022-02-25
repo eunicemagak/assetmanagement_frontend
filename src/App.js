@@ -1,8 +1,11 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes}from 'react-router-dom';
 import './assets/css/global.css'; 
+import './assets/css/sidebar.css';
 import './assets/css/admin.css';
 import './assets/css/nav.css'
+import './assets/css/landing.css'
+import './assets/css/login.css'
 import Admindash from './components/Admindash';
 import Users from './components/Users';
 import Assets from './components/Assets';
@@ -10,10 +13,8 @@ import Complaints from './components/Complaints';
 import Sidebar from './components/Sidebar';
 import Nav from './components/Nav';
 import Landing from './components/Landing'
-import './assets/css/landing.css'
-import './assets/css/login.css'
 
-const Main = () => {
+const App = () => {
   return (
     <div className='wrapper'>
       <Router>
@@ -33,5 +34,5 @@ const Main = () => {
   )
 }
 
-export default Main;
+export default App;
 
