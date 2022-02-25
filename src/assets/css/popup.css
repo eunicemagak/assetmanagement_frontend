@@ -1,22 +1,30 @@
 .popup{
+    height: 100vh;
+    overflow: none;
+    position: relative;
     z-index: 9999;
     overflow: hidden;
     background-color: rgba(0, 0, 0, .5);
 }
 .popup-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     background-color: var(--white);
-    padding: 50px;
-    border-radius: 5px;
+    border-radius: .1vw;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .popupheader{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
     color: var(--gray);
-}
-.popupheader h2{
-    font-size: clamp(1rem, 1vw, 1.3rem); 
+    margin-bottom: 2vw;
+    padding: 1vw;
 }
 .close{
     border: none;
@@ -25,15 +33,18 @@
 .close:hover{
     color: var(var--backgroundgray);
 }
+.popup-main{
+    padding: 0 1vw 1vw 1vw;
+}
 input{
-    width: 350px;
-    padding: 15px 10px;
+    width: 95%;
+    padding: 1vw .0 1vw .5vw; 
     background-color: var(--white);
     border: 1px solid var(--offwhite);
 }
 select{
-    width: 370px;
-    padding: 15px 10px;
+    width: 98%;
+    padding: 1vw .5vw;
     background-color: var(--white);
     border: 1px solid var(--offwhite);
 }
@@ -41,26 +52,25 @@ select{
     background-color: var(--green);
     color: var(--white);
     font-weight: bold;
-    padding: 15px 10px;
-    width: 370px;
-    font-size: clamp(.8rem, 1vw, 1rem); 
+    padding: 1vw .5vw;
+    width: 98%;
+    margin-top: 2vw;
 }
 .email, .password,.username, .accessories, .assign-assets{
-    margin-bottom: 20px ;
+    margin-bottom: 1vw ;
 }
 .email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
-    margin-bottom: 10px ;
+    margin-bottom: .5vw ;
     color: var(--gray);
-    font-size: clamp(.8rem, 1vw, 1rem); 
 }
 @media only screen and (min-width: 992px) { 
     .popup-content{
-        padding: 10px;
+        padding: .5vw;
     }
     .email, .password,.username, .accessories, .assign-assets{
-        margin-bottom: 10px ;
+        margin-bottom: .5vw ;
     }
     .email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
-        margin-bottom: 5px ;
+        margin-bottom: .5vw ;
     }
 }

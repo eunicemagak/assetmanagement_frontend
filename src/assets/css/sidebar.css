@@ -1,7 +1,6 @@
 .sidebar{
   width: 16vw;
   background-color: var(--sidebarblue);
-  padding: 50px 0px 50px 50px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -12,43 +11,41 @@
 }
 .logo{
   position: absolute;
-  top: 20px;
+  top: 2vh;
   max-height: 10vh;
   width: 4vw;
 }
 .logo-img{
-width: 100%;
-height: 100%;
+  width: 100%;
 }
 .profile-img{
     width: 20%;
     border-radius: 50%;
-    margin-right: 20px;
+    margin-right: 1vw;
 }
 .sidebar-icon{
-    margin: 0 20px;
+    margin: 0 1vw;
 }
 .nav-link{
   display: flex;
   align-items: center;
-  margin: 20px 0;
-  padding: 20px 0;
+  margin: 1vw 0;
+  padding: 1vw 0;
   color: var(--white); 
   text-decoration: none;
-  font-size: clamp(.6rem, 1vw, 1rem); 
 }
 .nav-link:hover{
   font-weight: bold;
 }
 .title{
-  font-size: clamp(.4rem, 1vw, .6rem); 
   font-weight: normal !important;
+  font-size: xx-small;
 }
 .active {
   position: relative;
-  padding: 10px;
+  height: 2vw;
   background-color: var(--backgroundgray);
-  border-radius: 10px 0 0 10px;
+  border-radius: .5vw 0 0 .5vw;
   color: var(--blackish);
   font-weight: bold;
 }
@@ -56,30 +53,27 @@ height: 100%;
   content: "";
   position: absolute;
   background-color: var(--sidebarblue);
-  bottom: -15px;
+  bottom: -1.5vw;
   right: 0px;
-  height: 15px;
-  width: 20px;
-  border-top-right-radius: 10px;
-  box-shadow: 10px 0px 0 0 var(--backgroundgray);
+  height: 1.5vw;
+  width: 1vw;
+  border-top-right-radius: .5vw;
+  box-shadow: .5vw 0px 0 0 var(--backgroundgray);
 }
 .active::after {
   content: "";
   position: absolute;
   background-color: var(--sidebarblue);
-  top: -15px;
+  top: -1.5vw;
   right: 0px;
-  height: 15px;
-  width: 20px;
-  border-bottom-right-radius: 10px;
-  box-shadow: 10px 0px 0 0 var(--backgroundgray);
+  height: 1.5vw;
+  width: 1vw;
+  border-bottom-right-radius: .5vw;
+  box-shadow: .5vw 0px 0 0 var(--backgroundgray);
 }
-@media only screen and (min-width: 992px) {
+@media (min-width: 992px) {
   .sidebar{
     width: 15vw;
-    padding: 30px 0px 30px 30px;
-  }
-  .name h4{
-    font-size: .5rem;
+    padding: 3vw 0px 3vw 3vw;
   }
 }

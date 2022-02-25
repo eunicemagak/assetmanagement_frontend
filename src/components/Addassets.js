@@ -2,7 +2,7 @@ import React from 'react'
 import '../assets/css/popup.css';
 import { IoIosCloseCircle } from "react-icons/io";
 
-const Adduser = ({closeComponent}) => {
+const Addasset = ({closeComponent}) => {
   return (
     /**
      * *Add new user interface with a form to capture user details
@@ -14,7 +14,7 @@ const Adduser = ({closeComponent}) => {
     <div className='popup'>
       <div className='popup-content'>
         <div className='popupheader'>
-          <h3>ADD NEW USER</h3>
+          <h3>ADD NEW ASSET</h3>
           <button className='close'onClick={() => closeComponent(false)}>
             <IoIosCloseCircle size='2rem' color='var(--gray)' className='closebtn'/>
           </button>
@@ -22,21 +22,21 @@ const Adduser = ({closeComponent}) => {
         <div className='popup-main'>
           <form>
             <div className='email'>
-              <h4>EMAIL ADDRESS</h4>
-              <input type='email' required placeholder='email address'/>
+              <h4>ASSET NAME</h4>
+              <input type='text' required placeholder='asset name'/>
             </div>
             <div className='username'>
-              <h4>USERNAME</h4>
-              <input type='text' required placeholder='username'/>
+              <h4>SERIAL NUMBER</h4>
+              <input type='text' required placeholder='serial number'/>
             </div>
             <div className='password'>
-              <h4>PASSWORD</h4>
-              <input type='password' required placeholder='password'/>
+              <h4>PRICE</h4>
+              <input type='number' required placeholder='price'/>
             </div>
             <div className='assign-assets'>
-              <h4>ASSIGN ASSET</h4>
+              <h4>CATEGORY</h4>
               <select required>
-                <option disabled selected value="">select asset to assign</option>
+                <option disabled selected value="">select category</option>
                 <option value="">HP SPECTRE</option>
                 <option value="">Lenovo Thinkpad</option>
                 <option value="">Macbook Air</option>
@@ -44,13 +44,8 @@ const Adduser = ({closeComponent}) => {
               </select>
             </div>
             <div className='accessories'>
-              <h4>ACCOMPANING ACCESSORIES</h4>
-              <select required>
-                <option disabled selected value="">select accessories to assign</option>
-                <input type="radio" name="gender" value="male"/>
-               <input type="radio" name="gender" value="female"/>
-                <input type="radio" name="gender" value="other"/>
-              </select>
+              <h4>DESCRIPTION</h4>
+              <input type='text' required placeholder='give more info'/>
             </div>
             <button className='createuser'>
               CREATE USER
@@ -63,4 +58,4 @@ const Adduser = ({closeComponent}) => {
   )
 }
 
-export default Adduser
+export default Addasset
