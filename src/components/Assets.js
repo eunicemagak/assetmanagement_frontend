@@ -7,7 +7,7 @@ import Addasset from './Addassets';
 import axios from 'axios';
 
 
-const Assets = () => {;
+const Assets = ({val}) => {;
   const[showComponent, setShowComponent] = useState(false);
   const [assets, setAssets] =  useState([]);
 

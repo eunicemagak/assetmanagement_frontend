@@ -30,14 +30,6 @@ const Users = () => {
 
 
   return (
-    /**
-     * *All users pages, listing all current users in the system
-     * *System admin can add new users to the database via the ADD USER button
-     * TODO: implement filter users by department functionality
-     * TODO: connet to DB to get all adta straight from the database
-     * TODO: work on linking each user to their user profile
-     * TODO: work on the popup module display {done}
-     */
     <div>
       {showComponent && <Adduser closeComponent={setShowComponent}/>}
       <div className='users-wrapper'>
@@ -60,11 +52,13 @@ const Users = () => {
             </button>
           </div>
         </div>
+      </div>
+     
         <div className='table'>
           <table>
             <thead>
               <tr>
-                <th>#</th>
+              <th>#</th>
                 <th>Name</th>
                 <th>Email Address</th>
                 <th>Department</th>
@@ -103,11 +97,7 @@ const Users = () => {
           </Link>
         </div>
       </div>
-      </div>
   )
 }
 
 export default Users;
-
-
-
