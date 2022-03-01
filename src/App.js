@@ -12,11 +12,18 @@ import Users from './components/Users';
 import Assets from './components/Assets';
 import Complaints from './components/Complaints';
 import Assetprofile from './components/Assetprofile';
-import Landing from './components/Landing';
+// import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
+
+//   const token = localStorage.getItem('token');
+//   
+//     if(!token) {
+//       return <Landing setToken={'token'} />
+//     }
+  
 
   return (
     <div className='wrapper'>
@@ -25,8 +32,7 @@ const App = () => {
           <Sidebar/>
       <div className='bg'>
         <Routes>
-        <Route path='/' element={<Landing/>} />
-          <Route path='/dashboard' element={<Admindash/>} />
+          <Route path='/' element={<Admindash/>} />
           <Route path='/users' element={<Users/>} />
           <Route path='/assets' element={<Assets/>} />
           <Route path='/complaints' element={<Complaints/>} />

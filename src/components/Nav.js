@@ -10,18 +10,21 @@ const Nav = () => {
      * TODO: give funtionality to each nav icon
      * TODO: implement counter for notifications, search database and edit user profile
     */
-    <div className='nav-wrapper' id='fixed'>
-    <ul className='nav'>
-      <li>
-        <FaSearch size='calc(1vw + .5vw)' />
-      </li>
-      <li>
-          <FaBell size='calc(1vw + .5vw)'/>
-      </li>
-      <li>
-        <FaUser size='calc(1vw + .5vw)'/>
-      </li>
-    </ul>
+    <div className='nav-wrapper'>
+      <img className='nav-logo' 
+        src={require("../assets/images/logoblue.png")}alt=''> 
+      </img>
+      <ul className='nav'>
+        <li>
+          <FaSearch  className='nav-icon' />
+        </li>
+        <li>
+          <FaBell  className='nav-icon'/>
+        </li>
+        <li>
+          <FaUser  className='nav-icon'/>
+        </li>
+      </ul>
     </div>
   )
 }

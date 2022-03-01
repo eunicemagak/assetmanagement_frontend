@@ -1,13 +1,34 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
 import {Link } from 'react-router-dom';
 import '../assets/css/users.css';
 import Adduser from './Adduser';
+import axios from 'axios';
 
 
-const Users = () => {;
+const Users = () => {
   const[showComponent, setShowComponent] = useState(false);
+  const [users, setUsers] =  useState([]);
+
+  // const [refreshData, setRefreshData] = useState(false)
+  function getAllUsers(){
+   
+    var url = 'http://localhost:8000/api/v1/users'
+    axios.get(url, {
+        responseType: 'json'
+    }).then(response => {
+        if(response.status === 200){
+            setUsers(response.data.data)
+        }
+    })
+  }
+
+  useEffect(() => {
+    getAllUsers();
+}, [])
+
+
   return (
     /**
      * *All users pages, listing all current users in the system
@@ -26,7 +47,7 @@ const Users = () => {;
           </h2>
           <div className='users-buttons'>
             <button className='addusers' onClick={() => setShowComponent(true)}> 
-              <IoMdAddCircle size='calc(1vw + .5vw)'/>
+              <IoMdAddCircle className='button-icon'/>
               <p className='adduser'>
                 ADD NEW USER
               </p>
@@ -35,7 +56,7 @@ const Users = () => {;
               <p className='filterby'>
                 FILTER BY
               </p>
-              <FaFilter size='calc(1vw + .5vw)'/>
+              <FaFilter className='button-icon'/>
             </button>
           </div>
         </div>
@@ -51,174 +72,19 @@ const Users = () => {;
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Tom Thomas</td>
-                <td>user@roamtech.com</td>
-                <td>TECH</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Susan Suzie</td>
-                <td>user@roamtech.com</td>
-                <td>FINANCE</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Charlie Charles</td>
-                <td>user@roamtech.com</td>
-                <td>MARKETING</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Tom Thomas</td>
-                <td>user@roamtech.com</td>
-                <td>TECH</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Susan Suzie</td>
-                <td>user@roamtech.com</td>
-                <td>FINANCE</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Charlie Charles</td>
-                <td>user@roamtech.com</td>
-                <td>MARKETING</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Tom Thomas</td>
-                <td>user@roamtech.com</td>
-                <td>TECH</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Susan Suzie</td>
-                <td>user@roamtech.com</td>
-                <td>FINANCE</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Charlie Charles</td>
-                <td>user@roamtech.com</td>
-                <td>MARKETING</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Tom Thomas</td>
-                <td>user@roamtech.com</td>
-                <td>TECH</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Susan Suzie</td>
-                <td>user@roamtech.com</td>
-                <td>FINANCE</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Charlie Charles</td>
-                <td>user@roamtech.com</td>
-                <td>MARKETING</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Tom Thomas</td>
-                <td>user@roamtech.com</td>
-                <td>TECH</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Susan Suzie</td>
-                <td>user@roamtech.com</td>
-                <td>FINANCE</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Charlie Charles</td>
-                <td>user@roamtech.com</td>
-                <td>MARKETING</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Tom Thomas</td>
-                <td>user@roamtech.com</td>
-                <td>TECH</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Susan Suzie</td>
-                <td>user@roamtech.com</td>
-                <td>FINANCE</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Charlie Charles</td>
-                <td>user@roamtech.com</td>
-                <td>MARKETING</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Tom Thomas</td>
-                <td>user@roamtech.com</td>
-                <td>TECH</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Susan Suzie</td>
-                <td>user@roamtech.com</td>
-                <td>FINANCE</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Charlie Charles</td>
-                <td>user@roamtech.com</td>
-                <td>MARKETING</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Tom Thomas</td>
-                <td>user@roamtech.com</td>
-                <td>TECH</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Susan Suzie</td>
-                <td>user@roamtech.com</td>
-                <td>FINANCE</td>
-                <td>HP SPECTRE</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Charlie Charles</td>
-                <td>user@roamtech.com</td>
-                <td>MARKETING</td>
-                <td>HP SPECTRE</td>
-              </tr>
+            {
+              users.map((val) => {
+                return(
+                  <tr key={val}>
+                     <td>{val.ID}</td>
+                  <td>{val.first_name} {val.last_name}</td>
+                  <td>{val.email}</td>
+                  <td>{val.department}</td>
+                  <td>{val.assign}</td> 
+                  </tr>
+                )})
+              }
+
             </tbody>
           </table>
         </div>

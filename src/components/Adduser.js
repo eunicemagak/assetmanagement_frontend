@@ -30,8 +30,8 @@ const Adduser = ({closeComponent}) => {
               <input type='text' required placeholder='username'/>
             </div>
             <div className='password'>
-              <h4>PASSWORD</h4>
-              <input type='password' required placeholder='password'/>
+              <h4>DEPARTMENT</h4>
+              <input type='text' required placeholder='department'/>
             </div>
             <div className='assign-assets'>
               <h4>ASSIGN ASSET</h4>

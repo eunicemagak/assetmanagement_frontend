@@ -24,7 +24,7 @@ import Nav from './Nav';
                     <div className="profile-body">
                         <img class="rounded-circle" src={require("../assets/images/laptopprof.png")} alt="Asset" width="150"></img>
                         <div class="items">
-                            <h4>HP SPECTRE</h4>
+                            <h4>hp spectre</h4>
                             <p class="text ">hp2345ygu6k</p>
                             <p class="text">ksh. 200,000</p>
                             <button class=" btn btn-primary">ASSIGNED</button>

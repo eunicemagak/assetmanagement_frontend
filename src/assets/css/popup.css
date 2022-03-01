@@ -14,6 +14,8 @@
     background-color: var(--white);
     border-radius: .1vw;
     width: 25%;
+    min-width: 300px;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,14 +65,19 @@ select{
     margin-bottom: .5vw ;
     color: var(--gray);
 }
-@media only screen and (min-width: 992px) { 
+@media only screen and (max-width: 800px) { 
+    .popup{
+        width: 102vw;
+    }
     .popup-content{
-        padding: .5vw;
+        border-radius: 10px;
+        width: 80%;
+        padding: 20px;
     }
     .email, .password,.username, .accessories, .assign-assets{
-        margin-bottom: .5vw ;
+        margin-bottom: 10px ;
     }
     .email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
-        margin-bottom: .5vw ;
+        margin-bottom: 5px;
     }
 }
