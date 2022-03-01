@@ -5,12 +5,14 @@ import './assets/css/admin.css';
 import './assets/css/nav.css'
 import './assets/css/login.css'
 import './assets/css/landing.css'
+import './assets/css/userprofile.css'
 import './assets/css/assetprofile.css'
 import Admindash from './components/Admindash';
 import Users from './components/Users';
 import Assets from './components/Assets';
 import Complaints from './components/Complaints';
 import Assetprofile from './components/Assetprofile';
+import Userprofile from './components/Userprofile';
 import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
@@ -25,11 +27,12 @@ const App = () => {
       <div className='bg'>
         <Routes>
         <Route path='/' element={<Landing/>} />
-          <Route path='/dashboard' element={<Admindash/>} />
+          <Route path='/admindash' element={<Admindash/>} />
           <Route path='/users' element={<Users/>} />
           <Route path='/assets' element={<Assets/>} />
           <Route path='/complaints' element={<Complaints/>} />
           <Route path='/assetprofile' element={<Assetprofile/>} />
+          <Route path='/userprofile' element={<Userprofile/>} />
         </Routes>
       </div>
       </Router>

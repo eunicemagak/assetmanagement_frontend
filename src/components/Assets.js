@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
 import {Link } from 'react-router-dom';
@@ -6,8 +6,20 @@ import '../assets/css/users.css';
 import Addasset from './Addassets';
 
 
-const Assets = () => {;
+const Assets = ({val}) => {;
   const[showComponent, setShowComponent] = useState(false);
+  const [assets, setAssets] = useState([]);
+
+  const getAssets= async () => {
+    const res = await fetch('https://localhost:8000/api/v1/assets');
+    const finalResult = await res.json();
+    setAssets(finalResult);
+  }
+
+  useEffect(() => {
+    getAssets();
+  }, []);
+
   return (
     /**
      * *All users pages, listing all current users in the system
@@ -50,183 +62,21 @@ const Assets = () => {;
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Hp Spectre</td>
-                <td>Hp2345hd76</td>
-                <td>120,000</td>
-                <td>
-                  <div className='pill green'>
-                    assigned
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Dell</td>
-                <td>De457ib78v3</td>
-                <td>50,000</td>
-                <td>
-                  <div className='pill purple'>
-                    unassigned
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Hp Notebook</td>
-                <td>Hp4546nb78</td>
-                <td>65,000</td>
-                <td>
-                  <div className='pill red'>
-                    damaged
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Lenovo Thinkpad</td>
-                <td>Le5670tp57</td>
-                <td>80,000</td>
-                <td>
-                  <div className='pill blue'>
-                    cleared
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Hp Spectre</td>
-                <td>Hp2345hd76</td>
-                <td>120,000</td>
-                <td>
-                  <div className='pill green'>
-                    assigned
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Dell</td>
-                <td>De457ib78v3</td>
-                <td>50,000</td>
-                <td>
-                  <div className='pill purple'>
-                    unassigned
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Hp Notebook</td>
-                <td>Hp4546nb78</td>
-                <td>65,000</td>
-                <td>
-                  <div className='pill red'>
-                    damaged
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Lenovo Thinkpad</td>
-                <td>Le5670tp57</td>
-                <td>80,000</td>
-                <td>
-                  <div className='pill blue'>
-                    cleared
-                  </div>
-                </td>
-              </tr><tr>
-                <td>1</td>
-                <td>Hp Spectre</td>
-                <td>Hp2345hd76</td>
-                <td>120,000</td>
-                <td>
-                  <div className='pill green'>
-                    assigned
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Dell</td>
-                <td>De457ib78v3</td>
-                <td>50,000</td>
-                <td>
-                  <div className='pill purple'>
-                    unassigned
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Hp Notebook</td>
-                <td>Hp4546nb78</td>
-                <td>65,000</td>
-                <td>
-                  <div className='pill red'>
-                    damaged
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Lenovo Thinkpad</td>
-                <td>Le5670tp57</td>
-                <td>80,000</td>
-                <td>
-                  <div className='pill blue'>
-                    cleared
-                  </div>
-                </td>
-              </tr><tr>
-                <td>1</td>
-                <td>Hp Spectre</td>
-                <td>Hp2345hd76</td>
-                <td>120,000</td>
-                <td>
-                  <div className='pill green'>
-                    assigned
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Dell</td>
-                <td>De457ib78v3</td>
-                <td>50,000</td>
-                <td>
-                  <div className='pill purple'>
-                    unassigned
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Hp Notebook</td>
-                <td>Hp4546nb78</td>
-                <td>65,000</td>
-                <td>
-                  <div className='pill red'>
-                    damaged
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Lenovo Thinkpad</td>
-                <td>Le5670tp57</td>
-                <td>80,000</td>
-                <td>
-                  <div className='pill blue'>
-                    cleared
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <tbody>
+            {
+                assets.map((val)=>{ 
+                  return(
+                  <tr key={val}>
+                <td>{val.ID}</td>
+                <td>{val.name}</td>
+                <td>{val.SerialNumber}</td>
+                <td>{val.price}</td>
+                </tr>
+            )})
+            }
+            
+          </tbody>
+        </table>
         </div>
         <div className='paganation'>
           <Link activeclassname='onpage' className='page' to='/users'>

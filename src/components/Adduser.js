@@ -47,6 +47,11 @@ const Adduser = ({closeComponent}) => {
               <h4>ACCOMPANING ACCESSORIES</h4>
               <select required>
                 <option disabled selected value="">select accessories to assign</option>
+                <option disabled selected value="">select asset to assign</option>
+                <option value="">Mouse</option>
+                <option value="">charger</option>
+                <option value="">extensions</option>
+                <option value="">monitor</option>
                 <input type="radio" name="gender" value="male"/>
                <input type="radio" name="gender" value="female"/>
                 <input type="radio" name="gender" value="other"/>
