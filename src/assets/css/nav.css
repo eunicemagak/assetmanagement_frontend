@@ -1,12 +1,41 @@
 .nav-wrapper{
-    position: absolute;
-    right: 5vw;
-    top: 5vh;
-}
-.nav{
     display: flex;
-    align-items: flex-end;
-}
-.nav li{
-    margin: 0 1vw ;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    }
+    .nav-logo{
+        display: block;
+        width: 50px;
+        margin-right: 40%;
+    }
+    .nav li{
+        margin: 0 10px;
+    }
+    .nav-icon{
+        font-size: 1rem;
+    }
+    .nav{
+        display: flex;
+        align-items: flex-end;
+    }
+@media only screen and (min-width: 800px){
+    .nav-wrapper{
+        top: 5vh;
+    }
+    .nav-icon{
+        font-size: 2rem;
+    }
+    .nav{
+        position: relative;
+        margin-right: 5vw;
+    }
+    .nav li{
+        margin: 0 20px;
+    }
+    .nav-logo{
+        display: none;
+    }
 }

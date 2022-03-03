@@ -29,7 +29,9 @@ ul{
 .wrapper{
     background-color: var(--offwhite);
     height: 100vh;
-    overflow: scroll;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 #fixed{
     position: fixed;

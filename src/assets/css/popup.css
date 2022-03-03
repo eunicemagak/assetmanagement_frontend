@@ -59,3 +59,19 @@ h4{
 p{
     font-size: calc(1rem + .02vw);
 }
+@media only screen and (max-width: 800px) { 
+    .popup{
+        width: 102vw;
+    }
+    .popup-content{
+        border-radius: 10px;
+        width: 80%;
+        padding: 20px;
+    }
+    .email, .password,.username, .accessories, .assign-assets{
+        margin-bottom: 10px ;
+    }
+    .email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
+        margin-bottom: 5px;
+    }
+}

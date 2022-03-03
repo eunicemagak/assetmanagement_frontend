@@ -4,22 +4,29 @@ import { IoMdAddCircle } from "react-icons/io";
 import {Link } from 'react-router-dom';
 import '../assets/css/users.css';
 import Addasset from './Addassets';
+import axios from 'axios';
 
 
 const Assets = ({val}) => {;
   const[showComponent, setShowComponent] = useState(false);
-  const [assets, setAssets] = useState([]);
+  const [assets, setAssets] =  useState([]);
 
-  const getAssets= async () => {
-    const res = await fetch('https://localhost:8000/api/v1/assets');
-    const finalResult = await res.json();
-    setAssets(finalResult);
-  }
+  // const [refreshData, setRefreshData] = useState(false)
+  function getAllAssets(){
+   
+    var url = 'http://localhost:8000/api/v1/assets'
+    axios.get(url, {
+        responseType: 'json'
+    }).then(response => {
+        if(response.status === 200){
+            setAssets(response.data.data)
+        }
+    })
+  }
 
-  useEffect(() => {
-    getAssets();
-  }, []);
-
+  useEffect(() => {
+    getAllAssets();
+}, [])
   return (
     /**
      * *All users pages, listing all current users in the system
@@ -37,8 +44,8 @@ const Assets = ({val}) => {;
               ALL ASSETS
           </h2>
           <div className='users-buttons'>
-            <button className='addusers'onClick={() => setShowComponent(true)}> 
-              <IoMdAddCircle size='calc(1vw + .5vw)'/>
+            <button className='addusers' onClick={() => setShowComponent(true)}> 
+              <IoMdAddCircle className='button-icon'/>
               <p className='adduser'>
                 ADD NEW ASSET
               </p>
@@ -47,7 +54,7 @@ const Assets = ({val}) => {;
               <p className='filterby'>
                 FILTER BY
               </p>
-              <FaFilter size='calc(1vw + .5vw)'/>
+              <FaFilter className='button-icon'/>
             </button>
           </div>
         </div>
@@ -62,21 +69,22 @@ const Assets = ({val}) => {;
                 <th>Status</th>
               </tr>
             </thead>
-          <tbody>
+            <tbody>
             {
-                assets.map((val)=>{ 
-                  return(
-                  <tr key={val}>
-                <td>{val.ID}</td>
-                <td>{val.name}</td>
-                <td>{val.SerialNumber}</td>
-                <td>{val.price}</td>
-                </tr>
-            )})
-            }
-            
-          </tbody>
-        </table>
+              assets.map((val) => {
+                return(
+                  <tr key={val}>
+                     <td>{val.ID}</td>
+                  <td>{val.title}</td>
+                  <td>{val.serialnumber}</td>
+                  <td>{val.price}</td>
+                  <td className='pill green'>{val.price}</td> 
+                  </tr>
+                )})
+              }
+
+            </tbody>
+          </table>
         </div>
         <div className='paganation'>
           <Link activeclassname='onpage' className='page' to='/users'>

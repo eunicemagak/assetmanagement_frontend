@@ -20,6 +20,13 @@ import Sidebar from './components/Sidebar';
 
 const App = () => {
 
+  const token = localStorage.getItem('token');
+  
+    if(!token) {
+      return <Landing setToken={'token'} />
+    }
+  
+
   return (
     <div className='wrapper'>
       <Router>
@@ -27,8 +34,7 @@ const App = () => {
           <Sidebar/>
       <div className='bg'>
         <Routes>
-        <Route path='/' element={<Landing/>} />
-          <Route path='/admindash' element={<Admindash/>} />
+          <Route path='/' element={<Admindash/>} />
           <Route path='/users' element={<Users/>} />
           <Route path='/assets' element={<Assets/>} />
           <Route path='/complaints' element={<Complaints/>} />

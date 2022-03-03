@@ -21,28 +21,28 @@ const admindash = () => {
               <h1>36</h1>
               <p>total assets</p>
             </div>
-            <IoIosLaptop size='7vw' className='widget-img' color='rgba(255, 255, 255, .5)'/>
+            <IoIosLaptop  className='widget-img'/>
           </div>
           <div className='widget'>
             <div className='data'>
               <h1>24</h1>
               <p>assigned assets</p>
             </div>
-            <BsCheckCircle size='5vw' className='widget-img' color='rgba(255, 255, 255, .5)' />
+            <BsCheckCircle  className='widget-img'/>
           </div>
           <div className='widget'>
             <div className='data'>
               <h1>12</h1>
               <p>unassigned assets</p>
             </div>
-            <ImCross size='5vw' className='widget-img' color='rgba(255, 255, 255, .5)'/>
+            <ImCross  className='widget-img'/>
           </div>
           <div className='widget'>
             <div className='data'>
               <h1>4</h1>
               <p>new complaints</p>
             </div>
-            <RiMessage2Line size='5vw' className='widget-img' color='rgba(255, 255, 255, .5)'/>
+            <RiMessage2Line  className='widget-img'/>
           </div>
           
         </div>

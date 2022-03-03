@@ -1,24 +1,25 @@
-import React, { useState, useEffect } from 'react'
-import Login from './Login'
+import React, { useState } from 'react'
+import axios from 'axios';
+import { Navigate } from 'react-router-dom';
 
 const Landing = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('');
 
-    const [token, setToken] = useState();
-
-    useEffect(() => {
-        (
-            async () => {
-                const response = await fetch('http://localhost:8000/api/v1/login', {
-                    headers: {'Content-Type': 'application/json'},
-                
-                });
-
-                const content = await response.json();
-
-                setToken(content.token);
-            }
-        )();
-    });
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        axios.post('http://localhost:8000/api/v1/login', {email, password})
+        .then((res) =>{
+                  localStorage.setItem('token',res.data)
+                  //navigate
+                  return <Navigate to ="./Admindash"/>
+                // success
+              }).catch((err) =>{
+                  console.log(err);
+                  
+                //errr
+              })
+        }
   return (
     <div className='split'>
         <div class="left">
@@ -37,8 +38,31 @@ const Landing = () => {
         </div>
         
             <div class="centered">
-                
-                <Login setToken={setToken}/>
+<div className='right'>
+        <div className="form-group">
+                <h3 className="para-form">LOG IN TO THE ACCESS PORTAL</h3>
+        <form onSubmit={submitHandler}>
+          <div className="formEmail">
+            <label for ="username">Email Adress </label>
+            <input type="email" placeholder="enter email" required 
+            onChange={e => setEmail(e.target.value)}
+            />
+           
+          </div>
+          <div className="formPass">
+            <label for="password">Password </label>
+            <input type="password" placeholder="Password" required 
+            onChange={e => setPassword(e.target.value)}
+            />
+            
+          </div>
+          <button type="submit" class="btn btn-default"> LOG IN</button>
+          
+        </form>
+          
+      </div>
+      
+    </div>
             </div>
     </div>
   )
