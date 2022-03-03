@@ -7,7 +7,7 @@
 .main-userprof{
     display: flex;
     flex-direction: column;
-    gap: 5vw;
+    gap: 4vw;
     position: absolute;
     top: 20vh;
     left: 25vw;
@@ -18,14 +18,13 @@
     position: fixed;
     flex-direction: row;
     align-items: flex-start;
-    left: 20rem;
+    left: 20vw;
     top: 20vh;
+    width: 15vw;
     justify-content: space-between;
     
 }
 .user-img{
-    width: 100%;
-    top:-4vh;
     color: black;
 }
 .user-item{
@@ -38,16 +37,16 @@
    flex-direction: column;
    width: 150px;
    align-items: center;
-   left: 20rem;
+   left: 25rem;
    top:30vh;
    justify-content: center;
    text-align: center;
 }
 .rounded-circle{
     border-radius: 50%;
-    left: 40rem;
+    left: 45rem;
 }
-.text{
+.ptext{
     margin-top: 10px;
 }
 .btn{
@@ -65,7 +64,7 @@
 .card{
     position: absolute;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: var(--white);
     border-radius: .30rem;
     right: 15vw;
@@ -92,16 +91,18 @@
 }
 .row{
     display: flex;
-    justify-content: space-between;
-    text-align: left;
-    padding-right: 20px;
+    flex-direction: row;
+    text-align: center;
     align-items: flex-start;
+}
+.text{
+    padding-left: 5px;
 }
 .btn1{
    margin-top: 10px;
     background-color:grey;
-    padding: 5px;
-    border-radius:  0.25em;  
+    border-radius:  0.25em; 
+
 }
 .btn2{
     margin-top: 10px;
@@ -112,4 +113,10 @@
 .complaints-rows{
        display: flex;
        justify-content: space-between;
+   }
+   li{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 2rem;
    }

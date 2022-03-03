@@ -10,15 +10,16 @@
     gap: 5vw;
     position: absolute;
     top: 20vh;
-    left: 25vw;
+    left: 20vw;
     width: 15vw;
 }
 .assetprof{
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    left: 20rem;
+    left: 10rem;
     top: 20vh;
+    width:15vw;
     justify-content: space-between;
 }
 .asset-img{

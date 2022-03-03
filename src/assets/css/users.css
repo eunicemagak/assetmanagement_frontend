@@ -21,13 +21,13 @@
 .users-buttons{
  display: flex;
  position: absolute;
- right: -3vw;
+ right: 0vw;
  top: -18vh;
 }
 .addusers{
   display: flex;
   background-color: var(--green);
-  padding: 1vw;
+  padding: .5vw;
   color: var(--white);
   align-items: center;
   margin: 0 50px;
@@ -99,8 +99,9 @@ td{
   background-color: var(--headerblue) !important;
 }
 .pill{
-  margin: 0 25%;
+  margin: 0 30%;
   border-radius: 2vw;
+  padding: 5px 0;
 }
 .green{
   background-color: var(--pillgreen);
@@ -114,18 +115,84 @@ td{
 .blue{
   background-color: var(--pillblue);
 }
-@media only screen and (min-width: 992px) {
+.button-icon{
+  font-size: 2rem;
+}
+@media only screen and (max-width: 800px) {
+  .users-wrapper{
+    top: 10vh;
+    right: 10px;
+    left: 10px;
+    width: 100vw;
+  }
   .users-header{
-    margin-bottom: 3vw;
-    top: 15vh;
+    justify-content: space-between;
+    width: 100vw;
+    margin-bottom: 20px;
   }
-  td, th{
-    border: .2vw solid var(--offwhite);
-    padding: .5vw;
+  .users-title{
+    left: 10px;
   }
-  .filterusers,
+  .page{
+    padding: 5px 10px;
+    border-radius: 50%;
+  }
   .addusers{
-    padding: .5vw;
-    margin: 0 3vw;
+    margin: 0 10px;
+  }
+  table{
+    margin-bottom: 0px;
+  }
+  .table{
+    height: 75vh;
+    margin-top: 20px;
+    width: 100vw;
+    overflow: scroll;
+  }
+  thead{
+    position: sticky;
+    top: 0px;
+  }
+  td,
+  th{
+    padding: .4vw;
+    font-size: .85rem;
+  }
+  .pill{
+    margin: 5px;
+    border-radius: 20px;
+    padding: 2px 5px;
+  }
+  .users-buttons{
+    margin-right: 30px;
+  }
+  .adduser,
+  .filterby{
+    display: none;
+  }
+  .addusers,
+  .filterusers{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--backgroundgray);
+  }
+  .paganation{
+    position: absolute;
+    bottom: -50px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .button-icon:nth-child(1){
+    color: var(--green);
+    font-size: 1.5rem;
+  }
+  .button-icon:nth-child(2){
+    color: var(--sidebarblue);
+    font-size: 1.2rem;
+  }
+  td, 
+  th{
+    padding: 5px 20px;
   }
 }
