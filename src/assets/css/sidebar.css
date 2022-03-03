@@ -2,13 +2,14 @@
   width: 16vw;
   min-width: 200px;
   background-color: var(--sidebarblue);
-  height: 102vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
-  max-height: 102vh;
+  max-height: 100vh;
   overflow-y: hidden;
+  top: 0;
 }
 .logo{
   position: absolute;

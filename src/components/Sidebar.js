@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 import { ImUsers, ImFilesEmpty } from "react-icons/im";
-import { FiMessageCircle, FiLogOut } from "react-icons/fi";
+import { /*FiMessageCircle,*/ FiLogOut } from "react-icons/fi";
 import {GoThreeBars} from "react-icons/go";
 import {ImCross} from "react-icons/im";
 import '../assets/css/sidebar.css'
@@ -63,12 +63,12 @@ const Sidebar = () => {
           <p className='nav-title'>ASSETS</p>
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/complaints'>
           <FiMessageCircle size='calc(1vw + .5vw)' className='sidebar-icon'/>
           <p className='nav-title'>COMPLAINTS</p>
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/logout'>
           <FiLogOut size='calc(1vw + .5vw)' className='sidebar-icon'/>

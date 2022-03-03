@@ -54,8 +54,10 @@ h3{
     font-size: calc(1rem + .3vw);
 }
 h4{
-    font-size: calc(1rem + .1vw);
+    font-size: calc(1.1rem + .1vw);
 }
-p{
+p,
+::placeholder,
+option{
     font-size: calc(1rem + .2vw);
 }

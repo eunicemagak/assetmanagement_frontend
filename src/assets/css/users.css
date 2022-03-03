@@ -31,8 +31,8 @@
   color: var(--white);
   align-items: center;
   margin: 0 50px;
-  border-radius: .5vw;
-  box-shadow: -.2vw .2vw;
+  border-radius: .2vw;
+  box-shadow: -.05vw .05vw;
   text-decoration: none;
 }
 .adduser{
@@ -44,8 +44,8 @@
   padding: .5vw;
   color: var(--white);
   align-items: center;
-  border-radius: .5vw;
-  box-shadow: -.2vw .2vw;
+  border-radius: .2vw;
+  box-shadow: -.05vw .05vw;
 }
 .filterby{
   margin-right: 1vw;
