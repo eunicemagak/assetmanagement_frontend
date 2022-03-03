@@ -14,17 +14,17 @@ import Assets from './components/Assets';
 import Complaints from './components/Complaints';
 import Assetprofile from './components/Assetprofile';
 import Userprofile from './components/Userprofile';
-// import Landing from './components/Landing';
+import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
 
-//   const token = localStorage.getItem('token');
-//   
-//     if(!token) {
-//       return <Landing setToken={'token'} />
-//     }
+  const token = localStorage.getItem('token');
+  
+    if(!token) {
+      return <Landing setToken={'token'} />
+    }
   
 
   return (
