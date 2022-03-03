@@ -6,25 +6,25 @@ import './assets/css/admin.css';
 import './assets/css/nav.css'
 import './assets/css/login.css'
 import './assets/css/landing.css'
-import './assets/css/userprofile.css'
-import './assets/css/assetprofile.css'
+// import './assets/css/userprofile.css'
+// import './assets/css/assetprofile.css'
 import Admindash from './components/Admindash';
 import Users from './components/Users';
 import Assets from './components/Assets';
 import Complaints from './components/Complaints';
 import Assetprofile from './components/Assetprofile';
 import Userprofile from './components/Userprofile';
-import Landing from './components/Landing';
+// import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
 
 const App = () => {
 
-  const token = localStorage.getItem('token');
-  
-    if(!token) {
-      return <Landing setToken={'token'} />
-    }
+//   const token = localStorage.getItem('token');
+//   
+//     if(!token) {
+//       return <Landing setToken={'token'} />
+//     }
   
 
   return (

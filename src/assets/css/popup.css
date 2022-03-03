@@ -1,64 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
-*{
-    font-family: 'montserrat';
-    margin: 0;
-    padding: 0;
-    --white: #fff;
-    --offwhite: #eaeaea;
-    --blue: #1e71b7;
-    --lightblue: #1e77ba;
-    --sidebarblue: #113a59;
-    --gray: #636363;
-    --darkestgray: #252525;
-    --blackish: #464646;
-    --backgroundgray: #f4f4f4;
-    --green: #2f986d;
-    --messages: #c8ecde;
-    --pillgreen: #d9e7e1;
-    --headerblue: #addaec;
-    --danger: #e83f56;
-    --pinkish: #f0bfbf;
-    --pillred: #e8d8d8;
-    --pillpurple: #D2D6EE;
-    --pillblue: #D7E4F5;
-    font-size: 14px;
-}
-ul{
-    list-style: none;
-}
-.wrapper{
-    background-color: var(--offwhite);
+.popup{
     height: 100vh;
-    width: 100vw;
-    overflow-x: hidden;
-    overflow-y: scroll;
-}
-#fixed{
-    position: fixed;
-    z-index: 999;
-}
-.bg{
+    overflow: none;
     position: relative;
+    z-index: 9999;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, .5);
 }
-button{
+.popup-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--white);
+    border-radius: .1vw;
+    width: 25%;
+    min-width: 300px;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.popupheader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--gray);
+    margin-bottom: 2vw;
+    padding: 1vw;
+}
+.close{
     border: none;
-    cursor: pointer;
+    background-color: var(--white) ;
 }
-h1{
-    font-size: calc(1rem + 3vw);
+.close:hover{
+    color: var(var--backgroundgray);
 }
-h2{
-    font-size: calc(1rem + 1vw);
+.popup-main{
+    padding: 0 1vw 1vw 1vw;
 }
-h3{
-    font-size: calc(1rem + .3vw);
+input{
+    width: 95%;
+    padding: 1vw .0 1vw .5vw; 
+    background-color: var(--white);
+    border: 1px solid var(--offwhite);
 }
-h4{
-    font-size: calc(.9rem + .1vw);
+select{
+    width: 98%;
+    padding: 1vw .5vw;
+    background-color: var(--white);
+    border: 1px solid var(--offwhite);
 }
-p{
-    font-size: calc(1rem + .02vw);
+.createuser{
+    background-color: var(--green);
+    color: var(--white);
+    font-weight: bold;
+    padding: 1vw .5vw;
+    width: 98%;
+    margin-top: 2vw;
 }
+.email, .password,.username, .accessories, .assign-assets{
+    margin-bottom: 1vw ;
+}
+.email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
+    margin-bottom: .5vw ;
+    color: var(--gray);
+}
+
 @media only screen and (max-width: 800px) { 
     .popup{
         width: 102vw;

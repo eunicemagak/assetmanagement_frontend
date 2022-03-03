@@ -175,7 +175,8 @@ td{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--backgroundgray);
+    background-color: var(--offwhite);
+    box-shadow: none;
   }
   .paganation{
     position: absolute;

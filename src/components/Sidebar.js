@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom'
 import { ImUsers, ImFilesEmpty } from "react-icons/im";
 import { FiMessageCircle, FiLogOut } from "react-icons/fi";
@@ -7,13 +7,35 @@ import {ImCross} from "react-icons/im";
 import '../assets/css/sidebar.css'
 
 const Sidebar = () => {
+  const [toggleMenu, setToggleMenu] = useState(false)
+  const toggleNav = () => {
+      setToggleMenu(!toggleMenu)
+    }
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
+    useEffect(() => {
+
+      const changeWidth = () => {
+        setScreenWidth(window.innerWidth);
+      }
+  
+      window.addEventListener('resize', changeWidth)
+      return () => {
+          window.removeEventListener('resize', changeWidth)
+      }
+  
+    }, [])
   return (
     <div>
+      <button onClick={toggleNav} className="sidebar-btn">
       <GoThreeBars className='nav-inactive nav-icon'/>
+      </button>
+        {(toggleMenu || screenWidth > 800) && (
     <div className='sidebar' id='fixed'>
       <div className='logo'>
+      <button onClick={toggleNav} className="sidebar-btn">
         <ImCross className='nav-active nav-icon'/>
-          <img className='logo' 
+      </button>
+          <img className='logo-img' 
             src={require("../assets/images/logowhite.png")}alt=''> 
           </img>
       </div>
@@ -32,29 +54,30 @@ const Sidebar = () => {
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/users'>
           <ImUsers size='calc(1vw + .5vw)' className='sidebar-icon'/>
-          <div className='nav-title'>USERS</div>
+          <p className='nav-title'>USERS</p>
           </NavLink>
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/assets'>
           <ImFilesEmpty size='calc(1vw + .5vw)' className='sidebar-icon'/>
-          <div className='nav-title'>ASSETS</div>
+          <p className='nav-title'>ASSETS</p>
           </NavLink>
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/complaints'>
           <FiMessageCircle size='calc(1vw + .5vw)' className='sidebar-icon'/>
-          <div className='nav-title'>COMPLAINTS</div>
+          <p className='nav-title'>COMPLAINTS</p>
           </NavLink>
         </li>
         <li>
           <NavLink activeClassName='active' className='nav-link' exact to='/logout'>
           <FiLogOut size='calc(1vw + .5vw)' className='sidebar-icon'/>
-          <div className='nav-title'>LOG OUT</div>
+          <p className='nav-title'>LOG OUT</p>
           </NavLink>
         </li>
       </ul>
     </div>
+        )}
     </div>
   )
 }
