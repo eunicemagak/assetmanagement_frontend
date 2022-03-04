@@ -46,14 +46,17 @@
   color: var(--white); 
   text-decoration: none;
 }
+.name{
+  margin-left: .5vw;
+}
 .nav-link:hover{
   font-weight: bold;
 }
 .title{
   font-weight: normal !important;
-  font-size: xx-small;
+  font-size: x-small;
 }
-.active {
+.sidebar .active {
   position: relative;
   height: 2vw;
   min-height: 30px;
@@ -62,7 +65,7 @@
   color: var(--blackish);
   font-weight: bold;
 }
-.active::before {
+.sidebar .active::before {
   content: "";
   position: absolute;
   background-color: var(--sidebarblue);
@@ -73,7 +76,7 @@
   border-top-right-radius: .5vw;
   box-shadow: .5vw 0px 0 0 var(--backgroundgray);
 }
-.active::after {
+.sidebar .active::after {
   content: "";
   position: absolute;
   background-color: var(--sidebarblue);
@@ -101,10 +104,32 @@
   .sidebar-btn {
       display: block;
   }
-  .active {
+  .sidebar .active {
     margin-left: 5px;
-    padding:5px 8px;
+    padding:10px 8px;
     border-radius: 5vw 0 0 5vw;
+  }
+  .sidebar .active::before {
+    content: "";
+    position: absolute;
+    background-color: var(--sidebarblue);
+    bottom: -15px;
+    right: 0px;
+    height: 15px;
+    width: 10px;
+    border-top-right-radius: 5px;
+    box-shadow: 5px 0px 0 0 var(--backgroundgray);
+  }
+  .sidebar .active::after {
+    content: "";
+    position: absolute;
+    background-color: var(--sidebarblue);
+    top: -15px;
+    right: 0px;
+    height: 15px;
+    width: 10px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 5px 0px 0 0 var(--backgroundgray);
   }
   .nav-inactive{
     display: block;
@@ -125,6 +150,7 @@
     display: none;
     left: 10px;
   }
+  .profile-img,
   .sidebar-icon{
     margin-right: 10px;
   }

@@ -10,7 +10,7 @@ const Nav = () => {
      * TODO: give funtionality to each nav icon
      * TODO: implement counter for notifications, search database and edit user profile
     */
-    <div className='nav-wrapper'>
+    <div className='nav-wrapper' id='fixed'>
       <img className='nav-logo' 
         src={require("../assets/images/logoblue.png")}alt=''> 
       </img>

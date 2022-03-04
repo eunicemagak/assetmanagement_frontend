@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
-import {Link } from 'react-router-dom';
+import {NavLink } from 'react-router-dom';
 import '../assets/css/users.css';
 import Adduser from './Adduser';
 import axios from 'axios';
@@ -14,7 +14,7 @@ const Users = ({val}) => {;
   // const [refreshData, setRefreshData] = useState(false)
   function getAllUsers(){
    
-    var url = 'http://localhost:8000/api/v1/assets'
+    var url = 'https://asset.rnd.emalify.com/api/v1/users'
     axios.get(url, {
         responseType: 'json'
     }).then(response => {
@@ -74,11 +74,11 @@ const Users = ({val}) => {;
               users.map((val) => {
                 return(
                   <tr key={val}>
-                     <td>{val.ID}</td>
-                  <td>{val.first_name} {val.last_name}</td>
-                  <td>{val.email}</td>
-                  <td>{val.department}</td>
-                  <td>{val.asset}</td> 
+                     <td>{val.ID}</td>
+                    <td>{val.first_name} {val.last_name}</td>
+                    <td>{val.email}</td>
+                    <td>{val.department}</td>
+                    <td>{val.asset}</td> 
                   </tr>
                 )})
               }
@@ -87,18 +87,18 @@ const Users = ({val}) => {;
           </table>
         </div>
         <div className='paganation'>
-          <Link activeclassname='onpage' className='page' to='/users'>
+          <NavLink activeclassname='active' className='page' to='/users'>
             1
-          </Link>
-          <Link activeClassName='onpage' className='page' to='/users/2'>
+          </NavLink>
+          <NavLink activeClassName='active' className='page' to='/users/2'>
             2
-          </Link>
-          <Link activeClassName='onpage' className='page' to='/users/3'>
+          </NavLink>
+          <NavLink activeClassName='active' className='page' to='/users/3'>
             3
-          </Link>
-          <Link activeClassName='onpage' className='page' to='/users/4'>
+          </NavLink>
+          <NavLink activeClassName='active' className='page' to='/users/4'>
             4
-          </Link>
+          </NavLink>
         </div>
       </div>
       </div>

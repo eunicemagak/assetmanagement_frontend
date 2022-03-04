@@ -83,7 +83,7 @@ td{
 }
 .paganation{
   position: absolute;
-  bottom: -50px;
+  bottom: 0;
   right: 50%;
 }
 .page{
@@ -95,7 +95,7 @@ td{
   text-decoration: none;
   font-weight: bold;
 }
-.onpage{
+.paganation .active{
   background-color: var(--headerblue) !important;
 }
 .pill{

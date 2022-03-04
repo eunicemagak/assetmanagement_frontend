@@ -11,7 +11,7 @@ const Login= ({setToken}) => {
 
   const submit = async (e) => {
     e.preventDefault();
-    const response = await axios('http://localhost:8000/api/v1/login', {
+    const response = await axios('https://asset.rnd.emalify.com/api/v1/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             data: {
