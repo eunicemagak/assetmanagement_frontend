@@ -7,11 +7,10 @@ import Addasset from './Addassets';
 import axios from 'axios';
 
 
-const Assets = ({val}) => {;
+const Assets = ({val}) => {
   const[showComponent, setShowComponent] = useState(false);
   const [assets, setAssets] =  useState([]);
 
-  // const [refreshData, setRefreshData] = useState(false)
   function getAllAssets(){
    
     var url = 'https://asset.rnd.emalify.com/api/v1/assets'
@@ -73,16 +72,15 @@ const Assets = ({val}) => {;
             {
               assets.map((val) => {
                 return(
-                  <tr key={val}>
-                     <td>{val.ID}</td>
-                  <td>{val.title}</td>
-                  <td>{val.serialnumber}</td>
-                  <td>{val.price}</td>
-                  <td className='pill green'>{val.price}</td> 
-                  </tr>
+                  <tr key={val}>
+                    <td>{val.ID}</td>
+                    <td>{val.title}</td>
+                    <td>{val.serialnumber}</td>
+                    <td>{val.price}</td>
+                    <td>{val.status}</td>
+                  </tr>
                 )})
               }
-
             </tbody>
           </table>
         </div>

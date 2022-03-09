@@ -3,8 +3,7 @@ import { IoIosLaptop } from 'react-icons/io'
 import { BsCheckCircle} from 'react-icons/bs'
 import { ImCross } from 'react-icons/im'
 import { RiMessage2Line } from 'react-icons/ri'
-
-const admindash = () => {
+const admindash = ()   => {
   return (
     /**
      * * Admin dashboard on login with basic informative widgets on current system state
@@ -13,7 +12,7 @@ const admindash = () => {
      */
         <div className='main'>
           <div className='welcome'>
-            <h2>WELCOME JUMA</h2>
+          <h2>WELCOME JUMA</h2>
             <p>Use this asset management portal to manage, assign and record all company assets for better convinience</p>
           </div>
           <div className='widget'>

@@ -7,7 +7,7 @@ import Adduser from './Adduser';
 import axios from 'axios';
 
 
-const Users = ({val}) => {;
+const Users = ({val}) => {
   const[showComponent, setShowComponent] = useState(false);
   const [users, setUsers] =  useState([]);
 
@@ -20,6 +20,7 @@ const Users = ({val}) => {;
     }).then(response => {
         if(response.status === 200){
             setUsers(response.data.data)
+console.log(response.data.data)
         }
     })
   }
@@ -73,16 +74,15 @@ const Users = ({val}) => {;
             {
               users.map((val) => {
                 return(
-                  <tr key={val}>
-                     <td>{val.ID}</td>
-                    <td>{val.first_name} {val.last_name}</td>
-                    <td>{val.email}</td>
-                    <td>{val.department}</td>
-                    <td>{val.asset}</td> 
-                  </tr>
+                    <tr key={val}>
+                      <td>{val.ID}</td>
+                      <td>{val.name}</td>
+                      <td>{val.email}</td>
+                      <td>{val.department_id}</td>
+                      <td>{val.assetid}</td>
+                    </tr>
                 )})
               }
-
             </tbody>
           </table>
         </div>

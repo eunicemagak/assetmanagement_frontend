@@ -10,10 +10,9 @@ const Landing = () => {
         e.preventDefault();
         axios.post('https://asset.rnd.emalify.com/api/v1/login', {email, password})
         .then((res) =>{
-                  localStorage.setItem('token',res.data)
-                  // //navigate
-                  // return <Navigate to ="./Admindash"/>
-                // success
+                  localStorage.setItem('token',res.data.token)
+                  window.location.href = "../";
+                  console.log(res.data)
               }).catch((err) =>{
                   console.log(err);
                   
