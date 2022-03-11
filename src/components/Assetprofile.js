@@ -1,106 +1,98 @@
 import React from 'react'
-import {BiArrowBack} from 'react-icons/bi';
+import {BiArrowBack, BiEdit} from 'react-icons/bi';
+import '../assets/css/assetprofile.css'
 
   const Assetprofile = () =>{
       
     return (
-    <div class="assetprof-wrapper"> 
-        <div class="main-assetprof">
-            <div className='assetprof'>
-                <a href='assets' class="assetprof-item">
-                    <BiArrowBack className='asset-img'/> 
-                </a>
-                <h4 class='asset-item'>ASSET PROFILE</h4>
-            </div>         
-            <div className="profile-body">
-                <img class="rounded-circle" src={require("../assets/images/laptopprof.png")} alt="Asset" width="150"></img>
-                <div class="items">
-                    <h4>HP SPECTRE</h4>
-                    <p class="text ">hp2345ygu6k</p>
-                    <p class="text">ksh. 200,000</p>
-                    <button class=" btn btn-primary">ASSIGNED</button>
+        <div className='asset-wrapper'>
+            <div className='asset-prof-main'>
+                <div className='back'>
+                    <BiArrowBack/>
+                </div>
+                <div className='profile-main'>
+                    <h2 className='asset-prof-title'>ASSET PROFILE</h2>
+                    <img src={require("../assets/images/spectre.jpeg")} className="asset-profile-img"/>
+                    <div className='profile-info'>
+                        <h3>HP SPECTRE</h3>
+                        <p>Hp746ju98</p>
+                        <p>120,000</p>
+                    </div>
+                    <div className='profile-status'>
+                        ASSIGNED
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div className='col-md-8'>
-                    <div className='card'>
-                        <div class="card-body">
-                            <div class='card-header'>
-                                <h5>ASSET RECORD</h5>
-                                <a class="btn-primary" target="__blank" href=""><img  src={require("../assets/images/edit.png")} alt="Asset" width="25"></img></a>
+            <div className='asset-prof-card'>
+                <div className='asset-prof-card-header'>
+                    <h2>ASSET RECORD</h2>
+                    <div className='edit'>
+                        <BiEdit className='edit-icon'/>
+                        <p>edit</p>
+                    </div>
+                </div>
+                <div className='asset-prof-card-main'>
+                    <div id='card-item'>
+                        <h3>NAME</h3>
+                        <p>HP SPECTRE</p>
+                    </div>
+                    <div id='card-item'>
+                        <h3>SERIAL NUMBER</h3>
+                        <p>Hp567bji768</p>
+                    </div>
+                    <div id='card-item'>
+                        <h3>VALUE</h3>
+                        <p>120,000</p>
+                    </div>
+                    <div id='card-item'>
+                        <h3>DATE PURCHASED</h3>
+                        <p>12/2/2022</p>
+                    </div>
+                    <div id='card-item'>
+                        <h3>CURRENT STATUS</h3>
+                        <p>ASSIGNED</p>
+                    </div>
+                    <div id='card-item'>
+                        <h3>JOURNEY</h3>
+                        <div id='list'>
+                            <p>Susan Suzie</p>
+                            <p>Susan Suzie</p>
+                            <p>Susan Suzie</p>
+                            <p>Susan Suzie</p>
+                        </div>
+                    </div>
+                    <div id='card-item' className='complaint'>
+                        <h3>COMPLAINTS</h3>
+                        <div id='list'>
+                            <div className='complain-details'>
+                                <p>Faulty Charger</p>
+                                <p>Suasn Suzie</p>
                             </div>
-                            <div class='row'>
-                                <div class='col-sm-3'>
-                                    <h6>NAME</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">hp spectre
-                                </div>
+                            <div className='complain-details'>
+                                <p>Faulty Charger</p>
+                                <p>Suasn Suzie</p>
                             </div>
-                            
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">SERIAL NUMBER</h6>
-                                    
-                                </div>
-                                <div class="col-sm-9 text-secondary">hp2345ygu6k</div>
-                                    
+                            <div className='complain-details'>
+                                <p>Faulty Charger</p>
+                                <p>Suasn Suzie</p>
                             </div>
-                            <div class='row'>
-                                <div class='col-sm-3'>
-                                    <h6>VALUE</h6>
-                                </div>
-                                <div class='col-sm-9 text-secondary'>ksh. 200,000
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">DATE PURCHASED</h6>
-                                </div>
-                                    <div class="col-sm-9 text-secondary">12/2/2022</div>
-                            </div>
-                            <div class='row'>
-                                <div class='col-sm-3'>
-                                    <h6>CURRENT STATUS</h6>
-                                </div>
-                                <div class='col-sm-9  text-secondary'>ASSIGNED
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">JOURNEY</h6>
-                                </div>
-                                
-                                    <div class="col-sm-9 text-secondary">Suzan Suzie<br/>Thomas Tom<br/>Charles Charlie</div>
-                                    
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">COMPLAINTS</h6>
-                                </div>
-                                <div class="complaints-rows">
-                                    <div class="col-sm-9 text-secondary">
-                                        Faulty charger<br/>Failed drivers<br/>Heating up
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        Suzan Suzie<br/>Thomas Tom<br/>Charles Charlie
-                                    </div>
-                                </div>
-                            </div>  
-                            <div class='row'>
-                                <div class='col-sm-3'>
-                                <button class=" btn1 btn-primary">GENERATE REPORT</button>
-                                </div>
-                                <div class='col-sm-9  text-secondary'>
-                                    <button class=" btn2 btn-primary">CLEAR-OFF</button>
-                                </div>
+                            <div className='complain-details'>
+                                <p>Faulty Charger</p>
+                                <p>Suasn Suzie</p>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className='asset-prof-card-buttons'>
+                    <button className='report'>
+                        GENERATE REPORT
+                    </button>
+                    <button className='clear'>
+                        CLEARED OFF
+                    </button>
+                </div>
             </div>
-    </div>
+        </div>
 )
    
 }

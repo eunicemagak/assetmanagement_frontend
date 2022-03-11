@@ -1,99 +1,135 @@
-.assetprof-wrapper{
-    display: flex;
-    justify-content: space-between;
+.asset-wrapper{
     position: relative;
-    background-color: var(--offwhite);
-}
-.main-assetprof{
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
-    gap: 5vw;
-    position: absolute;
-    top: 20vh;
-    left: 20vw;
-    width: 15vw;
-}
-.assetprof{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    left: 10rem;
-    top: 20vh;
-    width:15vw;
-    justify-content: space-between;
-}
-.asset-img{
-    width: 100%;
-    top:-4vh;
-    color: black;
-}
-.asset-item{
-    color: var(--blue);
-    padding-right: 20px;  
-}
-.profile-body{
-  display: flex;
-   flex-direction: column;
-   width: 150px;
-   align-items: center;
-   left: 20rem;
-   top:30vh;
-   justify-content: center;
-   text-align: center;
-}
-.rounded-circle{
-    border-radius: 50%;
-    left: 40rem;
-}
-.text{
-    margin-top: 10px;
-}
-.btn{
-    color:var(--white);
-    background-color:var(--green) ;
-    padding: 5px;
-    border-radius:  0.25em;
-    margin-top: 10px;
-}
-.card-header{
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 50px;
+    padding-bottom: 50px;
 }
-.card{
+.back{
     position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 2rem;
+}
+.profile-main{
     display: flex;
     flex-direction: column;
-    background-color: var(--white);
-    border-radius: .30rem;
-    right: 15vw;
-    top:30vh;
-    padding-left: 20px;
-    width: 35%;
-    text-align: left;
-    height: 300px;
-   
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
 }
-.row{
+.asset-prof-title{
+    color: var(--blue);
+}
+.asset-profile-img{
+    border-radius: 50%;
+}
+.profile-info{
+    line-height: 1.5;
+    color: var(--blackish);
+}
+.profile-status{
+    font-weight: bold;
+    color: var(--white);
+    padding: 10px 20px;
+    background-color: var(--green);
+    border-radius: 5px;
+}
+.asset-prof-card{
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+}
+.asset-prof-card-header{
     display: flex;
     justify-content: space-between;
-    text-align: left;
-    padding-right: 20px;
-    align-items: flex-start;
+    margin-bottom: 20px;
 }
-.btn1{
-   margin-top: 10px;
-    background-color:grey;
+.edit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.edit-icon{
+    font-size: 2rem;
+}
+.asset-prof-card-main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#card-item{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+.asset-prof-card-main .complaint{
+    display: flex !important;
+    flex-direction: column;
+}
+.complain-details{
+    display: flex;
+    gap: 50px;
+}
+.asset-prof-card-buttons{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.report{
     padding: 10px;
-    border-radius:  0.25em;  
+    background-color: var(--backgroundgray);
+    color: var(--darkestgray);
+    font-weight: bold;
+    border-radius: 5px;
 }
-.btn2{
-    margin-top: 10px;
-    background-color:rgba(170, 173, 173, 0.925);
+.clear{
     padding: 10px;
-    border-radius:  0.25em;
+    background-color: var(--white);
+    border: 2px solid var(--blackish);
+    color: var(--darkestgray);
+    font-weight: bold;
+    border-radius: 5px;
 }
-.complaints-rows{
-       display: flex;
-       justify-content: space-between;
-   }
+@media only screen and (min-width: 500px){
+    .asset-prof-card-buttons{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+@media only screen and (min-width: 801px){
+    .asset-wrapper{
+        position: absolute;
+        right: 50px;
+        width: 70%;
+        justify-content: baseline;
+    }
+    .asset-prof-card-main .complaint,
+    #card-item{
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+    .asset-prof-card-main .complaint{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+@media only screen and (min-width: 1000px){
+    .asset-wrapper{
+        flex-direction: row;
+        align-items: baseline;
+    }
+    .back{
+        position: absolute;
+        top: 15px;
+        left: -30px;
+    }
+}

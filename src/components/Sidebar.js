@@ -10,8 +10,9 @@ import Logout from './Logout';
 import axios from 'axios';
 
 
+
 const Sidebar = ({val}) => {
-  const [admin, setAdmin] =  useState([]);
+  const [admin, setAdmin] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(false)
   const toggleNav = () => {
       setToggleMenu(!toggleMenu)

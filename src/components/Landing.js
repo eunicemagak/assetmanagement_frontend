@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 
 const Landing = () => {
     const [email, setEmail] = useState('')
@@ -13,6 +13,7 @@ const Landing = () => {
                   localStorage.setItem('token',res.data.token)
                   window.location.href = "../";
                 // success
+                  console.log(res.data)
               }).catch((err) =>{
                   console.log(err);
                   
@@ -39,23 +40,23 @@ const Landing = () => {
             <div class="centered">
 <div className='right'>
         <div className="form-group">
-                <h3 className="para-form">LOG IN TO THE ACCESS PORTAL</h3>
+                <h2 className="para-form">LOG IN TO THE ACCESS PORTAL</h2>
         <form onSubmit={submitHandler}>
           <div className="formEmail">
-            <label for ="username">Email Adress </label>
-            <input type="email" placeholder="enter email" required 
+            <label for ="username"><h4>EMAIL ADDRESS</h4></label>
+            <input type="email" placeholder="email address" required 
             onChange={e => setEmail(e.target.value)}
             />
            
           </div>
           <div className="formPass">
-            <label for="password">Password </label>
-            <input type="password" placeholder="Password" required 
+            <label for="password"><h4>PASSWORD</h4></label>
+            <input type="password" placeholder="password" required 
             onChange={e => setPassword(e.target.value)}
             />
             
           </div>
-          <button type="submit" class="btn btn-default"> LOG IN</button>
+          <button type="submit" class="btn btn-default"> LOGIN</button>
           
         </form>
           

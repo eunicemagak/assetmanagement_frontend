@@ -1,30 +1,46 @@
 import React, {useState, useEffect} from 'react'
 import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
-import {Link } from 'react-router-dom';
+import {NavLink } from 'react-router-dom';
 import '../assets/css/users.css';
 import Addasset from './Addassets';
 import axios from 'axios';
 
 
-const Assets = ({val}) => {;
+const Assets = ({val}) => {
   const[showComponent, setShowComponent] = useState(false);
   const [assets, setAssets] =  useState([]);
-
-  // const [refreshData, setRefreshData] = useState(false)
+  const [status, setStatus] =  useState([]);
+  const [toggleFilter, setToggleFilter] = useState(false);
+  const toggleOptions = () => {
+    setToggleFilter(!toggleFilter)
+  }
   function getAllAssets(){
     axios.get('/assets', {
         responseType: 'json'
     }).then(response => {
         if(response.status === 200){
             setAssets(response.data.data)
-        }
+        } 
     })
   }
 
   useEffect(() => {
     getAllAssets();
 }, [])
+function getStatus(){
+      axios.get('/status', {
+          responseType: 'json'
+      }).then(response => {
+          if(response.status === 200){
+              setStatus(response.data.data)
+          } 
+      })
+    }
+  
+    useEffect(() => {
+      getStatus();
+  }, [])
   return (
     /**
      * *All users pages, listing all current users in the system
@@ -48,7 +64,7 @@ const Assets = ({val}) => {;
                 ADD NEW ASSET
               </p>
             </button>
-            <button className='filterusers'>
+            <button className='filterusers' onClick={toggleOptions}>
               <p className='filterby'>
                 FILTER BY
               </p>
@@ -56,6 +72,16 @@ const Assets = ({val}) => {;
             </button>
           </div>
         </div>
+        {(toggleFilter) && 
+            <div className='options'>
+                {
+                    status.map((val) => {
+                      return(
+              <option className='filter-options' onClick={toggleOptions}>{val.staus}</option>
+                  )})
+                }
+            </div>
+        }
         <div className='table'>
           <table>
             <thead>
@@ -71,31 +97,31 @@ const Assets = ({val}) => {;
             {
               assets.map((val) => {
                 return(
-                  <tr key={val}>
-                     <td>{val.ID}</td>
-                  <td>{val.title}</td>
-                  <td>{val.serialnumber}</td>
-                  <td>{val.price}</td>
-                  <td className='pill green'>{val.price}</td> 
-                  </tr>
+                  <tr key={val}>
+                    <td>{val.ID}</td>
+                    <td>{val.title}</td>
+                    <td>{val.serialnumber}</td>
+                    <td>{val.price}</td>
+                    <td>{val.status}</td>
+                  </tr>
                 )})
               }
             </tbody>
           </table>
         </div>
         <div className='paganation'>
-          <Link activeclassname='onpage' className='page' to='/users'>
+          <NavLink activeclassname='active' className='page' to='/assets'>
             1
-          </Link>
-          <Link activeClassName='onpage' className='page' to='/users/2'>
+          </NavLink>
+          <NavLink activeClassName='active' className='page' to='/assets/2'>
             2
-          </Link>
-          <Link activeClassName='onpage' className='page' to='/users/3'>
+          </NavLink>
+          <NavLink activeClassName='active' className='page' to='/assets/3'>
             3
-          </Link>
-          <Link activeClassName='onpage' className='page' to='/users/4'>
+          </NavLink>
+          <NavLink activeClassName='active' className='page' to='/assets/4'>
             4
-          </Link>
+          </NavLink>
         </div>
       </div>
       </div>

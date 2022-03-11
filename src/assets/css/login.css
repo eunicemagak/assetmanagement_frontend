@@ -11,8 +11,8 @@
     display: flex;
     flex-direction: column;
     background-position: center;
+    justify-content: center;
     background-color: var(--white);
-    height: 300px;
     width: 50%;
     padding: 1vw;
     padding-left: 1vw;
@@ -31,6 +31,13 @@
     border-radius: 1.5vw;
     width: 100%; 
 }
+.para-form{
+    color: var(--blackish);
+}
+.form-group label{
+    margin-bottom: 10px;
+    color: var(--blackish);
+}
 .btn-default{
     background-color: var(--blue);
     border:2px;
@@ -42,9 +49,17 @@
    color: var(--white);
    
 }
+.para-form{
+    margin-bottom: 20px;
+}
+.btn-default,
 input{
     padding: .5vw;
     border-radius: .2vw;
+}
+.btn-default{
+    font-weight: bold;
+    font-size: large;
 }
 .forgot-link{
     margin-top: 1vw;
