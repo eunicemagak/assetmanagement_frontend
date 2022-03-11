@@ -11,6 +11,7 @@ const Landing = () => {
         axios.post('https://asset.rnd.emalify.com/api/v1/login', {email, password})
         .then((res) =>{
                   localStorage.setItem('token',res.data)
+                  window.location.href="../"
                   // //navigate
                   // return <Navigate to ="./Admindash"/>
                 // success

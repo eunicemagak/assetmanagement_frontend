@@ -1,17 +1,12 @@
 .userprof-wrapper{
-    display: flex;
-    justify-content: space-between;
     position: relative;
-    background-color: var(--offwhite);
-}
-.main-userprof{
+    margin-top: 70px;
     display: flex;
     flex-direction: column;
-    gap: 4vw;
-    position: absolute;
-    top: 20vh;
-    left: 25vw;
-    width: 15vw;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding-bottom: 50px;
 }
 .userprof{
     display: flex;
@@ -120,3 +115,29 @@
     align-items: center;
     gap: 2rem;
    }
+   @media only screen and (min-width: 500px){
+    .btn1{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+@media only screen and (min-width: 801px){
+    .userprof-wrapper{
+        position: absolute;
+        right: 50px;
+        width: 70%;
+        justify-content: baseline;
+    }
+    
+}
+@media only screen and (min-width: 1000px){
+    .userprof-wrapper{
+        flex-direction: row;
+        align-items: baseline;
+    }
+    .user-img{
+        position: absolute;
+        top: 15px;
+        left: -30px;
+    }
+}

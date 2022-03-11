@@ -11,15 +11,14 @@
 .back{
     position: absolute;
     top: -10px;
-    left: 10px;
     font-size: 2rem;
 }
 .profile-main{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 20px;
+    align-items: centre;
+    gap: 10px;
     text-align: center;
 }
 .asset-prof-title{
@@ -35,15 +34,27 @@
 .profile-status{
     font-weight: bold;
     color: var(--white);
-    padding: 10px 20px;
+    padding: 10px 10px ;
     background-color: var(--green);
     border-radius: 5px;
+}
+.btn-status{
+    background-color: var(--gray);
+    border-radius: 5px;
+    padding: 10px ;
+    font-weight: bold;
+}
+.btn1-status{
+    background-color: var(--pinkish);
+    border-radius: 5px;
+    padding: 10px ;
+    font-weight: bold;
 }
 .asset-prof-card{
     background-color: var(--white);
     padding: 20px;
     border-radius: 10px;
-    width: 80%;
+    font-size: smaller;
 }
 .asset-prof-card-header{
     display: flex;
@@ -59,15 +70,25 @@
 .edit-icon{
     font-size: 2rem;
 }
+.asset-prof-card-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 .asset-prof-card-main{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
+    
 }
 #card-item{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+}
+.card-item{
+    display: flex;
+    gap: 1rem;
 }
 .asset-prof-card-main .complaint{
     display: flex !important;
@@ -98,6 +119,23 @@
     font-weight: bold;
     border-radius: 5px;
 }
+.assign-btn{
+    background-color: var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    gap: 2rem;
+}
+.assign-txt{
+    color: var(--white);
+    font-weight: bold;
+}
+.assign-icon{
+    font-size: 1.5rem;
+    color: var(--white);
+}
 @media only screen and (min-width: 500px){
     .asset-prof-card-buttons{
         flex-direction: row;
@@ -105,6 +143,11 @@
     }
 }
 @media only screen and (min-width: 801px){
+    .asset-prof-card-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+    }
     .asset-wrapper{
         position: absolute;
         right: 50px;
@@ -121,6 +164,10 @@
         flex-direction: row;
         justify-content: space-between;
     }
+
+.assign-icon{
+    font-size: 2rem;
+}
 }
 @media only screen and (min-width: 1000px){
     .asset-wrapper{

@@ -7,35 +7,42 @@ import Addasset from './Addassets';
 import axios from 'axios';
 
 
-const Assets = ({val}) => {;
+const Assets = ({val}) => {
   const[showComponent, setShowComponent] = useState(false);
-  const [assets, setAssets] =  useState([]);
+  const [assets, setAssets] =  useState([]);
+  const [departments, setDepartments] =  useState([]);
+  const [toggleFilter, setToggleFilter] = useState(false);
+  const toggleOptions = () => {
+    setToggleFilter(!toggleFilter)
+  }
+  function getAllAssets(){
+    axios.get('/assets', {
+        responseType: 'json'
+    }).then(response => {
+        if(response.status === 200){
+            setAssets(response.data.data)
+        } 
+    })
+  }
 
-  // const [refreshData, setRefreshData] = useState(false)
-  function getAllAssets(){
-   
-    var url = 'https://asset.rnd.emalify.com/api/v1/assets'
-    axios.get(url, {
-        responseType: 'json'
-    }).then(response => {
-        if(response.status === 200){
-            setAssets(response.data.data)
-        }
-    })
-  }
-
-  useEffect(() => {
-    getAllAssets();
+  useEffect(() => {
+    getAllAssets();
 }, [])
+function getDepartments(){
+      axios.get('/department', {
+          responseType: 'json'
+      }).then(response => {
+          if(response.status === 200){
+              setDepartments(response.data.data)
+          } 
+      })
+    }
+  
+    useEffect(() => {
+      getDepartments();
+  }, [])
   return (
-    /**
-     * *All users pages, listing all current users in the system
-     * *System admin can add new users to the database via the ADD USER button
-     * TODO: implement filter users by department functionality
-     * TODO: connet to DB to get all adta straight from the database
-     * TODO: work on linking each user to their user profile
-     * TODO: work on the popup module display {done}
-     */
+    
     <div>
       {showComponent && <Addasset closeComponent={setShowComponent}/>}
       <div className='users-wrapper'>
@@ -50,7 +57,7 @@ const Assets = ({val}) => {;
                 ADD NEW ASSET
               </p>
             </button>
-            <button className='filterusers'>
+            <button className='filterusers' onClick={toggleOptions}>
               <p className='filterby'>
                 FILTER BY
               </p>
@@ -58,6 +65,16 @@ const Assets = ({val}) => {;
             </button>
           </div>
         </div>
+        {(toggleFilter) && 
+            <div className='options'>
+                {
+                    departments.map((val) => {
+                      return(
+              <option className='filter-options' onClick={toggleOptions}>{val.title}</option>
+                  )})
+                }
+            </div>
+        }
         <div className='table'>
           <table>
             <thead>
@@ -71,18 +88,17 @@ const Assets = ({val}) => {;
             </thead>
             <tbody>
             {
-              assets.map((val) => {
-                return(
-                  <tr key={val}>
-                     <td>{val.ID}</td>
-                  <td>{val.title}</td>
-                  <td>{val.serialnumber}</td>
-                  <td>{val.price}</td>
-                  <td className='pill green'>{val.price}</td> 
-                  </tr>
-                )})
-              }
-
+              assets.map((val) => {
+                return(
+                  <tr key={val}>
+                    <td>{val.ID}</td>
+                    <td>{val.title}</td>
+                    <td>{val.serialnumber}</td>
+                    <td>{val.price}</td>
+                    <td>{val.status}</td>
+                  </tr>
+                )})
+              }
             </tbody>
           </table>
         </div>
@@ -106,6 +122,3 @@ const Assets = ({val}) => {;
 }
 
 export default Assets;
-
-
-
