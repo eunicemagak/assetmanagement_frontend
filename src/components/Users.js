@@ -10,12 +10,15 @@ import axios from 'axios';
 const Users = ({val}) => {
   const[showComponent, setShowComponent] = useState(false);
   const [users, setUsers] =  useState([]);
+  const [department, setDepartment] =  useState([]);
+  const [toggleFilter, setToggleFilter] = useState(false);
+  const toggleOptions = () => {
+    setToggleFilter(!toggleFilter)
+  }
 
   // const [refreshData, setRefreshData] = useState(false)
   function getAllUsers(){
-   
-    var url = 'https://asset.rnd.emalify.com/api/v1/users'
-    axios.get(url, {
+    axios.get('/users', {
         responseType: 'json'
     }).then(response => {
         if(response.status === 200){
@@ -28,6 +31,20 @@ console.log(response.data.data)
   useEffect(() => {
     getAllUsers();
 }, [])
+
+function getDepartment(){
+      axios.get('/department', {
+          responseType: 'json'
+      }).then(response => {
+          if(response.status === 200){
+              setDepartment(response.data.data)
+          } 
+      })
+    }
+  
+    useEffect(() => {
+      getDepartment();
+  }, [])
   return (
     /**
      * *All users pages, listing all current users in the system
@@ -51,7 +68,7 @@ console.log(response.data.data)
                 ADD NEW USER
               </p>
             </button>
-            <button className='filterusers'>
+            <button className='filterusers' onClick={toggleOptions}>
               <p className='filterby'>
                 FILTER BY
               </p>
@@ -59,6 +76,16 @@ console.log(response.data.data)
             </button>
           </div>
         </div>
+        {(toggleFilter) && 
+            <div className='options'>
+                {
+                    department.map((val) => {
+                      return(
+              <option className='filter-options' onClick={toggleOptions}>{val.title}</option>
+                  )})
+                }
+            </div>
+        }
         <div className='table'>
           <table>
             <thead>

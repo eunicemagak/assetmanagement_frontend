@@ -19,6 +19,7 @@
 }
 .welcome h2{
     margin-bottom: .5vw;
+    text-transform: uppercase;
 }
 .welcome p,
 .widget p{

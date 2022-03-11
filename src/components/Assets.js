@@ -10,22 +10,37 @@ import axios from 'axios';
 const Assets = ({val}) => {
   const[showComponent, setShowComponent] = useState(false);
   const [assets, setAssets] =  useState([]);
-
+  const [status, setStatus] =  useState([]);
+  const [toggleFilter, setToggleFilter] = useState(false);
+  const toggleOptions = () => {
+    setToggleFilter(!toggleFilter)
+  }
   function getAllAssets(){
-   
-    var url = 'https://asset.rnd.emalify.com/api/v1/assets'
-    axios.get(url, {
+    axios.get('/assets', {
         responseType: 'json'
     }).then(response => {
         if(response.status === 200){
             setAssets(response.data.data)
-        }
+        } 
     })
   }
 
   useEffect(() => {
     getAllAssets();
 }, [])
+function getStatus(){
+      axios.get('/status', {
+          responseType: 'json'
+      }).then(response => {
+          if(response.status === 200){
+              setStatus(response.data.data)
+          } 
+      })
+    }
+  
+    useEffect(() => {
+      getStatus();
+  }, [])
   return (
     /**
      * *All users pages, listing all current users in the system
@@ -49,7 +64,7 @@ const Assets = ({val}) => {
                 ADD NEW ASSET
               </p>
             </button>
-            <button className='filterusers'>
+            <button className='filterusers' onClick={toggleOptions}>
               <p className='filterby'>
                 FILTER BY
               </p>
@@ -57,6 +72,16 @@ const Assets = ({val}) => {
             </button>
           </div>
         </div>
+        {(toggleFilter) && 
+            <div className='options'>
+                {
+                    status.map((val) => {
+                      return(
+              <option className='filter-options' onClick={toggleOptions}>{val.staus}</option>
+                  )})
+                }
+            </div>
+        }
         <div className='table'>
           <table>
             <thead>

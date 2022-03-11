@@ -3,7 +3,7 @@
     overflow: none;
     position: relative;
     z-index: 9999;
-    overflow: hidden;
+    overflow: none;
     background-color: rgba(0, 0, 0, .5);
     margin-top: -2vh;
 }
@@ -58,10 +58,22 @@ select{
     padding: 1vw .5vw;
     width: 98%;
 }
-.email, .password,.username, .accessories, .assign-assets{
+.upload-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.add-img{
+    height: 100%;
+    position: relative;
+}
+.add-img,.email, .password,.username, .accessories, .assign-assets{
     margin-bottom: 1vw ;
 }
-.email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
+.add-img,.email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
     margin-bottom: .5vw ;
     color: var(--gray);
 }

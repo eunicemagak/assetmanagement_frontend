@@ -38,6 +38,9 @@
 .adduser{
   margin-left: 1vw;
 }
+.filter-wrapper{
+  display: flex;
+}
 .filterusers{
   display: flex;
   background-color: var(--sidebarblue);
@@ -56,7 +59,6 @@
 }
 table{
   width: 100%;
-  box-shadow: -.3vw .3vw;
   text-align: center;
   border-collapse: collapse;
   margin-bottom: 50px;
@@ -117,6 +119,23 @@ td{
 }
 .button-icon{
   font-size: 2rem;
+}
+.options{
+  background-color: var(--backgroundgray);
+  position: absolute;
+  text-align: center;
+  top: 50px;
+  z-index: 999;
+  right: 0;
+}
+.options option{
+  padding: 20px;
+  color: var(--blackish);
+  font-weight: bold;
+  cursor: pointer;
+}
+.options option:hover{
+  background-color: var(--pillblue);
 }
 @media only screen and (max-width: 800px) {
   .users-wrapper{
@@ -195,5 +214,8 @@ td{
   td, 
   th{
     padding: 5px 20px;
+  }
+  .options{
+    top: 40px;
   }
 }

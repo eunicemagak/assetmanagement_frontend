@@ -1,6 +1,7 @@
 .sidebar{
   width: 18vw;
   min-width: 200px;
+  max-width: 400px;
   background-color: var(--sidebarblue);
   height: 100vh;
   display: flex;
@@ -54,7 +55,7 @@
 }
 .title{
   font-weight: normal !important;
-  font-size: x-small;
+  font-size: xx-small;
 }
 .sidebar .active {
   position: relative;
@@ -91,6 +92,11 @@
 .nav-active{
   display: none;
 }
+.nav-title,
+.name-main{
+  text-transform: uppercase;
+    font-size: small;
+  }
 @media screen and (max-width: 800px){
   .sidebar{
       position: absolute;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../assets/css/popup.css';
 import { IoIosCloseCircle } from "react-icons/io";
 import axios from 'axios';
@@ -23,6 +23,7 @@ const Addasset = ({closeComponent}) => {
     })
     .then(res => {
       console.log(res.data)
+      window.location.href = "../Assets";
     })
   }
 
@@ -32,6 +33,14 @@ const Addasset = ({closeComponent}) => {
     setData(newdata)
     console.log(newdata)
   }
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
+  
+    useEffect(() => {
+      if (selectedImage) {
+        setImageUrl(URL.createObjectURL(selectedImage));
+      }
+    }, [selectedImage]);
   return (
     /**
      * *Add new user interface with a form to capture user details
@@ -50,6 +59,13 @@ const Addasset = ({closeComponent}) => {
         </div>
         <div className='popup-main'>
           <form onSubmit={(e) => submit(e)}>
+            <div className='add-img'>
+              <h4>ASSET IMAGE</h4>
+              {imageUrl && selectedImage && (
+                <img src={imageUrl} alt={selectedImage.name} className='upload-img' />
+            )}
+              <input type='file' accept="image/png, image/jpeg" required onChange={(e)  => {setSelectedImage(e.target.files[0]);  handle(e);}} id="image" value={data.image} />
+            </div>
             <div className='email'>
               <h4>ASSET NAME</h4>
               <input type='text' required placeholder='asset name' onChange={(e) => handle(e)} id="title" value={data.title}/>

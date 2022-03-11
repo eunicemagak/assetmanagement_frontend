@@ -17,15 +17,19 @@ import Userprofile from './components/Userprofile';
 import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
+import axios from 'axios';
 
 const App = () => {
-
-  const token = localStorage.getItem('token');
+const token = localStorage.getItem('token');
+axios.defaults.baseURL ='https://asset.rnd.emalify.com/api/v1';
   
     if(!token) {
       return <Landing setToken={'token'} />
-    }
-  
+    }else{
+    axios.defaults.headers ={
+      Authorization: token,
+    }
+  }
 
   return (
     <div className='wrapper'>

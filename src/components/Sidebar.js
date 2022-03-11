@@ -5,8 +5,10 @@ import { /*FiMessageCircle,*/ FiLogOut } from "react-icons/fi";
 import {GoThreeBars} from "react-icons/go";
 import {ImCross} from "react-icons/im";
 import '../assets/css/sidebar.css'
+import axios from 'axios';
 
-const Sidebar = () => {
+const Sidebar = ({val}) => {
+  const [admin, setAdmin] = useState([]);
   const [toggleMenu, setToggleMenu] = useState(false)
   const toggleNav = () => {
       setToggleMenu(!toggleMenu)
@@ -23,6 +25,18 @@ const Sidebar = () => {
           window.removeEventListener('resize', changeWidth)
       }
   
+    }, [])
+    function getAdmin(){
+      axios.get('/admin', {
+        responseType: 'json'
+      }).then(response => {
+        if(response.status === 200){
+          setAdmin(response.data.data)
+        }
+      })
+    }
+    useEffect(() => {
+      getAdmin();
     }, [])
   return (
     <div>
@@ -45,10 +59,16 @@ const Sidebar = () => {
           <img className='profile-img' 
             src={require("../assets/images/user.jpg")}alt=''> 
           </img>
+        {
+          admin.map((val) => {
+            return(
           <div className='Name'>
-            <p className='name-main'>JUMA MAJUMBA</p>
+            <p className='name-main'>{val.first_name} {val.last_name}</p>
             <p className='title'>ADMINISTRATOR</p>
           </div>
+          )
+        })
+      }
           </NavLink>
         </li>
         <li>
