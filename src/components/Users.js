@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import ReactDOM from 'react-dom';
 import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
 import {NavLink } from 'react-router-dom';
@@ -7,19 +8,23 @@ import Adduser from './Adduser';
 import axios from 'axios';
 
 
-const Users = ({val}) => {;
+const Users = ({val}) => {
   const[showComponent, setShowComponent] = useState(false);
   const [users, setUsers] =  useState([]);
+  const [department, setDepartment] =  useState([]);
+  const [toggleFilter, setToggleFilter] = useState(false);
+  const toggleOptions = () => {
+    setToggleFilter(!toggleFilter)
+  }
 
   // const [refreshData, setRefreshData] = useState(false)
   function getAllUsers(){
-   
-    var url = 'https://asset.rnd.emalify.com/api/v1/users'
-    axios.get(url, {
+    axios.get('/users', {
         responseType: 'json'
     }).then(response => {
         if(response.status === 200){
             setUsers(response.data.data)
+console.log(response.data.data)
         }
     })
   }
@@ -27,6 +32,20 @@ const Users = ({val}) => {;
   useEffect(() => {
     getAllUsers();
 }, [])
+
+function getDepartment(){
+      axios.get('/department', {
+          responseType: 'json'
+      }).then(response => {
+          if(response.status === 200){
+              setDepartment(response.data.data)
+          } 
+      })
+    }
+  
+    useEffect(() => {
+      getDepartment();
+  }, [])
   return (
     /**
      * *All users pages, listing all current users in the system
@@ -50,7 +69,7 @@ const Users = ({val}) => {;
                 ADD NEW USER
               </p>
             </button>
-            <button className='filterusers'>
+            <button className='filterusers' onClick={toggleOptions}>
               <p className='filterby'>
                 FILTER BY
               </p>
@@ -58,6 +77,16 @@ const Users = ({val}) => {;
             </button>
           </div>
         </div>
+        {(toggleFilter) && 
+            <div className='options'>
+                {
+                    department.map((val) => {
+                      return(
+              <option className='filter-options' onClick={toggleOptions}>{val.title}</option>
+                  )})
+                }
+            </div>
+        }
         <div className='table'>
           <table>
             <thead>
@@ -73,16 +102,15 @@ const Users = ({val}) => {;
             {
               users.map((val) => {
                 return(
-                  <tr key={val}>
-                     <td>{val.ID}</td>
-                    <td>{val.first_name} {val.last_name}</td>
-                    <td>{val.email}</td>
-                    <td>{val.department}</td>
-                    <td>{val.asset}</td> 
-                  </tr>
+                    <tr key={val}>
+                      <td>{val.ID}</td>
+                      <td>{val.name}</td>
+                      <td>{val.email}</td>
+                      <td>{val.department_id}</td>
+                      <td>{val.assetid}</td>
+                    </tr>
                 )})
               }
-
             </tbody>
           </table>
         </div>

@@ -1,10 +1,96 @@
 
 
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import '../assets/css/popup.css';
 import { IoIosCloseCircle } from "react-icons/io";
+import axios from 'axios';
 
-const Adduser = ({closeComponent}) => {
+const Adduser = ({closeComponent}) => {  
+const [assets, setAssets] =  useState([]);
+const [departments, setDepartments] =  useState([]);
+const [accessories, setAccessories] =  useState([]);
+const [data, setData] = useState ({
+  username: "",
+  email: "",
+  department: "",
+  asset: "",
+  accessory: "",
+  success: ""
+})
+  function getAllAssets(){
+      axios.get('/assets', {
+          responseType: 'json'
+      }).then(response => {
+          if(response.status === 200){
+              setAssets(response.data.data)
+          }
+      })
+    }
+    useEffect(() => {
+      getAllAssets();
+  }, []);
+
+  function getAllDepartments(){
+        axios.get('/department', {
+            responseType: 'json'
+        }).then(response => {
+            if(response.status === 200){
+                setDepartments(response.data.data)
+            }
+        })
+      }
+    
+      useEffect(() => {
+        getAllDepartments();
+    }, [])
+
+    function getAllAccessories(){
+          axios.get('/accessories', {
+              responseType: 'json'
+          }).then(response => {
+              if(response.status === 200){
+                  setAccessories(response.data.data)
+              }
+          })
+        }
+      
+        useEffect(() => {
+          getAllAccessories();
+      }, [])
+
+function submit(e) {
+  e.preventDefault();
+  axios.post('/users', {
+    username: data.username,
+    email: data.email,
+    department: data.department,
+    asset: data.asset,
+    accessory: data.accessory,
+    success: data.success
+  })
+  .then(res => {
+    console.log(res.data)
+    this.setData({success:"USER ADDED SUCCESFULLY"})
+    window.location.href = "../Users";
+  }).catch(e => {
+    this.setData({success:"ALL FIELDS ARE REQUIRED"})
+  })
+}
+
+function handle(e) {
+  const newdata ={ ...data }
+  newdata[e.target.id] = e.target.value
+  setData(newdata)
+  console.log(newdata)
+}
+const [selectedImage, setSelectedImage] = useState(null);
+const [imageUrl, setImageUrl] = useState(null);
+
+useEffect(() => {
+  if (selectedImage) {
+    setImageUrl(URL.createObjectURL(selectedImage));
+  }
+}, [selectedImage]);
   return (
     /**
      * *Add new user interface with a form to capture user details
@@ -22,41 +108,56 @@ const Adduser = ({closeComponent}) => {
           </button>
         </div>
         <div className='popup-main'>
-          <form>
+          <form onSubmit={(e) => submit(e)}>
+            <div className='email'>
+              <h4>PROFILE IMAGE</h4>
+              {imageUrl && selectedImage && (
+                <img src={imageUrl} alt={selectedImage.name} className='upload-img' />
+            )}
+              <input type='file' accept="image/png, image/jpeg" required onChange={(e)  => {setSelectedImage(e.target.files[0]);  handle(e);}} id="image" value={data.image} />
+            </div>
             <div className='email'>
               <h4>EMAIL ADDRESS</h4>
-              <input type='email' required placeholder='email address'/>
+              <input type='email' required placeholder='email address' onChange={(e) => handle(e)} id="email" value={data.email}/>
             </div>
             <div className='username'>
               <h4>USERNAME</h4>
-              <input type='text' required placeholder='username'/>
+              <input type='text' required placeholder='username' onChange={(e) => handle(e)} id="username" value={data.username}/>
             </div>
             <div className='password'>
               <h4>DEPARTMENT</h4>
-              <input type='text' required placeholder='department'/>
+              <select required>
+                <option disabled selected value="">department</option>
+            {
+              departments.map((val) => {
+                return(
+                <option onChange={(e) => handle(e)} id="department" value={data.department}>{val.title}</option>
+                                )})
+                              }
+              </select>
             </div>
             <div className='assign-assets'>
               <h4>ASSIGN ASSET</h4>
               <select required>
                 <option disabled selected value="">select asset to assign</option>
-                <option value="">HP SPECTRE</option>
-                <option value="">Lenovo Thinkpad</option>
-                <option value="">Macbook Air</option>
-                <option value="">Hp Probook</option>
+            {
+              assets.map((val) => {
+                return(
+                <option onChange={(e) => handle(e)} id="asset" value={data.asset}>{val.title}</option>
+                                )})
+                              }
               </select>
             </div>
             <div className='accessories'>
               <h4>ACCOMPANING ACCESSORIES</h4>
               <select required>
-                <option disabled selected value="">select accessories to assign</option>
-                <option disabled selected value="">select asset to assign</option>
-                <option value="">Mouse</option>
-                <option value="">charger</option>
-                <option value="">extensions</option>
-                <option value="">monitor</option>
-                <input type="radio" name="gender" value="male"/>
-               <input type="radio" name="gender" value="female"/>
-                <input type="radio" name="gender" value="other"/>
+                <option disabled selected value="">select accompaning accessories</option>
+            {
+              accessories.map((val) => {
+                return(
+                <option onChange={(e) => handle(e)} id="accessory" value={data.accessory}>{val.title}</option>
+               )})
+            }
               </select>
             </div>
             <button className='createuser'>

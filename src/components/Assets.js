@@ -10,7 +10,7 @@ import axios from 'axios';
 const Assets = ({val}) => {
   const[showComponent, setShowComponent] = useState(false);
   const [assets, setAssets] =  useState([]);
-  const [departments, setDepartments] =  useState([]);
+  const [status, setStatus] =  useState([]);
   const [toggleFilter, setToggleFilter] = useState(false);
   const toggleOptions = () => {
     setToggleFilter(!toggleFilter)
@@ -28,18 +28,31 @@ const Assets = ({val}) => {
   useEffect(() => {
     getAllAssets();
 }, [])
-function getDepartments(){
-      axios.get('/department', {
-          responseType: 'json'
-      }).then(response => {
-          if(response.status === 200){
-              setDepartments(response.data.data)
-          } 
-      })
-    }
+  function getAllAssets(){
+    axios.get('/assets', {
+        responseType: 'json'
+    }).then(response => {
+        if(response.status === 200){
+            setAssets(response.data.data)
+        } 
+    })
+  }
+
+  useEffect(() => {
+    getAllAssets();
+}, [])
+function getStatus(){
+      axios.get('/status', {
+          responseType: 'json'
+      }).then(response => {
+          if(response.status === 200){
+              setStatus(response.data.data)
+          } 
+      })
+    }
   
-    useEffect(() => {
-      getDepartments();
+    useEffect(() => {
+      getStatus();
   }, [])
   return (
     
@@ -68,9 +81,9 @@ function getDepartments(){
         {(toggleFilter) && 
             <div className='options'>
                 {
-                    departments.map((val) => {
-                      return(
-              <option className='filter-options' onClick={toggleOptions}>{val.title}</option>
+                    status.map((val) => {
+                      return(
+              <option className='filter-options' onClick={toggleOptions}>{val.staus}</option>
                   )})
                 }
             </div>
@@ -88,8 +101,8 @@ function getDepartments(){
             </thead>
             <tbody>
             {
-              assets.map((val) => {
-                return(
+              assets.map((val) => {
+                return(
                   <tr key={val}>
                     <td>{val.ID}</td>
                     <td>{val.title}</td>
@@ -117,7 +130,7 @@ function getDepartments(){
           </NavLink>
         </div>
       </div>
-      </div>
+    </div>
   )
 }
 

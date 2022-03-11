@@ -19,10 +19,11 @@
 }
 .welcome h2{
     margin-bottom: .5vw;
+    text-transform: uppercase;
 }
 .welcome p,
 .widget p{
-    line-height: 1.5vw;
+    line-height: 1.5;
 }
 .widget{
     background-color: var(--lightblue);

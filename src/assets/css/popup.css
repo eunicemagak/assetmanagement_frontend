@@ -1,9 +1,15 @@
 .popup{
-    height: 101vh;
+    height: 100vh;
+    width: 100%;
+    display: flex;
     overflow: none;
     position: relative;
-    z-index: 9999;
+    z-index: 9999 !important;
     overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    z-index: 9999;
+    overflow: none;
     background-color: rgba(0, 0, 0, .5);
     margin-top: -2vh;
 }
@@ -29,10 +35,62 @@
     margin-bottom: 2vw;
     padding: 1vw;
 }
+.popupheaderclear{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--gray);
+    margin-bottom: 2vw;
+    padding: 1vw;
+}
+.popup-main{
+    color: var(--gray);
+}
+
+.assetname{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--gray);
+    margin-bottom: 2vw;
+    padding: 1vw;
+}
+.assetserial{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--gray);
+    margin-bottom: 2vw;
+    padding: 1vw;
+}
 .close{
     border: none;
     background-color: var(--white) ;
 }
+.rowname{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+.rowserial{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+.col-sm-3 h6{
+    display: flex;
+    flex-direction: row;
+
+    margin: 0 1rem;
+}
+.col-sm-9 text-secondary{
+    display: flex;
+    flex-direction: row;
+    
+}
+
 .close:hover{
     color: var(var--backgroundgray);
 }
@@ -41,13 +99,13 @@
 }
 input{
     width: 95%;
-    padding: .5vw .0 .5vw .5vw; 
+    padding: 1vw .0 1vw .5vw; 
     background-color: var(--white);
     border: 1px solid var(--offwhite);
 }
 select{
     width: 98%;
-    padding: .5vw .5vw;
+    padding: 1vw .5vw;
     background-color: var(--white);
     border: 1px solid var(--offwhite);
 }
@@ -57,45 +115,82 @@ select{
     font-weight: bold;
     padding: 1vw .5vw;
     width: 98%;
+    margin-top: 2vw;
 }
-.email, .password,.username, .accessories, .assign-assets{
+.logout{
+    background-color: var(--danger);
+    color: var(--white);
+    font-weight: bold;
+    padding: 1vw .5vw;
+    width: 98%;
+    margin-top: 2vw;
+}
+.clearoff{
+    background-color: var(--green);
+    color: var(--white);
+    font-weight: bold;
+    padding: 1vw .5vw;
+    width: 98%;
+    margin-top: 2vw;
+}
+.suspend{
+    background-color: var(--green);
+    color: var(--white);
+    font-weight: bold;
+    padding: 1vw .5vw;
+    width: 98%;
+    margin-top: 2vw;
+}
+.name{
+    margin-bottom: 1vw ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.email_address{
+    margin-bottom: 1vw ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.department{
+    margin-bottom: 1vw ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.upload-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.add-img{
+    height: 100%;
+    position: relative;
+}
+.add-img,.email, .password,.username, .accessories, .assign-assets{
     margin-bottom: 1vw ;
 }
-.email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
+.add-img,.email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
     margin-bottom: .5vw ;
     color: var(--gray);
 }
-
 @media only screen and (max-width: 800px) { 
     .popup{
-        width: 100vw;
-        margin-top: 0;
-        height: 100vh;
+        width: 102vw;
     }
     .popup-content{
-        border-radius: 5px;
+        border-radius: 10px;
         width: 80%;
         padding: 20px;
-    }
-    form{
-        margin-top: 20px;
-    }
-    input,
-    select,
-    .createuser{
-        padding: 5px;
     }
     .email, .password,.username, .accessories, .assign-assets{
         margin-bottom: 10px ;
     }
     .email h4, .password h4,.username h4, .accessories h4, .assign-assets h4{
         margin-bottom: 5px;
-    }
-    .createuser{
-        margin-top: 20px;
-    }
-    .createuser,
-    select{
-        width: 99%;
     }
 }
