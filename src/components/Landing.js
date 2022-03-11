@@ -8,11 +8,10 @@ const Landing = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/v1/login', {email, password})
+        axios.post('https://asset.rnd.emalify.com/api/v1/login', {email, password})
         .then((res) =>{
-                  localStorage.setItem('token',res.data)
-                  //navigate
-                  return <Navigate to ="./Admindash"/>
+                  localStorage.setItem('token',res.data.token)
+                  window.location.href = "../";
                 // success
               }).catch((err) =>{
                   console.log(err);

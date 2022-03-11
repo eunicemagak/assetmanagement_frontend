@@ -17,14 +17,23 @@ import Userprofile from './components/Userprofile';
 import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
+import Logout from './components/Logout';
+import Suspend from './components/Suspend';
+import Clearoff from './components/Clearoff';
+import axios from 'axios';
 
 const App = () => {
 
   const token = localStorage.getItem('token');
-  
+  axios.defaults.baseURL = 'https://asset.rnd.emalify.com/api/v1';
+
     if(!token) {
       return <Landing setToken={'token'} />
-    }
+    }else{
+    axios.defaults.headers ={
+      Authorization: token,
+    }
+  }
   
 
   return (
@@ -40,6 +49,7 @@ const App = () => {
           <Route path='/complaints' element={<Complaints/>} />
           <Route path='/assetprofile' element={<Assetprofile/>} />
           <Route path='/userprofile' element={<Userprofile/>} />
+          <Route path='/logout' element={<Logout/>} />
         </Routes>
       </div>
       </Router>

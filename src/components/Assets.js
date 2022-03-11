@@ -13,9 +13,7 @@ const Assets = ({val}) => {;
 
   // const [refreshData, setRefreshData] = useState(false)
   function getAllAssets(){
-   
-    var url = 'http://localhost:8000/api/v1/assets'
-    axios.get(url, {
+    axios.get('/assets', {
         responseType: 'json'
     }).then(response => {
         if(response.status === 200){
@@ -82,7 +80,6 @@ const Assets = ({val}) => {;
                   </tr>
                 )})
               }
-
             </tbody>
           </table>
         </div>

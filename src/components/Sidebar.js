@@ -4,9 +4,14 @@ import { ImUsers, ImFilesEmpty } from "react-icons/im";
 import { /*FiMessageCircle,*/ FiLogOut } from "react-icons/fi";
 import {GoThreeBars} from "react-icons/go";
 import {ImCross} from "react-icons/im";
-import '../assets/css/sidebar.css'
+import { BiAddToQueue } from "react-icons/bi";
+import '../assets/css/sidebar.css';
+import Logout from './Logout';
+import axios from 'axios';
 
-const Sidebar = () => {
+
+const Sidebar = ({val}) => {
+  const [admin, setAdmin] =  useState([]);
   const [toggleMenu, setToggleMenu] = useState(false)
   const toggleNav = () => {
       setToggleMenu(!toggleMenu)
@@ -24,8 +29,25 @@ const Sidebar = () => {
       }
   
     }, [])
+    function getAdmin(){
+   
+          axios.get('/admin', {
+              responseType: 'json'
+          }).then(response => {
+              if(response.status === 200){
+                  setAdmin(response.data.data)
+              }
+          })
+        }
+      
+        useEffect(() => {
+          getAdmin();
+      }, [])
+    const[showLogout, setShowLogout] = useState(false);
   return (
+    
     <div>
+      {showLogout && <Logout closeLogout={setShowLogout}/>}
       <button onClick={toggleNav} className="sidebar-btn">
       <GoThreeBars className='nav-inactive nav-icon'/>
       </button>
@@ -45,10 +67,15 @@ const Sidebar = () => {
           <img className='profile-img' 
             src={require("../assets/images/user.jpg")}alt=''> 
           </img>
-          <div className='Name'>
-            <p className='name-main'>JUMA MAJUMBA</p>
+          {
+              admin.map((val) => {
+                return(
+          <div className='Name' >
+            <p className='name-main'>{val.first_name} {val.last_name}</p>
             <p className='title'>ADMINISTRATOR</p>
           </div>
+           )})
+          }
           </NavLink>
         </li>
         <li>
@@ -70,12 +97,18 @@ const Sidebar = () => {
           </NavLink>
         </li> */}
         <li>
-          <NavLink activeClassName='active' className='nav-link' exact to='/logout'>
-          <FiLogOut size='calc(1vw + .5vw)' className='sidebar-icon'/>
-          <p className='nav-title'>LOG OUT</p>
+          <NavLink activeClassName='active' className='nav-link' exact to='/accessories'>
+          <BiAddToQueue size='calc(1vw + .5vw)' className='sidebar-icon'/>
+          <p className='nav-title'>ACCESSORIES</p>
           </NavLink>
         </li>
       </ul>
+      <li>
+      <div className='sidebar-logout'>
+      <FiLogOut size='calc(1vw + .5vw)' className='sidebar-icon' onClick={() => setShowLogout(true)}/>
+      <p className='nav-title' onClick={() => setShowLogout(true)} >LOG OUT</p>
+      </div>
+      </li>
     </div>
         )}
     </div>

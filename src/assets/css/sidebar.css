@@ -1,11 +1,11 @@
 .sidebar{
-  width: 16vw;
+  width: 18vw;
   min-width: 200px;
   background-color: var(--sidebarblue);
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   position: relative;
   max-height: 100vh;
   overflow-y: hidden;
@@ -62,6 +62,20 @@
   color: var(--blackish);
   font-weight: bold;
 }
+.sidebar-logout {
+  position: absolute;
+  bottom: -20px;
+  display: flex;
+  align-items: center;
+  margin: .5vw 0 1vw 1vw;
+  padding: 1vw 0;
+  color: var(--danger); 
+  text-decoration: none;
+  }
+  .sidebar-logout:hover{
+    font-weight: bold;
+  }
+
 .active::before {
   content: "";
   position: absolute;
@@ -87,6 +101,9 @@
 .nav-inactive,
 .nav-active{
   display: none;
+}
+.name-main{
+  text-transform: uppercase;
 }
 @media screen and (max-width: 800px){
   .sidebar{

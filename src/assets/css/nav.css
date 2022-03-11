@@ -38,4 +38,9 @@
     .nav-logo{
         display: none;
     }
+    .logoutt a{
+        display: flex;
+        flex-direction: row;
+        color: var(--blackish);
+    }
 }

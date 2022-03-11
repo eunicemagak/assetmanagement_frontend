@@ -1,5 +1,5 @@
-import React from 'react'
 import { FaBell, FaUser, FaSearch } from "react-icons/fa";
+import React, {useState} from 'react'
 
 const Nav = () => {
   return (
@@ -10,6 +10,7 @@ const Nav = () => {
      * TODO: give funtionality to each nav icon
      * TODO: implement counter for notifications, search database and edit user profile
     */
+   <div>
     <div className='nav-wrapper'>
       <img className='nav-logo' 
         src={require("../assets/images/logoblue.png")}alt=''> 
@@ -25,6 +26,7 @@ const Nav = () => {
           <FaUser  className='nav-icon'/>
         </li>
       </ul>
+    </div>
     </div>
   )
 }
