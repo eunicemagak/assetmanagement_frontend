@@ -1,46 +1,104 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, Component} from 'react'
 import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
 import {NavLink } from 'react-router-dom';
 import '../assets/css/users.css';
 import Addasset from './Addassets';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
-const Assets = ({val}) => {
-  const[showComponent, setShowComponent] = useState(false);
-  const [assets, setAssets] =  useState([]);
-  const [status, setStatus] =  useState([]);
-  const [toggleFilter, setToggleFilter] = useState(false);
-  const toggleOptions = () => {
-    setToggleFilter(!toggleFilter)
-  }
-  function getAllAssets(){
-    axios.get('/assets', {
-        responseType: 'json'
-    }).then(response => {
-        if(response.status === 200){
-            setAssets(response.data.data)
-        } 
-    })
-  }
-
-  useEffect(() => {
-    getAllAssets();
-}, [])
-function getStatus(){
-      axios.get('/status', {
-          responseType: 'json'
-      }).then(response => {
-          if(response.status === 200){
-              setStatus(response.data.data)
-          } 
-      })
-    }
+class Assets extends Component{
   
-    useEffect(() => {
-      getStatus();
-  }, [])
+  constructor(props) {
+    super(props);
+  
+    this.state = {
+      modal: false,
+      name: "",
+      modalInputName: "",
+      currentPage: 1,
+      assets: [],
+      assetsPerPage: 12
+    };
+  }
+  
+  componentDidMount (){
+    axios.get('/assets')
+      .then(res => {
+        this.setState({
+          assets: res.data.data
+        })
+      })
+    }
+    modalOpen() {
+      this.setState({ modal: true });
+    }
+  
+    modalClose() {
+      this.setState({
+        modalInputName: "",
+        modal: false
+      });
+    }
+// function getStatus(){
+//       axios.get('/status', {
+//           responseType: 'json'
+//       }).then(response => {
+//           if(response.status === 200){
+//               setStatus(response.data.data)
+//               console.log((response.data).length)
+//           } 
+//       })
+//     }
+  
+//     useEffect(() => {
+//       getStatus();
+//   }, [])
+
+render () {
+
+  //Get currentAssets
+  const indexOfLastAsset = this.state.currentPage * this.state.assetsPerPage;
+  const indexOfFirstAssets = indexOfLastAsset - this.state.assetsPerPage;
+  const currentAssets = this.state.assets.slice(indexOfFirstAssets, indexOfLastAsset);
+
+  //Implement page numbers
+  const pageNumbers = []
+
+  for (let i = 1; i <= Math.ceil(this.state.assets.length / this.state.assetsPerPage); i++) {
+    pageNumbers.push(i);
+}
+
+//Set current page
+const setPage = (pageNum) => {
+  this.setState({currentPage: pageNum})
+}
+
+
+  const { assets } = this.state;
+  const assetsList = assets.length ? (
+    currentAssets.map(asset => {
+      return (
+        <tbody key={asset.id}>
+          <Link to={'/assets/' + asset.ID}>
+            <tr>
+              <td>{asset.ID}</td>
+              <td>{asset.title}</td>
+              <td>{asset.serialnumber}</td>
+              <td>KES {asset.price}</td>
+              <td>{asset.status}</td>
+            </tr>
+          </Link> 
+        </tbody>
+      )
+    })
+  ) : (
+    <div className="center">
+      <p>loading</p>
+    </div>
+  )
+
   return (
     /**
      * *All users pages, listing all current users in the system
@@ -51,20 +109,20 @@ function getStatus(){
      * TODO: work on the popup module display {done}
      */
     <div>
-      {showComponent && <Addasset closeComponent={setShowComponent}/>}
+      <Addasset show={this.state.modal} handleClose={(e) => this.modalClose(e)}/>
       <div className='users-wrapper'>
         <div className='users-header'>
           <h2 className='users-title'>
               ALL ASSETS
           </h2>
           <div className='users-buttons'>
-            <button className='addusers' onClick={() => setShowComponent(true)}> 
+            <button className='addusers' onClick={(e) => this.modalOpen(e)}>
               <IoMdAddCircle className='button-icon'/>
               <p className='adduser'>
                 ADD NEW ASSET
               </p>
             </button>
-            <button className='filterusers' onClick={toggleOptions}>
+            <button className='filterusers'>
               <p className='filterby'>
                 FILTER BY
               </p>
@@ -72,19 +130,20 @@ function getStatus(){
             </button>
           </div>
         </div>
-        {(toggleFilter) && 
+        {/* {(toggleFilter) && 
             <div className='options'>
                 {
                     status.map((val) => {
                       return(
-              <option className='filter-options' onClick={toggleOptions}>{val.staus}</option>
+              <option className='filter-options' onClick={toggleOptions}>{val.status}</option>
                   )})
                 }
             </div>
-        }
+        } */}
         <div className='table'>
           <table>
             <thead>
+            <Link to=''>
               <tr>
                 <th>#</th>
                 <th>Name</th>
@@ -92,42 +151,33 @@ function getStatus(){
                 <th>Price</th>
                 <th>Status</th>
               </tr>
+              </Link>
             </thead>
-            <tbody>
-            {
-              assets.map((val) => {
-                return(
-                  <tr key={val}>
-                    <td>{val.ID}</td>
-                    <td>{val.title}</td>
-                    <td>{val.serialnumber}</td>
-                    <td>{val.price}</td>
-                    <td>{val.status}</td>
-                  </tr>
-                )})
-              }
-            </tbody>
+              {assetsList}
           </table>
         </div>
-        <div className='paganation'>
-          <NavLink activeclassname='active' className='page' to='/assets'>
-            1
-          </NavLink>
-          <NavLink activeClassName='active' className='page' to='/assets/2'>
-            2
-          </NavLink>
-          <NavLink activeClassName='active' className='page' to='/assets/3'>
-            3
-          </NavLink>
-          <NavLink activeClassName='active' className='page' to='/assets/4'>
-            4
-          </NavLink>
+        <div className='pagination'>
+        {
+            pageNumbers.map((pageNum, index) => (
+              <span key={index} 
+                className={pageNum === this.state.currentPage 
+                ? "currentPg" 
+                : "otherPgs"} 
+              
+                onClick={() => {setPage(pageNum)}}>
+
+                {pageNum}
+
+              </span>
+            ))
+          }
         </div>
       </div>
       </div>
   )
 }
-
+}
+  
 export default Assets;
 
 

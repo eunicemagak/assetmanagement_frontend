@@ -1,14 +1,14 @@
-import React, { Component} from 'react'
+import React, {useState, useEffect, Component} from 'react'
 import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
 import {NavLink } from 'react-router-dom';
 import '../assets/css/users.css';
-import Adduser from './Adduser';
+import Addaccessory from './Addaccessory';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 
-class Users extends Component{
+class Assets extends Component{
   
   constructor(props) {
     super(props);
@@ -17,21 +17,20 @@ class Users extends Component{
       modal: false,
       name: "",
       modalInputName: "",
-      users: [],
       currentPage: 1,
-      assetsPerPage: 12
+      accessories: [],
+      accessoriesPerPage: 12
     };
   }
   
   componentDidMount (){
-    axios.get('/users')
+    axios.get('/accessories')
       .then(res => {
         this.setState({
-          users: res.data.data
+          accessories: res.data.data
         })
       })
     }
-    
     modalOpen() {
       this.setState({ modal: true });
     }
@@ -58,20 +57,16 @@ class Users extends Component{
 //   }, [])
 
 render () {
-  // const[showComponent, setShowComponent] = useState(false);
-  // const [status, setStatus] =  useState([]);
-  // const [toggleFilter, setToggleFilter] = useState(false);
-  // const toggleOptions = () => {
-  //   setToggleFilter(!toggleFilter)
-  // }
-  const indexOfLastUser = this.state.currentPage * this.state.usersPerPage;
-  const indexOfFirstUsers = indexOfLastUser - this.state.usersPerPage;
-  const currentUsers = this.state.users.slice(indexOfFirstUsers, indexOfLastUser);
+
+  //Get currentAssets
+  const indexOfLastAccessory = this.state.currentPage * this.state.accessoriesPerPage;
+  const indexOfFirstAccessories = indexOfLastAccessory- this.state.accessoriesPerPage;
+  const currentAccessories = this.state.accessories.slice(indexOfFirstAccessories, indexOfLastAccessory);
 
   //Implement page numbers
   const pageNumbers = []
 
-  for (let i = 1; i <= Math.ceil(this.state.users.length / this.state.usersPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(this.state.accessories.length / this.state.accessoriesPerPage); i++) {
     pageNumbers.push(i);
 }
 
@@ -80,18 +75,19 @@ const setPage = (pageNum) => {
   this.setState({currentPage: pageNum})
 }
 
-  const { users } = this.state;
-  const usersList = users.length ? (
-    currentUsers.map(user => {
+
+  const { accessories } = this.state;
+  const accessoriesList = accessories.length ? (
+    currentAccessories.map(accessory => {
       return (
-        <tbody key={user.id}>
-          <Link to={'/users/' + user.ID}>
+        <tbody key={accessory.id}>
+          <Link to={'/accessories/' + accessory.ID}>
             <tr>
-              <td>{user.ID}</td>
-              <td>{user.name}</td>
-              <td>{user.emailaddress}</td>
-              <td>{user.department}</td>
-              <td>{user.asset}</td>
+              <td>{accessory.ID}</td>
+              <td>{accessory.title}</td>
+              <td>{accessory.serialnumber}</td>
+              <td>KES {accessory.price}</td>
+              <td>{accessory.status}</td>
             </tr>
           </Link> 
         </tbody>
@@ -99,7 +95,7 @@ const setPage = (pageNum) => {
     })
   ) : (
     <div className="center">
-      <p>No Users</p>
+      <p>loading</p>
     </div>
   )
 
@@ -113,17 +109,17 @@ const setPage = (pageNum) => {
      * TODO: work on the popup module display {done}
      */
     <div>
-      <Adduser show={this.state.modal} handleClose={(e) => this.modalClose(e)}/>
+      <Addaccessory show={this.state.modal} handleClose={(e) => this.modalClose(e)}/>
       <div className='users-wrapper'>
         <div className='users-header'>
           <h2 className='users-title'>
-              ALL USERS
+              ALL ACCESSORIES
           </h2>
           <div className='users-buttons'>
             <button className='addusers' onClick={(e) => this.modalOpen(e)}>
               <IoMdAddCircle className='button-icon'/>
               <p className='adduser'>
-                ADD NEW USER
+                ADD NEW ACCESSORY
               </p>
             </button>
             <button className='filterusers'>
@@ -151,13 +147,13 @@ const setPage = (pageNum) => {
               <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Email Address</th>
-                <th>Department</th>
-                <th>Assigned Asset</th>
+                <th>Serial Number</th>
+                <th>Price</th>
+                <th>Status</th>
               </tr>
               </Link>
             </thead>
-              {usersList}
+              {accessoriesList}
           </table>
         </div>
         <div className='pagination'>
@@ -182,7 +178,7 @@ const setPage = (pageNum) => {
 }
 }
   
-export default Users;
+export default Assets;
 
 
 

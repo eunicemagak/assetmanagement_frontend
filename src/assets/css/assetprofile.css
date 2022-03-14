@@ -55,6 +55,10 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    cursor: pointer;
+}
+.edit:hover{
+    opacity: .9;
 }
 .edit-icon{
     font-size: 2rem;
@@ -98,6 +102,12 @@
     font-weight: bold;
     border-radius: 5px;
 }
+.report:hover{
+    background-color: var(--pillblue);
+}
+.clear:hover{
+    background-color: var(--pillred);
+}
 @media only screen and (min-width: 500px){
     .asset-prof-card-buttons{
         flex-direction: row;
@@ -106,30 +116,41 @@
 }
 @media only screen and (min-width: 801px){
     .asset-wrapper{
+        flex-direction: row;
         position: absolute;
-        right: 50px;
-        width: 70%;
-        justify-content: baseline;
+        left: 30vw;
+        gap: 10vw;
+        justify-content: space-between;
+        align-items: flex-start !important;
+        top: 15vh;
     }
     .asset-prof-card-main .complaint,
     #card-item{
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-gap: 10px;
     }
     .asset-prof-card-main .complaint{
         flex-direction: row;
         justify-content: space-between;
     }
-}
-@media only screen and (min-width: 1000px){
-    .asset-wrapper{
-        flex-direction: row;
-        align-items: baseline;
+    .asset-prof-card{
+        padding: 30px;
+    }
+    .asset-prof-card-header{
+        margin-bottom: 50px;
+    }
+    .complain-details{
+        display: flex;
     }
     .back{
         position: absolute;
-        top: 15px;
-        left: -30px;
+        top: -5px;
+        left: -100px;
+    }
+}
+@media only screen and (min-width: 1000px){
+    .asset-wrapper{
+        align-items: baseline;
     }
 }

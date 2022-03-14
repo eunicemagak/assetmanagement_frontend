@@ -3,8 +3,8 @@ import '../assets/css/popup.css';
 import { IoIosCloseCircle } from "react-icons/io";
 import axios from 'axios';
 
-const Addasset = ({handleClose, show}) => {  
-  const url ="https://asset.rnd.emalify.com/api/v1/assets"
+const Addcategory = ({handleClose, show}) => {  
+  const url ="https://asset.rnd.emalify.com/api/v1/accesories"
   const [data, setData] = useState ({
     title: "",
     serialnumber: "",
@@ -23,10 +23,10 @@ const Addasset = ({handleClose, show}) => {
     })
     .then(res => {
       console.log(res.data)
-      window.location.href = "../Assets";
+      window.location.href = "../Accessories";
     })
   }
-    const popup = show ? "popup display-block" : "popup display-none";
+  const popup = show ? "popup display-block" : "popup display-none";
   function handle(e) {
     const newdata ={ ...data }
     newdata[e.target.id] = e.target.value
@@ -49,10 +49,10 @@ const Addasset = ({handleClose, show}) => {
      * TODO: connet to DB to push new user details to DB
      */
     <div>
-      <div className={popup}>
+    <div className={popup}>
       <div className='popup-content'>
         <div className='popupheader'>
-          <h3>ADD NEW ASSET</h3>
+          <h3>ADD NEW ACCESSORY</h3>
           <button className='close'onClick={handleClose}>
             <IoIosCloseCircle size='2rem' color='var(--gray)' className='closebtn'/>
           </button>
@@ -60,16 +60,14 @@ const Addasset = ({handleClose, show}) => {
         <div className='popup-main'>
           <form onSubmit={(e) => submit(e)}>
             <div className='add-img'>
-              <div className='img-head'>
-              <h4>ASSET IMAGE</h4>
+              <h4>ACCESSORY IMAGE</h4>
               {imageUrl && selectedImage && (
                 <img src={imageUrl} alt={selectedImage.name} className='upload-img' />
             )}
-            </div>
               <input type='file' accept="image/png, image/jpeg" required onChange={(e)  => {setSelectedImage(e.target.files[0]);  handle(e);}} id="image" value={data.image} />
             </div>
             <div className='email'>
-              <h4>ASSET NAME</h4>
+              <h4>ACCESSORY NAME</h4>
               <input type='text' required placeholder='asset name' onChange={(e) => handle(e)} id="title" value={data.title}/>
             </div>
             <div className='username'>
@@ -92,7 +90,7 @@ const Addasset = ({handleClose, show}) => {
               <input type='text' required placeholder='give more info' onChange={(e) => handle(e)} id="description" value={data.description}/>
             </div>
             <button className='createuser'>
-              ADD ASSET
+              ADD ACCESSORY
             </button>
           </form>
         </div>
@@ -102,19 +100,4 @@ const Addasset = ({handleClose, show}) => {
   )
 }
 
-export default Addasset
-
-
-// function getDepartment(){
-//       axios.get('/department', {
-//           responseType: 'json'
-//       }).then(response => {
-//           if(response.status === 200){
-//               setDepartment(response.data.data)
-//           } 
-//       })
-//     }
-  
-//     useEffect(() => {
-//       getDepartment();
-//   }, [])
+export default Addcategory
