@@ -4,7 +4,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import axios from 'axios';
 
 const Addasset = ({handleClose, show}) => {  
-  const url ="https://asset.rnd.emalify.com/api/v1/assets"
+const [categories, setCategories] =  useState([]);
   const [data, setData] = useState ({
     title: "",
     serialnumber: "",
@@ -14,7 +14,7 @@ const Addasset = ({handleClose, show}) => {
   })
   function submit(e) {
     e.preventDefault();
-    axios.post(url, {
+    axios.post("/assets", {
       title: data.title,
       serialnumber: data.serialnumber,
       price: data.price,
@@ -26,6 +26,19 @@ const Addasset = ({handleClose, show}) => {
       window.location.href = "../Assets";
     })
   }
+  function getAllCategories(){
+        axios.get('/category', {
+            responseType: 'json'
+        }).then(response => {
+            if(response.status === 200){
+                setCategories(response.data.data)
+            }
+        })
+      }
+    
+      useEffect(() => {
+        getAllCategories();
+    }, [])
     const popup = show ? "popup display-block" : "popup display-none";
   function handle(e) {
     const newdata ={ ...data }
@@ -84,7 +97,12 @@ const Addasset = ({handleClose, show}) => {
               <h4>CATEGORY</h4>
               <select required>
                 <option disabled selected value="">select category</option>
-                <option value="">HP SPECTRE</option>
+                {
+              categories.map((val) => {
+                return(
+                <option onChange={(e) => handle(e)} id="category" value={data.category}>{val.title}</option>
+                                )})
+                              }
               </select>
             </div>
             <div className='accessories'>

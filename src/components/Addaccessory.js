@@ -4,7 +4,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import axios from 'axios';
 
 const Addcategory = ({handleClose, show}) => {  
-  const url ="https://asset.rnd.emalify.com/api/v1/accesories"
+  const [categories, setCategories] =  useState([]);
   const [data, setData] = useState ({
     title: "",
     serialnumber: "",
@@ -14,7 +14,7 @@ const Addcategory = ({handleClose, show}) => {
   })
   function submit(e) {
     e.preventDefault();
-    axios.post(url, {
+    axios.post('/accessories', {
       title: data.title,
       serialnumber: data.serialnumber,
       price: data.price,
@@ -26,6 +26,19 @@ const Addcategory = ({handleClose, show}) => {
       window.location.href = "../Accessories";
     })
   }
+  function getAllCategories(){
+        axios.get('/category', {
+            responseType: 'json'
+        }).then(response => {
+            if(response.status === 200){
+                setCategories(response.data.data)
+            }
+        })
+      }
+    
+      useEffect(() => {
+        getAllCategories();
+    }, [])
   const popup = show ? "popup display-block" : "popup display-none";
   function handle(e) {
     const newdata ={ ...data }
@@ -77,12 +90,16 @@ const Addcategory = ({handleClose, show}) => {
             <div className='password'>
               <h4>PRICE</h4>
               <input type='number' required placeholder='price' onChange={(e) => handle(e)} id="price" value={data.price}/>
-            </div>
-            <div className='assign-assets'>
+            </div><div className='assign-assets'>
               <h4>CATEGORY</h4>
               <select required>
                 <option disabled selected value="">select category</option>
-                <option value="">HP SPECTRE</option>
+                {
+              categories.map((val) => {
+                return(
+                <option onChange={(e) => handle(e)} id="category" value={data.category}>{val.title}</option>
+                                )})
+                              }
               </select>
             </div>
             <div className='accessories'>
