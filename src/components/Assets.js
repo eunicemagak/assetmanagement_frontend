@@ -100,14 +100,7 @@ const setPage = (pageNum) => {
   )
 
   return (
-    /**
-     * *All users pages, listing all current users in the system
-     * *System admin can add new users to the database via the ADD USER button
-     * TODO: implement filter users by department functionality
-     * TODO: connet to DB to get all adta straight from the database
-     * TODO: work on linking each user to their user profile
-     * TODO: work on the popup module display {done}
-     */
+    
     <div>
       <Addasset show={this.state.modal} handleClose={(e) => this.modalClose(e)}/>
       <div className='users-wrapper'>
@@ -173,7 +166,7 @@ const setPage = (pageNum) => {
           }
         </div>
       </div>
-      </div>
+    </div>
   )
 }
 }

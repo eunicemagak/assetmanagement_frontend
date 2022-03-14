@@ -37,6 +37,7 @@
 }
 .adduser{
   margin-left: 1vw;
+  font-weight: bold;
 }
 .filter-wrapper{
   display: flex;
@@ -159,7 +160,7 @@ td{
   background-color: var(--pillblue);
 }
 .button-icon{
-  font-size: 2rem;
+  font-size: 2rem; 
 }
 .options{
   background-color: var(--backgroundgray);
