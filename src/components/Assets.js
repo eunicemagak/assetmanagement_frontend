@@ -56,25 +56,6 @@ class Assets extends Component{
 //       getStatus();
 //   }, [])
 
-<<<<<<< HEAD
-  useEffect(() => {
-    getAllAssets();
-}, [])
-  
-function getStatus(){
-      axios.get('/status', {
-          responseType: 'json'
-      }).then(response => {
-          if(response.status === 200){
-              setStatus(response.data.data)
-          } 
-      })
-    }
-  
-    useEffect(() => {
-      getStatus();
-  }, [])
-=======
 render () {
 
   //Get currentAssets
@@ -118,7 +99,6 @@ const setPage = (pageNum) => {
     </div>
   )
 
->>>>>>> b72456331f5d41b4dfd0554e622af25fdc57fc4a
   return (
     
     <div>
