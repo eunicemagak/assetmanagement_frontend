@@ -58,11 +58,13 @@ h4{
     font-size: calc(1.1rem + .1vw);
 }
 .href{
-    
     font-size: calc(1rem + 1vw);
 }
 p,
 ::placeholder,
 option{
     font-size: calc(.9rem + .2vw);
+}
+a{
+    text-decoration: none;
 }

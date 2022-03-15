@@ -3,8 +3,8 @@ import '../assets/css/popup.css';
 import { IoIosCloseCircle } from "react-icons/io";
 import axios from 'axios';
 
-const Addasset = ({handleClose, show}) => {  
-const [categories, setCategories] =  useState([]);
+const Addcategory = ({handleClose, show}) => {  
+  const [categories, setCategories] =  useState([]);
   const [data, setData] = useState ({
     title: "",
     serialnumber: "",
@@ -14,7 +14,7 @@ const [categories, setCategories] =  useState([]);
   })
   function submit(e) {
     e.preventDefault();
-    axios.post("/assets", {
+    axios.post('/accessories', {
       title: data.title,
       serialnumber: data.serialnumber,
       price: data.price,
@@ -23,7 +23,7 @@ const [categories, setCategories] =  useState([]);
     })
     .then(res => {
       console.log(res.data)
-      window.location.href = "../Assets";
+      window.location.href = "../Accessories";
     })
   }
   function getAllCategories(){
@@ -39,7 +39,7 @@ const [categories, setCategories] =  useState([]);
       useEffect(() => {
         getAllCategories();
     }, [])
-    const popup = show ? "popup display-block" : "popup display-none";
+  const popup = show ? "popup display-block" : "popup display-none";
   function handle(e) {
     const newdata ={ ...data }
     newdata[e.target.id] = e.target.value
@@ -62,10 +62,10 @@ const [categories, setCategories] =  useState([]);
      * TODO: connet to DB to push new user details to DB
      */
     <div>
-      <div className={popup}>
+    <div className={popup}>
       <div className='popup-content'>
         <div className='popupheader'>
-          <h3>ADD NEW ASSET</h3>
+          <h3>ADD NEW ACCESSORY</h3>
           <button className='close'onClick={handleClose}>
             <IoIosCloseCircle size='2rem' color='var(--gray)' className='closebtn'/>
           </button>
@@ -73,16 +73,14 @@ const [categories, setCategories] =  useState([]);
         <div className='popup-main'>
           <form onSubmit={(e) => submit(e)}>
             <div className='add-img'>
-              <div className='img-head'>
-              <h4>ASSET IMAGE</h4>
+              <h4>ACCESSORY IMAGE</h4>
               {imageUrl && selectedImage && (
                 <img src={imageUrl} alt={selectedImage.name} className='upload-img' />
             )}
-            </div>
               <input type='file' accept="image/png, image/jpeg" required onChange={(e)  => {setSelectedImage(e.target.files[0]);  handle(e);}} id="image" value={data.image} />
             </div>
             <div className='email'>
-              <h4>ASSET NAME</h4>
+              <h4>ACCESSORY NAME</h4>
               <input type='text' required placeholder='asset name' onChange={(e) => handle(e)} id="title" value={data.title}/>
             </div>
             <div className='username'>
@@ -92,8 +90,7 @@ const [categories, setCategories] =  useState([]);
             <div className='password'>
               <h4>PRICE</h4>
               <input type='number' required placeholder='price' onChange={(e) => handle(e)} id="price" value={data.price}/>
-            </div>
-            <div className='assign-assets'>
+            </div><div className='assign-assets'>
               <h4>CATEGORY</h4>
               <select required>
                 <option disabled selected value="">select category</option>
@@ -110,7 +107,7 @@ const [categories, setCategories] =  useState([]);
               <input type='text' required placeholder='give more info' onChange={(e) => handle(e)} id="description" value={data.description}/>
             </div>
             <button className='createuser'>
-              ADD ASSET
+              ADD ACCESSORY
             </button>
           </form>
         </div>
@@ -120,19 +117,4 @@ const [categories, setCategories] =  useState([]);
   )
 }
 
-export default Addasset
-
-
-// function getDepartment(){
-//       axios.get('/department', {
-//           responseType: 'json'
-//       }).then(response => {
-//           if(response.status === 200){
-//               setDepartment(response.data.data)
-//           } 
-//       })
-//     }
-  
-//     useEffect(() => {
-//       getDepartment();
-//   }, [])
+export default Addcategory

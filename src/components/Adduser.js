@@ -5,7 +5,7 @@ import '../assets/css/popup.css';
 import { IoIosCloseCircle } from "react-icons/io";
 import axios from 'axios';
 
-const Adduser = ({closeComponent}) => {  
+const Adduser = ({handleClose, show}) => {  
 const [assets, setAssets] =  useState([]);
 const [departments, setDepartments] =  useState([]);
 const [accessories, setAccessories] =  useState([]);
@@ -29,7 +29,7 @@ const [data, setData] = useState ({
     useEffect(() => {
       getAllAssets();
   }, []);
-
+  const popup = show ? "popup display-block" : "popup display-none";
   function getAllDepartments(){
         axios.get('/department', {
             responseType: 'json'
@@ -99,11 +99,11 @@ useEffect(() => {
      * TODO: connet to DB to push new user details to DB
      */
     <div>
-    <div className='popup'>
+    <div className={popup}>
       <div className='popup-content'>
         <div className='popupheader'>
           <h3>ADD NEW USER</h3>
-          <button className='close'onClick={() => closeComponent(false)}>
+          <button className='close'onClick={handleClose}>
             <IoIosCloseCircle size='2rem' color='var(--gray)' className='closebtn'/>
           </button>
         </div>

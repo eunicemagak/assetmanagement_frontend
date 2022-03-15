@@ -8,6 +8,7 @@ import axios from 'axios';
 const Admindash = ({val})   => {
   const [admin, setAdmin] = useState([]);
   const [assets, setAssets] =  useState([]);
+  const length = Object.keys(assets).length;
   function getAllAssetTotal(){
     axios.get('/assets', {
         responseType: 'json'
@@ -51,36 +52,30 @@ const Admindash = ({val})   => {
           )
         })
       }
-      {/* {
-        assets.map((val) => {
-          return( */}
           <div className='widget'>
             <div className='data'>
-              <h1>36</h1>
+              <h1>{length}</h1>
               <p>total assets</p>
             </div>
             <IoIosLaptop  className='widget-img'/>
           </div>
-              {/* )
-              })
-              } */}
           <div className='widget'>
             <div className='data'>
-              <h1>24</h1>
+              <h1>0</h1>
               <p>assigned assets</p>
             </div>
             <BsCheckCircle  className='widget-img'/>
           </div>
           <div className='widget'>
             <div className='data'>
-              <h1>12</h1>
+              <h1>{length}</h1>
               <p>unassigned assets</p>
             </div>
             <ImCross  className='widget-img'/>
           </div>
           <div className='widget'>
             <div className='data'>
-              <h1>4</h1>
+              <h1>0</h1>
               <p>new complaints</p>
             </div>
             <RiMessage2Line  className='widget-img'/>

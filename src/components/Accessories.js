@@ -3,7 +3,7 @@ import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
 import {NavLink } from 'react-router-dom';
 import '../assets/css/users.css';
-import Addasset from './Addassets';
+import Addaccessory from './Addaccessory';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -18,16 +18,16 @@ class Assets extends Component{
       name: "",
       modalInputName: "",
       currentPage: 1,
-      assets: [],
-      assetsPerPage: 12
+      accessories: [],
+      accessoriesPerPage: 12
     };
   }
   
   componentDidMount (){
-    axios.get('/assets')
+    axios.get('/accessories')
       .then(res => {
         this.setState({
-          assets: res.data.data
+          accessories: res.data.data
         })
       })
     }
@@ -56,36 +56,17 @@ class Assets extends Component{
 //       getStatus();
 //   }, [])
 
-<<<<<<< HEAD
-  useEffect(() => {
-    getAllAssets();
-}, [])
-  
-function getStatus(){
-      axios.get('/status', {
-          responseType: 'json'
-      }).then(response => {
-          if(response.status === 200){
-              setStatus(response.data.data)
-          } 
-      })
-    }
-  
-    useEffect(() => {
-      getStatus();
-  }, [])
-=======
 render () {
 
   //Get currentAssets
-  const indexOfLastAsset = this.state.currentPage * this.state.assetsPerPage;
-  const indexOfFirstAssets = indexOfLastAsset - this.state.assetsPerPage;
-  const currentAssets = this.state.assets.slice(indexOfFirstAssets, indexOfLastAsset);
+  const indexOfLastAccessory = this.state.currentPage * this.state.accessoriesPerPage;
+  const indexOfFirstAccessories = indexOfLastAccessory- this.state.accessoriesPerPage;
+  const currentAccessories = this.state.accessories.slice(indexOfFirstAccessories, indexOfLastAccessory);
 
   //Implement page numbers
   const pageNumbers = []
 
-  for (let i = 1; i <= Math.ceil(this.state.assets.length / this.state.assetsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(this.state.accessories.length / this.state.accessoriesPerPage); i++) {
     pageNumbers.push(i);
 }
 
@@ -95,18 +76,18 @@ const setPage = (pageNum) => {
 }
 
 
-  const { assets } = this.state;
-  const assetsList = assets.length ? (
-    currentAssets.map(asset => {
+  const { accessories } = this.state;
+  const accessoriesList = accessories.length ? (
+    currentAccessories.map(accessory => {
       return (
-        <tbody key={asset.id}>
-          <Link to={'/assets/' + asset.ID}>
+        <tbody key={accessory.id}>
+          <Link to={'/accessories/' + accessory.ID}>
             <tr>
-              <td>{asset.ID}</td>
-              <td>{asset.title}</td>
-              <td>{asset.serialnumber}</td>
-              <td>KES {asset.price}</td>
-              <td>{asset.status}</td>
+              <td>{accessory.ID}</td>
+              <td>{accessory.title}</td>
+              <td>{accessory.serialnumber}</td>
+              <td>KES {accessory.price}</td>
+              <td>{accessory.status}</td>
             </tr>
           </Link> 
         </tbody>
@@ -118,21 +99,27 @@ const setPage = (pageNum) => {
     </div>
   )
 
->>>>>>> b72456331f5d41b4dfd0554e622af25fdc57fc4a
   return (
-    
+    /**
+     * *All users pages, listing all current users in the system
+     * *System admin can add new users to the database via the ADD USER button
+     * TODO: implement filter users by department functionality
+     * TODO: connet to DB to get all adta straight from the database
+     * TODO: work on linking each user to their user profile
+     * TODO: work on the popup module display {done}
+     */
     <div>
-      <Addasset show={this.state.modal} handleClose={(e) => this.modalClose(e)}/>
+      <Addaccessory show={this.state.modal} handleClose={(e) => this.modalClose(e)}/>
       <div className='users-wrapper'>
         <div className='users-header'>
           <h2 className='users-title'>
-              ALL ASSETS
+              ALL ACCESSORIES
           </h2>
           <div className='users-buttons'>
             <button className='addusers' onClick={(e) => this.modalOpen(e)}>
               <IoMdAddCircle className='button-icon'/>
               <p className='adduser'>
-                ADD NEW ASSET
+                ADD NEW ACCESSORY
               </p>
             </button>
             <button className='filterusers'>
@@ -166,7 +153,7 @@ const setPage = (pageNum) => {
               </tr>
               </Link>
             </thead>
-              {assetsList}
+              {accessoriesList}
           </table>
         </div>
         <div className='pagination'>
@@ -186,7 +173,7 @@ const setPage = (pageNum) => {
           }
         </div>
       </div>
-    </div>
+      </div>
   )
 }
 }
