@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import React, {useEffect, useState} from 'react'
 import { IoIosLaptop } from 'react-icons/io'
 import { BsCheckCircle} from 'react-icons/bs'
 import { ImCross } from 'react-icons/im'

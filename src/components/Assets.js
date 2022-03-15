@@ -28,19 +28,7 @@ const Assets = ({val}) => {
   useEffect(() => {
     getAllAssets();
 }, [])
-  function getAllAssets(){
-    axios.get('/assets', {
-        responseType: 'json'
-    }).then(response => {
-        if(response.status === 200){
-            setAssets(response.data.data)
-        } 
-    })
-  }
-
-  useEffect(() => {
-    getAllAssets();
-}, [])
+  
 function getStatus(){
       axios.get('/status', {
           responseType: 'json'

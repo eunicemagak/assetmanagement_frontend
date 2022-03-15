@@ -40,8 +40,8 @@ import Adduser from './Assign';
                     GENERATE REPORT
                     </btn>
                     <btn className='btn1-status' onClick={() => setShowComponent(true)}>
-                        < p className='suspend' >
-                            SUSPEND USER</p>
+                    
+                            SUSPEND USER
                     </btn>
                 </div>
             </div>

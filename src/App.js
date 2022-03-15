@@ -24,6 +24,7 @@ import axios from 'axios';
 
 
 const App = () => {
+  
 const token = localStorage.getItem('token');
 axios.defaults.baseURL ='https://asset.rnd.emalify.com/api/v1';
   

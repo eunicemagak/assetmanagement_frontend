@@ -1,8 +1,23 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios';
 import {BiArrowBack, BiEdit} from 'react-icons/bi';
 import '../assets/css/assetprofile.css'
 
   const Assetprofile = () =>{
+    const [profile, setProfile] = useState ([]);
+
+    function getAssetProfile(){
+        axios.get('/assets/1', {
+            responseType: 'json'
+        }).then(response => {
+            if(response.status === 200){
+                setProfile(response.data.data)
+            } 
+        })
+    }
+      useEffect(() => {
+        getAssetProfile();
+    }, [])
       
     return (
         <div className='asset-wrapper'>
@@ -13,13 +28,20 @@ import '../assets/css/assetprofile.css'
                 <div className='profile-main'>
                     <h2 className='asset-prof-title'>ASSET PROFILE</h2>
                     <img src={require("../assets/images/spectre.jpeg")} className="asset-profile-img"/>
-                    <div className='profile-info'>
-                        <h3>HP SPECTRE</h3>
-                        <p>Hp746ju98</p>
-                        <p>120,000</p>
-                    </div>
+                     {
+                        profile.map(val => (
+                            
+                        <div key={val} className='profile-info'>
+                            <h3>{val.title}</h3>
+                            <p>{val.serialnumber}</p>
+                            <p>{val.price}</p>
+                        </div>
+                        ))
+                     }
+                     
+
                     <div className='profile-status'>
-                        ASSIGNED
+                    ASSIGNED
                     </div>
                 </div>
             </div>
@@ -34,15 +56,15 @@ import '../assets/css/assetprofile.css'
                 <div className='asset-prof-card-main'>
                     <div id='card-item'>
                         <h3>NAME</h3>
-                        <p>HP SPECTRE</p>
+                        <p>val.title</p>
                     </div>
                     <div id='card-item'>
                         <h3>SERIAL NUMBER</h3>
-                        <p>Hp567bji768</p>
+                        <p>val.serialnumber</p>
                     </div>
                     <div id='card-item'>
                         <h3>VALUE</h3>
-                        <p>120,000</p>
+                        <p>val.price</p>
                     </div>
                     <div id='card-item'>
                         <h3>DATE PURCHASED</h3>
@@ -50,7 +72,7 @@ import '../assets/css/assetprofile.css'
                     </div>
                     <div id='card-item'>
                         <h3>CURRENT STATUS</h3>
-                        <p>ASSIGNED</p>
+                        <p> val.status</p>
                     </div>
                     <div id='card-item'>
                         <h3>JOURNEY</h3>
@@ -61,7 +83,7 @@ import '../assets/css/assetprofile.css'
                             <p>Susan Suzie</p>
                         </div>
                     </div>
-                    <div id='card-item' className='complaint'>
+                    <div id='card-item'>
                         <h3>COMPLAINTS</h3>
                         <div id='list'>
                             <div className='complain-details'>

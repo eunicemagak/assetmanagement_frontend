@@ -1,15 +1,22 @@
 import { FaBell, FaUser, FaSearch } from "react-icons/fa";
-import React from 'react'
+import React,{useState, useEffect} from 'react';
+import axios from 'axios';
 
 const Nav = () => {
+  const [items, setItems] = useState([]);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    axios.get("https://asset.rnd.emalify.com/api/v1")
+    .then(response =>{
+      if(response.status === 200){
+         setItems(response.data.data)
+            }
+  }) 
+    }, [])
+
   return (
-    /** 
-     * * page top navigation bar
-     * *fixed position
-     * ! Nav icons have no links or functionality
-     * TODO: give funtionality to each nav icon
-     * TODO: implement counter for notifications, search database and edit user profile
-    */
+    
     <div className='nav-wrapper'>
     <div className='nav-wrapper' id='fixed'>
       <img className='nav-logo' 
@@ -18,7 +25,24 @@ const Nav = () => {
       <ul className='nav'>
         <li>
           <FaSearch  className='nav-icon' />
+         
         </li>
+        <input value={search} onChange={(event) => setSearch(event.target.value)} />
+        { items.filter(item=>{
+          if (items==="") {
+            return item;
+          }else if(item.title.toLowerCase().includes(items.toLowerCase())){
+            return item;
+          }
+        }).map((item, ID)=>(
+          <div key={ID}>
+            {item.title}
+            {item.department}
+          </div>
+        )
+        )}
+        
+        
         <li>
           <FaBell  className='nav-icon'/>
         </li>

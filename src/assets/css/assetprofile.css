@@ -136,6 +136,10 @@
     font-size: 1.5rem;
     color: var(--white);
 }
+.complain-details{
+    display: flex;
+    justify-content: space-between;
+}
 @media only screen and (min-width: 500px){
     .asset-prof-card-buttons{
         flex-direction: row;

@@ -109,12 +109,20 @@ select{
     background-color: var(--white);
     border: 1px solid var(--offwhite);
 }
-.createuser{
+.createuser, .assignasset{
     background-color: var(--green);
     color: var(--white);
     font-weight: bold;
     padding: 1vw .5vw;
     width: 98%;
+    margin-top: 2vw;
+}
+.suspenduser{
+    background-color: var(--pinkish);
+    font-weight: bold;
+    padding: 1vw .5vw;
+    width: 50%;
+    border-radius: 5px;
     margin-top: 2vw;
 }
 .logout{
