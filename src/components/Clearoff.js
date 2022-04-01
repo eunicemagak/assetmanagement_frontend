@@ -3,6 +3,7 @@ import '../assets/css/popup.css';
 import { IoIosCloseCircle } from "react-icons/io";
 
 const Clearoff = ({closeClear}) => {
+  
   return (
     /**
      * *Add new user interface with a form to capture user details

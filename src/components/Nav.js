@@ -1,20 +1,10 @@
 import { FaBell, FaUser, FaSearch } from "react-icons/fa";
-import React,{useState, useEffect} from 'react';
-import axios from 'axios';
+import React from 'react';
+import Assets from "./Assets";
 
-const Nav = () => {
-  const [items, setItems] = useState([]);
-  const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    axios.get("https://asset.rnd.emalify.com/api/v1")
-    .then(response =>{
-      if(response.status === 200){
-         setItems(response.data.data)
-            }
-  }) 
-    }, [])
-
+const Nav = ({input, setInput}) => {
+  
   return (
     
     <div className='nav-wrapper'>
@@ -24,25 +14,13 @@ const Nav = () => {
       </img>
       <ul className='nav'>
         <li>
-          <FaSearch  className='nav-icon' />
-         
+          <form>
+          
+            <input key={Assets} placeholder={"Search"} value={input} onChange={(e) => setInput(e.target.value)}/>
+            <FaSearch  className='nav-icon' />
+            </form>
         </li>
-        <input value={search} onChange={(event) => setSearch(event.target.value)} />
-        { items.filter(item=>{
-          if (items==="") {
-            return item;
-          }else if(item.title.toLowerCase().includes(items.toLowerCase())){
-            return item;
-          }
-        }).map((item, ID)=>(
-          <div key={ID}>
-            {item.title}
-            {item.department}
-          </div>
-        )
-        )}
-        
-        
+    
         <li>
           <FaBell  className='nav-icon'/>
         </li>

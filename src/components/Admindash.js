@@ -5,7 +5,7 @@ import { ImCross } from 'react-icons/im'
 import { RiMessage2Line } from 'react-icons/ri'
 import axios from 'axios';
 
-const Admindash = ({val})   => {
+const Admindash = ()   => {
   const [admin, setAdmin] = useState([]);
   const [assets, setAssets] =  useState([]);
   const length = Object.keys(assets).length;
@@ -14,7 +14,7 @@ const Admindash = ({val})   => {
         responseType: 'json'
     }).then(response => {
         if(response.status === 200){
-            setAssets(response.data.data)
+            setAssets(response.data)
         } 
     })
   }
@@ -28,6 +28,7 @@ const Admindash = ({val})   => {
       responseType: 'json'
     }).then(response => {
       if(response.status === 200){
+        console.log(response)
         setAdmin(response.data.data)
       }
     })

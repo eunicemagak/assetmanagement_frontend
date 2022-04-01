@@ -27,7 +27,7 @@ class Assets extends Component{
     axios.get('/assets')
       .then(res => {
         this.setState({
-          assets: res.data.data
+          assets: res.data
         })
       })
     }
@@ -87,7 +87,7 @@ const setPage = (pageNum) => {
               <td>{asset.title}</td>
               <td>{asset.serialnumber}</td>
               <td>KES {asset.price}</td>
-              <td>{asset.status}</td>
+              <td>{asset.is_assigned}</td>
             </tr>
           </Link> 
         </tbody>

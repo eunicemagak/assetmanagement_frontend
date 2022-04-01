@@ -6,6 +6,7 @@ import '../assets/css/users.css';
 import Adduser from './Adduser';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { type } from '@testing-library/user-event/dist/type';
 
 
 class Users extends Component{
@@ -25,7 +26,9 @@ class Users extends Component{
   
   componentDidMount (){
     axios.get('/users')
+  
       .then(res => {
+        console.log(res.data.data)
         this.setState({
           users: res.data.data
         })
@@ -89,7 +92,7 @@ const setPage = (pageNum) => {
             <tr>
               <td>{user.ID}</td>
               <td>{user.name}</td>
-              <td>{user.emailaddress}</td>
+              <td>{user.email}</td>
               <td>{user.department}</td>
               <td>{user.asset}</td>
             </tr>
