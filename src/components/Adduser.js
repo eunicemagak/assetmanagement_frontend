@@ -110,13 +110,6 @@ useEffect(() => {
         <div className='popup-main'>
           <form onSubmit={(e) => submit(e)}>
             <div className='email'>
-              <h4>PROFILE IMAGE</h4>
-              {imageUrl && selectedImage && (
-                <img src={imageUrl} alt={selectedImage.name} className='upload-img' />
-            )}
-              <input type='file' accept="image/png, image/jpeg" required onChange={(e)  => {setSelectedImage(e.target.files[0]);  handle(e);}} id="image" value={data.image} />
-            </div>
-            <div className='email'>
               <h4>EMAIL ADDRESS</h4>
               <input type='email' required placeholder='email address' onChange={(e) => handle(e)} id="email" value={data.email}/>
             </div>

@@ -72,13 +72,6 @@ const Addcategory = ({handleClose, show}) => {
         </div>
         <div className='popup-main'>
           <form onSubmit={(e) => submit(e)}>
-            <div className='add-img'>
-              <h4>ACCESSORY IMAGE</h4>
-              {imageUrl && selectedImage && (
-                <img src={imageUrl} alt={selectedImage.name} className='upload-img' />
-            )}
-              <input type='file' accept="image/png, image/jpeg" required onChange={(e)  => {setSelectedImage(e.target.files[0]);  handle(e);}} id="image" value={data.image} />
-            </div>
             <div className='email'>
               <h4>ACCESSORY NAME</h4>
               <input type='text' required placeholder='asset name' onChange={(e) => handle(e)} id="title" value={data.title}/>

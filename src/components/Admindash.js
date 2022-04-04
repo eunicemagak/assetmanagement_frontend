@@ -14,7 +14,7 @@ const Admindash = ()   => {
         responseType: 'json'
     }).then(response => {
         if(response.status === 200){
-            setAssets(response.data)
+            setAssets(response.data.data)
         } 
     })
   }

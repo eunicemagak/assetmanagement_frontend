@@ -6,7 +6,7 @@ import {useParams } from 'react-router-dom';
 
 
 const Assetprofile = () => {
-    const [profile, setProfile] = useState(null);
+    const [profile, setProfile] = useState([]);
     const {assetId } = useParams();
     const url=`/assets/${assetId}`
 
