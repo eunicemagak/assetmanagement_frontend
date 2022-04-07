@@ -83,7 +83,8 @@ const Addcategory = ({handleClose, show}) => {
             <div className='password'>
               <h4>PRICE</h4>
               <input type='number' required placeholder='price' onChange={(e) => handle(e)} id="price" value={data.price}/>
-            </div><div className='assign-assets'>
+            </div>
+            {/* <div className='assign-assets'>
               <h4>CATEGORY</h4>
               <select required>
                 <option disabled selected value="">select category</option>
@@ -94,7 +95,7 @@ const Addcategory = ({handleClose, show}) => {
                                 )})
                               }
               </select>
-            </div>
+            </div> */}
             <div className='accessories'>
               <h4>DESCRIPTION</h4>
               <input type='text' required placeholder='give more info' onChange={(e) => handle(e)} id="description" value={data.description}/>

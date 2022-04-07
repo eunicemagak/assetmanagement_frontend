@@ -14,11 +14,7 @@ const Nav = ({input, setInput}) => {
       </img>
       <ul className='nav'>
         <li>
-          <form>
-          
-            <input key={Assets} placeholder={"Search"} value={input} onChange={(e) => setInput(e.target.value)}/>
             <FaSearch  className='nav-icon' />
-            </form>
         </li>
     
         <li>

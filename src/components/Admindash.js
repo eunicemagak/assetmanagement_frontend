@@ -9,11 +9,14 @@ const Admindash = ()   => {
   const [admin, setAdmin] = useState([]);
   const [assets, setAssets] =  useState([]);
   const length = Object.keys(assets).length;
+  const unassigned = Object.keys(assets.is_assigned='false').length;
+  const assigned = Object.keys(assets.is_assigned='true').length;
   function getAllAssetTotal(){
     axios.get('/assets', {
         responseType: 'json'
     }).then(response => {
         if(response.status === 200){
+              console.log(response.data.data.length)
             setAssets(response.data.data)
         } 
     })
@@ -28,7 +31,6 @@ const Admindash = ()   => {
       responseType: 'json'
     }).then(response => {
       if(response.status === 200){
-        console.log(response)
         setAdmin(response.data.data)
       }
     })
@@ -62,14 +64,14 @@ const Admindash = ()   => {
           </div>
           <div className='widget'>
             <div className='data'>
-              <h1>0</h1>
+              <h1>{assigned}</h1>
               <p>assigned assets</p>
             </div>
             <BsCheckCircle  className='widget-img'/>
           </div>
           <div className='widget'>
             <div className='data'>
-              <h1>{length}</h1>
+              <h1>{unassigned}</h1>
               <p>unassigned assets</p>
             </div>
             <ImCross  className='widget-img'/>

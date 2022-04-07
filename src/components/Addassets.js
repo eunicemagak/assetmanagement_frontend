@@ -46,14 +46,7 @@ const [categories, setCategories] =  useState([]);
     setData(newdata)
     console.log(newdata)
   }
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [imageUrl, setImageUrl] = useState(null);
   
-    useEffect(() => {
-      if (selectedImage) {
-        setImageUrl(URL.createObjectURL(selectedImage));
-      }
-    }, [selectedImage]);
   return (
     /**
      * *Add new user interface with a form to capture user details

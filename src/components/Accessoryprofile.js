@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { BiArrowBack, BiEdit } from 'react-icons/bi';
 import {NavLink} from 'react-router-dom'
+import { BiArrowBack, BiEdit } from 'react-icons/bi';
 import '../assets/css/assetprofile.css'
 import axios from 'axios';
 import {useParams } from 'react-router-dom';
 
 
-const Assetprofile = () => {
+const Accessoryprofile = () => {
     const [profile, setProfile] = useState([]);
-    const {assetId } = useParams();
+    const {accessoryId } = useParams();
 
-    const getAssetProfile = (assetId) => {
-        axios.get(`/assets/${assetId}`, {
+    const getAccessoryProfile = (accessoryId) => {
+        axios.get(`/accessories/${accessoryId}`, {
             responseType: 'json'
         }).then(response => {
             if (response.status === 200) {
@@ -21,20 +21,20 @@ const Assetprofile = () => {
         })
     }
     useEffect(() => {
-        if (assetId) {
-            getAssetProfile(assetId);
+        if (accessoryId) {
+            getAccessoryProfile(accessoryId);
 
         }
-    }, [assetId])
+    }, [accessoryId])
 
     return (
         <div className='asset-wrapper'>
             <div className='asset-prof-main'>
-                <NavLink to='/assets' className='back'>
+                <NavLink to='/accessories' className='back'>
                     <BiArrowBack />
                 </NavLink>
                 <div className='profile-main'>
-                    <h2 className='asset-prof-title'>ASSET PROFILE</h2>
+                    <h2 className='asset-prof-title'>ACCESSORY PROFILE</h2>
                     <img src="{profile.image}" className="asset-profile-img" />
                     {
                      profile &&
@@ -52,7 +52,7 @@ const Assetprofile = () => {
             </div>
             <div className='asset-prof-card'>
                 <div className='asset-prof-card-header'>
-                    <h2>ASSET RECORD</h2>
+                    <h2>ACCESSORY RECORD</h2>
                     <div className='edit'>
                         <BiEdit className='edit-icon' />
                         <p>edit</p>
@@ -88,10 +88,22 @@ const Assetprofile = () => {
                     <div id='card-item'>
                         <h3>COMPLAINTS</h3>
                         <div id='list'>
-                            {/* <div className='complain-details'>
+                            <div className='complain-details'>
                                 <p></p>
                                 <p></p>
-                            </div> */}
+                            </div>
+                            <div className='complain-details'>
+                                <p></p>
+                                <p> </p>
+                            </div>
+                            <div className='complain-details'>
+                                <p>Faulty Charger</p>
+                                <p>Suasn </p>
+                            </div>
+                            <div className='complain-details'>
+                                <p>Faulty Charger</p>
+                                <p>Suasn </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,5 +120,5 @@ const Assetprofile = () => {
     )
 
 }
-export default Assetprofile;
+export default Accessoryprofile;
 

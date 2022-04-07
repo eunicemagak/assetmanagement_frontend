@@ -61,7 +61,7 @@ const [data, setData] = useState ({
 function submit(e) {
   e.preventDefault();
   axios.post('/users', {
-    username: data.username,
+    name: data.name,
     email: data.email,
     department: data.department,
     asset: data.asset,
@@ -83,14 +83,7 @@ function handle(e) {
   setData(newdata)
   console.log(newdata)
 }
-const [selectedImage, setSelectedImage] = useState(null);
-const [imageUrl, setImageUrl] = useState(null);
 
-useEffect(() => {
-  if (selectedImage) {
-    setImageUrl(URL.createObjectURL(selectedImage));
-  }
-}, [selectedImage]);
   return (
     /**
      * *Add new user interface with a form to capture user details
@@ -115,7 +108,7 @@ useEffect(() => {
             </div>
             <div className='username'>
               <h4>USERNAME</h4>
-              <input type='text' required placeholder='username' onChange={(e) => handle(e)} id="username" value={data.username}/>
+              <input type='text' required placeholder='username' onChange={(e) => handle(e)} id="name" value={data.name}/>
             </div>
             <div className='password'>
               <h4>DEPARTMENT</h4>
