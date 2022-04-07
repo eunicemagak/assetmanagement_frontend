@@ -1,5 +1,6 @@
 
 import React, {Profiler, useEffect,useState} from 'react'
+import {NavLink} from 'react-router-dom'
 import {BiArrowBack,BiEdit} from 'react-icons/bi';
 import {RiDeleteBin5Line} from 'react-icons/ri';
 import { IoMdAddCircle } from "react-icons/io";
@@ -15,9 +16,8 @@ import {useParams } from 'react-router-dom';
     const[showComponent, setShowComponent] = useState(false);
     const[assignComponent, setAssignComponent]=useState(false);
     const[generateComponent, setGenerateComponent]=useState(false);
-        const [profile, setProfile] = useState(null);
+        const [profile, setProfile] = useState([]);
         const {userId } = useParams();
-        const url=`/users/${userId}`
     
     
         const getUserProfile = (userId) => {
@@ -25,8 +25,8 @@ import {useParams } from 'react-router-dom';
                 responseType: 'json'
             }).then(response => {
                 if (response.status === 200) {
-                    console.log(response.data.data)
-                    setProfile(response.data.data)
+                    console.log(response.data)
+                    setProfile(response.data)
                 }
             })
         }
@@ -45,9 +45,9 @@ import {useParams } from 'react-router-dom';
              {showComponent && <Suspenduser closeSuspenduser={setShowComponent}/>}
         <div className='asset-wrapper'>
             <div className='asset-prof-main'>
-                <div className='back'>
+                <NavLink to='/users' className='back'>
                     <BiArrowBack/>
-                </div>
+                </NavLink>
                 <div className='profile-main'>
                     <h2 className='asset-prof-title'>USER PROFILE</h2>
                     <img src={require("../assets/images/suzie.jpeg")} alt="Asset"  width="150" className="asset-profile-img"/>
@@ -55,7 +55,7 @@ import {useParams } from 'react-router-dom';
                     <div className='profile-info'>
                         <h3>{profile.name}</h3>
                         <p>{profile.email}</p>
-                        <p>{profile.department}</p>
+                        <p>{profile.departments[0].title}</p>
                     </div>
   }
                     <button className='assign-btn' onClick={() => setAssignComponent(true)}> 
@@ -69,7 +69,8 @@ import {useParams } from 'react-router-dom';
                     </btn>
                     <btn className='btn1-status' onClick={() => setShowComponent(true)}>
                     
-                            SUSPEND USER
+              SUSPEND USER
+                            
                     </btn>
                 </div>
             </div>
@@ -81,51 +82,11 @@ import {useParams } from 'react-router-dom';
                     </div>
                     <div className='asset-prof-card-main'>
                         <div class='card-item'>
-                            <p>{profile.title}</p>
-                            <p>{profile.serialnumber}</p>
-                            <p>200000</p>
+                            <p>{profile.assets[0].title}</p>
+                            <p>{profile.assets[0].serialnumber}</p>
+                            <p>{profile.assets[0].price}</p>
                             <a href=''><RiDeleteBin5Line className='user-img'/></a>
                             <a href=""><BiEdit className='user-img'/></a>
-                        </div>
-                        <div className='card-item'>
-                        <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>200000</p>
-                            <a href=''><RiDeleteBin5Line className='user-img'/></a>
-                            <a href=""><BiEdit className='user-img'/></a>
-                                        
-                        </div>
-                        <div className='card-item'>
-                        <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>200000</p>
-                            <a href=''><RiDeleteBin5Line className='user-img'/></a>
-                            <a href=""><BiEdit className='user-img'/></a>
-                                        
-                        </div>
-                        <div className='card-item'>
-                        <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>200000</p>
-                            <a href=''><RiDeleteBin5Line className='user-img'/></a>
-                            <a href=""><BiEdit className='user-img'/></a>
-                                        
-                        </div>
-                        <div className='card-item'>
-                        <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>200000</p>
-                            <a href=''><RiDeleteBin5Line className='user-img'/></a>
-                            <a href=""><BiEdit className='user-img'/></a>
-                                        
-                        </div>
-                        <div className='card-item'>
-                        <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>200000</p>
-                            <a href=''><RiDeleteBin5Line className='user-img'/></a>
-                            <a href=""><BiEdit className='user-img'/></a>
-                                        
                         </div>
                     
                     </div>
@@ -134,45 +95,14 @@ import {useParams } from 'react-router-dom';
                     <div className='asset-prof-card-header'>
                         <h2>USER COMPLAINTS</h2>       
                     </div>
-                    <div className='asset-prof-card-main'>
+                    {/* <div className='asset-prof-card-main'>
                         <div className='card-item'>
                             <p>HP SPECTRE</p>
                             <p>hp2345ygu6k</p>
                             <p>Faulty Charger</p>
                             
                         </div>
-                        <div className='card-item'>
-                        <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>heating up</p>
-                                    
-                        </div>
-                        <div className='card-item'>
-                        <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>fan not working</p>
-                                    
-                        </div>
-                        <div className='card-item'>
-                        <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>low ram</p>
-                                    
-                        </div>
-                        <div className='card-item'>
-                        <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>broken screen</p>
-                                    
-                        </div>
-                        <div className='card-item'>
-                        <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>frozen touchpad</p>
-                                    
-                        </div>
-                    
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

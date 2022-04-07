@@ -1,12 +1,10 @@
 import React, { Component} from 'react'
 import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
-import {NavLink } from 'react-router-dom';
 import '../assets/css/users.css';
 import Adduser from './Adduser';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { type } from '@testing-library/user-event/dist/type';
 
 
 class Users extends Component{
@@ -18,17 +16,16 @@ class Users extends Component{
       modal: false,
       name: "",
       modalInputName: "",
-      users: [],
       currentPage: 1,
-      assetsPerPage: 12
+      users: [],
+      usersPerPage: 10
     };
   }
   
   componentDidMount (){
     axios.get('/users')
-  
       .then(res => {
-        console.log(res.data.data)
+        console.log(res.data.data.data)
         this.setState({
           users: res.data.data
         })
@@ -45,28 +42,10 @@ class Users extends Component{
         modal: false
       });
     }
-// function getStatus(){
-//       axios.get('/status', {
-//           responseType: 'json'
-//       }).then(response => {
-//           if(response.status === 200){
-//               setStatus(response.data.data)
-//               console.log((response.data).length)
-//           } 
-//       })
-//     }
-  
-//     useEffect(() => {
-//       getStatus();
-//   }, [])
+
 
 render () {
-  // const[showComponent, setShowComponent] = useState(false);
-  // const [status, setStatus] =  useState([]);
-  // const [toggleFilter, setToggleFilter] = useState(false);
-  // const toggleOptions = () => {
-  //   setToggleFilter(!toggleFilter)
-  // }
+
   const indexOfLastUser = this.state.currentPage * this.state.usersPerPage;
   const indexOfFirstUsers = indexOfLastUser - this.state.usersPerPage;
   const currentUsers = this.state.users.slice(indexOfFirstUsers, indexOfLastUser);
@@ -93,8 +72,8 @@ const setPage = (pageNum) => {
               <td>{user.ID}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
-              <td>{user.department}</td>
-              <td>{user.asset}</td>
+              <td>{user.departments[0].title}</td>
+              <td>{user.assets[0].title}</td>
             </tr>
           </Link> 
         </tbody>
@@ -137,16 +116,6 @@ const setPage = (pageNum) => {
             </button>
           </div>
         </div>
-        {/* {(toggleFilter) && 
-            <div className='options'>
-                {
-                    status.map((val) => {
-                      return(
-              <option className='filter-options' onClick={toggleOptions}>{val.status}</option>
-                  )})
-                }
-            </div>
-        } */}
         <div className='table'>
           <table>
             <thead>

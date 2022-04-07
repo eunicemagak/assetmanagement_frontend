@@ -1,7 +1,6 @@
-import React, {useState, useEffect, Component} from 'react'
+import React, {Component} from 'react'
 import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
-import {NavLink } from 'react-router-dom';
 import '../assets/css/users.css';
 import Addaccessory from './Addaccessory';
 import axios from 'axios';
@@ -27,7 +26,7 @@ class Assets extends Component{
     axios.get('/accessories')
       .then(res => {
         this.setState({
-          accessories: res.data
+          accessories: res.data.data
         })
       })
     }
@@ -41,20 +40,7 @@ class Assets extends Component{
         modal: false
       });
     }
-// function getStatus(){
-//       axios.get('/status', {
-//           responseType: 'json'
-//       }).then(response => {
-//           if(response.status === 200){
-//               setStatus(response.data.data)
-//               console.log((response.data).length)
-//           } 
-//       })
-//     }
-  
-//     useEffect(() => {
-//       getStatus();
-//   }, [])
+
 
 render () {
 
@@ -87,7 +73,7 @@ const setPage = (pageNum) => {
               <td>{accessory.title}</td>
               <td>{accessory.serialnumber}</td>
               <td>KES {accessory.price}</td>
-              <td>{accessory.status}</td>
+              <td>{accessory.is_assigned ? <span className='pill blue'>ASSIGNED</span> : <span className='pill purple'>UNASSIGNED</span>}</td>
             </tr>
           </Link> 
         </tbody>

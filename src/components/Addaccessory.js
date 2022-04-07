@@ -72,13 +72,6 @@ const Addcategory = ({handleClose, show}) => {
         </div>
         <div className='popup-main'>
           <form onSubmit={(e) => submit(e)}>
-            <div className='add-img'>
-              <h4>ACCESSORY IMAGE</h4>
-              {imageUrl && selectedImage && (
-                <img src={imageUrl} alt={selectedImage.name} className='upload-img' />
-            )}
-              <input type='file' accept="image/png, image/jpeg" required onChange={(e)  => {setSelectedImage(e.target.files[0]);  handle(e);}} id="image" value={data.image} />
-            </div>
             <div className='email'>
               <h4>ACCESSORY NAME</h4>
               <input type='text' required placeholder='asset name' onChange={(e) => handle(e)} id="title" value={data.title}/>
@@ -90,7 +83,8 @@ const Addcategory = ({handleClose, show}) => {
             <div className='password'>
               <h4>PRICE</h4>
               <input type='number' required placeholder='price' onChange={(e) => handle(e)} id="price" value={data.price}/>
-            </div><div className='assign-assets'>
+            </div>
+            {/* <div className='assign-assets'>
               <h4>CATEGORY</h4>
               <select required>
                 <option disabled selected value="">select category</option>
@@ -101,7 +95,7 @@ const Addcategory = ({handleClose, show}) => {
                                 )})
                               }
               </select>
-            </div>
+            </div> */}
             <div className='accessories'>
               <h4>DESCRIPTION</h4>
               <input type='text' required placeholder='give more info' onChange={(e) => handle(e)} id="description" value={data.description}/>

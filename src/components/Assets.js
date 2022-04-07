@@ -18,7 +18,7 @@ class Assets extends Component{
       modalInputName: "",
       currentPage: 1,
       assets: [],
-      assetsPerPage: 12
+      assetsPerPage: 10
     };
   }
   
@@ -40,23 +40,8 @@ class Assets extends Component{
         modal: false
       });
     }
-// function getStatus(){
-//       axios.get('/status', {
-//           responseType: 'json'
-//       }).then(response => {
-//           if(response.status === 200){
-//               setStatus(response.data.data)
-//               console.log((response.data).length)
-//           } 
-//       })
-//     }
-  
-//     useEffect(() => {
-//       getStatus();
-//   }, [])
 
 render () {
-
   //Get currentAssets
   const indexOfLastAsset = this.state.currentPage * this.state.assetsPerPage;
   const indexOfFirstAssets = indexOfLastAsset - this.state.assetsPerPage;
@@ -75,6 +60,7 @@ const setPage = (pageNum) => {
 }
 
 
+
   const { assets } = this.state;
   const assetsList = assets.length ? (
     currentAssets.map(asset => {
@@ -86,7 +72,7 @@ const setPage = (pageNum) => {
               <td>{asset.title}</td>
               <td>{asset.serialnumber}</td>
               <td>KES {asset.price}</td>
-              <td>{asset.is_assigned}</td>
+              <td>{asset.is_assigned ? <span className='pill blue'>ASSIGNED</span> : <span className='pill purple'>UNASSIGNED</span>}</td>
             </tr>
           </Link> 
         </tbody>
@@ -114,24 +100,18 @@ const setPage = (pageNum) => {
                 ADD NEW ASSET
               </p>
             </button>
-            <button className='filterusers'>
+            <div className='filter'>
+            <button className='filterusers' >
               <p className='filterby'>
                 FILTER BY
               </p>
               <FaFilter className='button-icon'/>
             </button>
+    
+            </div>
+            
           </div>
         </div>
-        {/* {(toggleFilter) && 
-            <div className='options'>
-                {
-                    status.map((val) => {
-                      return(
-              <option className='filter-options' onClick={toggleOptions}>{val.status}</option>
-                  )})
-                }
-            </div>
-        } */}
         <div className='table'>
           <table>
             <thead>

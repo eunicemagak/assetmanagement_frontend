@@ -12,6 +12,7 @@ import Admindash from './components/Admindash';
 import Users from './components/Users';
 import Assets from './components/Assets';
 import Accessories from './components/Accessories';
+import Accessoryprofile from './components/Accessoryprofile';
 import Assetprofile from './components/Assetprofile';
 import Userprofile from './components/Userprofile';
 import Landing from './components/Landing';
@@ -52,6 +53,7 @@ axios.defaults.baseURL ='https://asset.rnd.emalify.com/api/v1';
           <Route path='/userprofile' element={<Userprofile/>} />
           <Route path='/users/:userId' element={<Userprofile/>} />
           <Route path='/assets/:assetId' element={<Assetprofile/>} />
+          <Route path='/accessories/:accessoryId' element={<Accessoryprofile/>} />
           <Route path='/logout' element={<Logout/>} />
         </Routes>
       </div>

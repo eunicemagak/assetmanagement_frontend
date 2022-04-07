@@ -46,14 +46,7 @@ const [categories, setCategories] =  useState([]);
     setData(newdata)
     console.log(newdata)
   }
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [imageUrl, setImageUrl] = useState(null);
   
-    useEffect(() => {
-      if (selectedImage) {
-        setImageUrl(URL.createObjectURL(selectedImage));
-      }
-    }, [selectedImage]);
   return (
     /**
      * *Add new user interface with a form to capture user details
@@ -72,15 +65,6 @@ const [categories, setCategories] =  useState([]);
         </div>
         <div className='popup-main'>
           <form onSubmit={(e) => submit(e)}>
-            <div className='add-img'>
-              <div className='img-head'>
-              <h4>ASSET IMAGE</h4>
-              {imageUrl && selectedImage && (
-                <img src={imageUrl} alt={selectedImage.name} className='upload-img' />
-            )}
-            </div>
-              <input type='file' accept="image/png, image/jpeg" required onChange={(e)  => {setSelectedImage(e.target.files[0]);  handle(e);}} id="image" value={data.image} />
-            </div>
             <div className='email'>
               <h4>ASSET NAME</h4>
               <input type='text' required placeholder='asset name' onChange={(e) => handle(e)} id="title" value={data.title}/>

@@ -1,40 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import Nav from './components/Nav';
-import Assets from './components/Assets';
+import React, { useState } from 'react';
+import Scroll from './Scroll';
+import SearchList from './SearchList';
 
-const SearchPage = () => {
-  const [input, setInput] = useState('');
-  const [assetsListDefault, setAssetsListDefault] = useState();
-  const [assetsList, setAssetsList] = useState();
+function Search({ details }) {
 
-  const fetchData = async () => {
-    return await fetch('https://asset.rnd.emalify.com/api/v1')
-      .then(response => response.json())
-      .then(data => {
-         setAssetsList(data) 
-         setAssetsListDefault(data)
-       });}
+  const [searchField, setSearchField] = useState("");
 
-  const updateInput = async (input) => {
-     const filtered = assetsListDefault.filter(asset => {
-      return asset.title.toLowerCase().includes(input.toLowerCase())
-     })
-     setInput(input);
-     setAssetsList(filtered);
+  const filteredPersons = details.filter(
+    person => {
+      return (
+        person
+        .name
+        .toLowerCase()
+        .includes(searchField.toLowerCase()) ||
+        person
+        .email
+        .toLowerCase()
+        .includes(searchField.toLowerCase())
+      );
+    }
+  );
+
+  const handleChange = e => {
+    setSearchField(e.target.value);
+  };
+
+  function searchList() {
+    return (
+      <Scroll>
+        <SearchList filteredPersons={filteredPersons} />
+      </Scroll>
+    );
   }
 
-  useEffect( () => {fetchData()},[]);
-	
   return (
-    <>
-      
-      <Nav 
-       input={input} 
-       onChange={updateInput}
-      />
-      <Assets assetsList={assetsList}/>
-    </>
-   );
+    <section className="garamond">
+      <div className="navy georgia ma0 grow">
+        <h2 className="f2">Search your course</h2>
+      </div>
+      <div className="pa2">
+        <input 
+          className="pa3 bb br3 grow b--none bg-lightest-blue ma3"
+          type = "search" 
+          placeholder = "Search People" 
+          onChange = {handleChange}
+        />
+      </div>
+      {searchList()}
+    </section>
+  );
 }
 
-export default SearchPage
+export default Search;
