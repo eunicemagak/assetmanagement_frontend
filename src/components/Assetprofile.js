@@ -6,9 +6,9 @@ import {useParams } from 'react-router-dom';
 
 
 const Assetprofile = () => {
-    const [profile, setProfile] = useState(null);
+    const [profile, setProfile] = useState([]);
     const {assetId } = useParams();
-    const url=`/assets/${assetId}`
+    
 
     const getAssetProfile = (assetId) => {
         axios.get(`/assets/${assetId}`, {
@@ -47,7 +47,7 @@ const Assetprofile = () => {
                     }
                     <div className='profile-status'>
                     {profile.is_assigned ? <span>ASSIGNED</span> : <span>UNASSIGNED</span>}
-                    </div>
+                    </div> 
                 </div>
             </div>
             <div className='asset-prof-card'>

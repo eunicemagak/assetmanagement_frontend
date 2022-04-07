@@ -1,7 +1,6 @@
-import React, {useState, useEffect, Component} from 'react'
+import React, {Component} from 'react'
 import { FaFilter} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
-import {NavLink } from 'react-router-dom';
 import '../assets/css/users.css';
 import Addasset from './Addassets';
 import axios from 'axios';
@@ -27,7 +26,7 @@ class Assets extends Component{
     axios.get('/assets')
       .then(res => {
         this.setState({
-          assets: res.data
+          assets: res.data.data
         })
       })
     }
