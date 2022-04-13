@@ -27,7 +27,7 @@ const Addcategory = ({handleClose, show}) => {
     })
   }
   function getAllCategories(){
-        axios.get('/category', {
+        axios.get('/categories', {
             responseType: 'json'
         }).then(response => {
             if(response.status === 200){
@@ -84,7 +84,11 @@ const Addcategory = ({handleClose, show}) => {
               <h4>PRICE</h4>
               <input type='number' required placeholder='price' onChange={(e) => handle(e)} id="price" value={data.price}/>
             </div>
-            {/* <div className='assign-assets'>
+            <div className='password'>
+              <h4>DATE PURCHASED</h4>
+              <input type='date' required placeholder='price' onChange={(e) => handle(e)} id="purchase_date" value={data.purchase_date}/>
+            </div>
+            <div className='assign-assets'>
               <h4>CATEGORY</h4>
               <select required>
                 <option disabled selected value="">select category</option>
@@ -95,7 +99,7 @@ const Addcategory = ({handleClose, show}) => {
                                 )})
                               }
               </select>
-            </div> */}
+            </div>
             <div className='accessories'>
               <h4>DESCRIPTION</h4>
               <input type='text' required placeholder='give more info' onChange={(e) => handle(e)} id="description" value={data.description}/>

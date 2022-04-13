@@ -4,9 +4,11 @@ import {NavLink} from 'react-router-dom'
 import '../assets/css/assetprofile.css'
 import axios from 'axios';
 import {useParams } from 'react-router-dom';
+import Edit from './Edit'
 
 
 const Assetprofile = () => {
+    const[showComponent, setShowComponent] = useState(false);
     const [profile, setProfile] = useState([]);
     const {assetId } = useParams();
 
@@ -26,8 +28,21 @@ const Assetprofile = () => {
 
         }
     }, [assetId])
+    // const modalOpen =() =>{
+    //     this.setState({ modal: true });
+    //   }
+    
+    // const   modalClose =() =>{
+    //     this.setState({
+    //       modalInputName: "",
+    //       modal: false
+    //     });
+    //   }
 
     return (
+        <div>
+
+        {showComponent && <Edit closeSuspenduser={setShowComponent}/>}
         <div className='asset-wrapper'>
             <div className='asset-prof-main'>
                 <NavLink to='/assets' className='back'>
@@ -53,7 +68,7 @@ const Assetprofile = () => {
             <div className='asset-prof-card'>
                 <div className='asset-prof-card-header'>
                     <h2>ASSET RECORD</h2>
-                    <div className='edit'>
+                    <div className='edit'  onClick={() => setShowComponent(true)}>
                         <BiEdit className='edit-icon' />
                         <p>edit</p>
                     </div>
@@ -104,6 +119,8 @@ const Assetprofile = () => {
                     </button>
                 </div>
             </div>
+        </div>
+
         </div>
     )
 

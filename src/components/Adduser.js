@@ -12,9 +12,9 @@ const [accessories, setAccessories] =  useState([]);
 const [data, setData] = useState ({
   username: "",
   email: "",
-  department: "",
-  asset: "",
-  accessory: "",
+  department: "department_id",
+  asset: "asset_id",
+  accessory: "accesorie_id",
   success: ""
 })
   function getAllAssets(){
@@ -63,18 +63,15 @@ function submit(e) {
   axios.post('/users', {
     name: data.name,
     email: data.email,
-    department: data.department,
-    asset: data.asset,
-    accessory: data.accessory,
+    department: data.department_id,
+    asset: data.asset_id,
+    accessory: data.accesorie_id,
     success: data.success
   })
-  .then(res => {
-    console.log(res.data)
-    this.setData({success:"USER ADDED SUCCESFULLY"})
-    window.location.href = "../Users";
-  }).catch(e => {
-    this.setData({success:"ALL FIELDS ARE REQUIRED"})
-  })
+  // .then(res => {
+  //   console.log(res.data)
+  //   window.location.href = "../Users";
+  // })
 }
 
 function handle(e) {
@@ -141,7 +138,7 @@ function handle(e) {
             {
               accessories.map((val) => {
                 return(
-                <option onChange={(e) => handle(e)} id="accessory" value={data.accessory}>{val.title}</option>
+                <option onChange={(e) => handle(e)} id="accessory" value={data.accessory.is_assigned === 'false'}>{val.title}</option>
                )})
             }
               </select>

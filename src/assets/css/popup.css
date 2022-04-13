@@ -55,7 +55,7 @@
     justify-content: space-around;
     align-items: center;
     color: var(--gray);
-    margin-bottom: 2vw;
+    margin-bottom: 1.5vw;
     padding: 1vw;
 }
 .assetserial{
@@ -63,7 +63,7 @@
     justify-content: space-around;
     align-items: center;
     color: var(--gray);
-    margin-bottom: 2vw;
+    margin-bottom: 1.5vw;
     padding: 1vw;
 }
 .close{
@@ -74,18 +74,17 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 .rowserial{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 10px 0;
+    margin: 5px 0;
 }
 .col-sm-3 h6{
     display: flex;
     flex-direction: row;
-
     margin: 0 1rem;
 }
 .col-sm-9 text-secondary{
@@ -102,7 +101,7 @@
 }
 input{
     width: 95%;
-    padding: 1vw .0 1vw .5vw; 
+    padding: .5vw .0 .5vw .5vw; 
     background-color: var(--white);
     border: 1px solid var(--offwhite);
 }
@@ -118,12 +117,12 @@ select{
     font-weight: bold;
     padding: 1vw .5vw;
     width: 98%;
-    margin-top: 2vw;
+    margin-top: 1vw;
 }
 .suspenduser{
     background-color: var(--pinkish);
     font-weight: bold;
-    padding: 1vw .5vw;
+    padding: .5vw .5vw;
     width: 50%;
     border-radius: 5px;
     margin-top: 2vw;
