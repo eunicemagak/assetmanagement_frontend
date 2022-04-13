@@ -1,5 +1,5 @@
 
-import React, {Profiler, useEffect,useState} from 'react'
+import React, {useEffect,useState} from 'react'
 import {NavLink} from 'react-router-dom'
 import {BiArrowBack,BiEdit} from 'react-icons/bi';
 import {RiDeleteBin5Line} from 'react-icons/ri';
@@ -16,26 +16,25 @@ import {useParams } from 'react-router-dom';
     const[showComponent, setShowComponent] = useState(false);
     const[assignComponent, setAssignComponent]=useState(false);
     const[generateComponent, setGenerateComponent]=useState(false);
-        const [profile, setProfile] = useState([]);
-        const {userId } = useParams();
-    
-    
-        const getUserProfile = () => {
-            axios.get(`/users${userId}`, {
-                responseType: 'json'
-            }).then(response => {
-                if (response.status === 200) {
-                    console.log(response.data)
-                    setProfile(response.data)
-                }
-            })
-        }
-        useEffect(() => {
-            if (userId) {
-                getUserProfile(userId);
-    
+    const [profile, setProfile] = useState([]);
+    const {userId } = useParams();
+
+    const getUserProfile = (userId) => {
+        axios.get(`/users/${userId}`, {
+            responseType: 'json'
+        }).then(response => {
+            if (response.status === 200) {
+                console.log(response.data.data)
+                setProfile(response.data)
             }
-        }, [userId]);
+        })
+    }
+    useEffect(() => {
+        if (userId) {
+            getUserProfile(userId);
+
+        }
+    }, [userId])
    
       
     return (
@@ -55,7 +54,7 @@ import {useParams } from 'react-router-dom';
                     <div className='profile-info'>
                         <h3>{profile.name}</h3>
                         <p>{profile.email}</p>
-                        <p>{profile.departments[0].title}</p>
+                        {/* <p>{profile.departments[0].title}</p> */}
                     </div>
   }
                     <button className='assign-btn' onClick={() => setAssignComponent(true)}> 

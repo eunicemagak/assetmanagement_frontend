@@ -18,7 +18,7 @@ const [categories, setCategories] =  useState([]);
       title: data.title,
       serialnumber: data.serialnumber,
       price: data.price,
-      category: data.category,
+      category: data.categorie_id,
       description: data.description
     })
     .then(res => {
@@ -27,7 +27,7 @@ const [categories, setCategories] =  useState([]);
     })
   }
   function getAllCategories(){
-        axios.get('/category', {
+        axios.get('/categories', {
             responseType: 'json'
         }).then(response => {
             if(response.status === 200){
@@ -76,6 +76,10 @@ const [categories, setCategories] =  useState([]);
             <div className='password'>
               <h4>PRICE</h4>
               <input type='number' required placeholder='price' onChange={(e) => handle(e)} id="price" value={data.price}/>
+            </div>
+            <div className='password'>
+              <h4>DATE PURCHASED</h4>
+              <input type='date' required placeholder='price' onChange={(e) => handle(e)} id="purchase_date" value={data.purchase_date}/>
             </div>
             <div className='assign-assets'>
               <h4>CATEGORY</h4>
