@@ -17,7 +17,7 @@ const Admindash = ()   => {
     }).then(response => {
         if(response.status === 200){
               console.log(response.data.data.length)
-            setAssets(response.data.data)
+            setAssets(response.data)
         } 
     })
   }
@@ -31,7 +31,7 @@ const Admindash = ()   => {
       responseType: 'json'
     }).then(response => {
       if(response.status === 200){
-        setAdmin(response.data.data)
+        setAdmin(response.data)
       }
     })
   }

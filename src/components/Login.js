@@ -34,10 +34,10 @@ const Login= ({setToken}) => {
     return (
 <div className='right'>
         <div className="form-group">
-                <h3 className="para-form">LOG IN TO THE ACCESS PORTAL</h3>
+                <h3 className="para-form">Log In</h3>
         <form onSubmit={submit}>
           <div className="formEmail">
-            <label for ="username">Email Adress </label>
+            <label for ="username">Email Address </label>
             <input type="email" placeholder="enter email" required 
             onChange={e => setEmail(e.target.value)}
             />
@@ -50,7 +50,7 @@ const Login= ({setToken}) => {
             />
             
           </div>
-          <button type="submit" class="btn btn-default"> LOG IN</button>
+          <button type="submit" class="btn btn-default"> Log In</button>
           
         </form>
         <a href="#" class="forgot-link"> Forgot password?</a>

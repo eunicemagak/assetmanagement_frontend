@@ -5,39 +5,33 @@ import axios from 'axios'
 
 
 const Nav = () => {
-  const [alldata, setAllData]= useState([]);
-  const[search, setSearch]=useState('');
-  const [searchParam]= useState(["title"])
-  const getAllData = (search) => {
-    axios.get(`https://asset.rnd.emalify.com/api/v1/${search}`, {
-        responseType: 'json'
-    }).then(response => {
-        if (response.status === 200) {
-            console.log(response.data)
-            setAllData(response.data)
-        }
-    })
-}
-useEffect(() => {
-    if (search) {
-        getAllData(search);
+//   const [alldata, setAllData]= useState([]);
+//   const[q, setQ]=useState('');
+//   const [param, setParam]= useState(["title"]);
+//   const getAllData = () => {
+//     axios.get(`https://asset.rnd.emalify.com/api/v1`, {
+//         responseType: 'json'
+//     }).then(response => {
+//         if (response.status === 200) {
+//             console.log(response.data)
+//             setAllData(response.data)
+//         }
+//     })
+// }
+// useEffect(() => {
+//         getAllData();
+// }, []);
+// function search(rows){
+// return rows.filter((row)=>
+//    param.some((column)=>
+//    row[column]
+//       .toString()
+//       .toLowerCase()
+//       .indexOf(q.toLowerCase()) > -1,
+//     ),
+//   );
 
-    }
-}, [search])
-function Search(alldata){
-
-
-return alldata.filter((data)=>{
-  return searchParam.some((newData)=>{
-    return(
-      data[newData]
-      .toString()
-      .toLowerCase()
-      .indexOf(search.toLowerCase()) > -1
-    )
-  })
-})
-}
+// }
   return (
   
     <div className='nav-wrapper'>
@@ -47,7 +41,7 @@ return alldata.filter((data)=>{
       </img>
       <ul className='nav'>
         <li>
-            <SearchInput  search={search} setSearch={setSearch}/>
+            {/* <SearchInput  search={q} setSearch={setQ}/> */}
             <FaSearch  className='nav-icon' />   
         </li>
     

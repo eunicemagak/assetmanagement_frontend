@@ -25,9 +25,9 @@ class Users extends Component{
   componentDidMount (){
     axios.get('/users')
       .then(res => {
-        console.log(res.data.data.data)
+        
         this.setState({
-          users: res.data.data
+          users: res.data
         })
       })
     }

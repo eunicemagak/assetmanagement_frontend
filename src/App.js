@@ -51,7 +51,7 @@ axios.defaults.baseURL ='https://asset.rnd.emalify.com/api/v1';
           <Route path='/accessories' element={<Accessories/>} />
           <Route path='/assetprofile' element={<Assetprofile/>} />
           <Route path='/userprofile' element={<Userprofile/>} />
-          <Route path='/users/:userId' element={<Userprofile/>} />
+          <Route path='/users/:ID' element={<Userprofile/>} />
           <Route path='/assets/:assetId' element={<Assetprofile/>} />
           <Route path='/accessories/:accessoryId' element={<Accessoryprofile/>} />
           <Route path='/logout' element={<Logout/>} />

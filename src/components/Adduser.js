@@ -22,7 +22,7 @@ const [data, setData] = useState ({
           responseType: 'json'
       }).then(response => {
           if(response.status === 200){
-              setAssets(response.data.data)
+              setAssets(response.data)
           }
       })
     }
@@ -35,7 +35,7 @@ const [data, setData] = useState ({
             responseType: 'json'
         }).then(response => {
             if(response.status === 200){
-                setDepartments(response.data.data)
+                setDepartments(response.data)
             }
         })
       }
@@ -49,7 +49,7 @@ const [data, setData] = useState ({
               responseType: 'json'
           }).then(response => {
               if(response.status === 200){
-                  setAccessories(response.data.data)
+                  setAccessories(response.data)
               }
           })
         }

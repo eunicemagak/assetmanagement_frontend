@@ -26,7 +26,7 @@ class Assets extends Component{
     axios.get('/assets')
       .then(res => {
         this.setState({
-          assets: res.data.data
+          assets: res.data
         })
       })
     }

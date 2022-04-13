@@ -20,8 +20,8 @@ import {useParams } from 'react-router-dom';
         const {userId } = useParams();
     
     
-        const getUserProfile = (userId) => {
-            axios.get(`/users/${userId}`, {
+        const getUserProfile = () => {
+            axios.get(`/users${userId}`, {
                 responseType: 'json'
             }).then(response => {
                 if (response.status === 200) {
@@ -35,7 +35,7 @@ import {useParams } from 'react-router-dom';
                 getUserProfile(userId);
     
             }
-        }, [userId])
+        }, [userId]);
    
       
     return (
