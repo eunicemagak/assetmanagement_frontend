@@ -5,21 +5,21 @@ import axios from 'axios';
 
 const Addasset = ({handleClose, show}) => {  
 const [categories, setCategories] =  useState([]);
-  const [data, setData] = useState ({
-    title: "",
-    serialnumber: "",
-    price: "",
-    category: "",
-    description: "" 
-  })
+const [title, setTitle]= useState()
+const [serialnumber, setSerialnumber] = useState()
+const [price, setPrice] = useState()
+const [description, setDescription] = useState()
+const [val, setCategory] = useState()
+const [purchase_date, setPurchase_date] =useState()
   function submit(e) {
     e.preventDefault();
     axios.post("/assets", {
-      title: data.title,
-      serialnumber: data.serialnumber,
-      price: data.price,
-      category: data.categorie_id,
-      description: data.description
+      title: title,
+      serialnumber: serialnumber,
+      price: price,
+      categorie_id:parseInt(val),
+      description: description,
+      purchase_date: purchase_date
     })
     .then(res => {
       console.log(res.data)
@@ -31,7 +31,7 @@ const [categories, setCategories] =  useState([]);
             responseType: 'json'
         }).then(response => {
             if(response.status === 200){
-                setCategories(response.data.data)
+                setCategories(response.data)
             }
         })
       }
@@ -40,13 +40,7 @@ const [categories, setCategories] =  useState([]);
         getAllCategories();
     }, [])
     const popup = show ? "popup display-block" : "popup display-none";
-  function handle(e) {
-    const newdata ={ ...data }
-    newdata[e.target.id] = e.target.value
-    setData(newdata)
-    console.log(newdata)
-  }
-  
+
   return (
     /**
      * *Add new user interface with a form to capture user details
@@ -67,35 +61,35 @@ const [categories, setCategories] =  useState([]);
           <form onSubmit={(e) => submit(e)}>
             <div className='email'>
               <h4>ASSET NAME</h4>
-              <input type='text' required placeholder='asset name' onChange={(e) => handle(e)} id="title" value={data.title}/>
+              <input type='text' required placeholder='asset name' onChange={(e) => setTitle(e.target.value)}id="title" value={title}/>
             </div>
             <div className='username'>
               <h4>SERIAL NUMBER</h4>
-              <input type='text' required placeholder='serial number' onChange={(e) => handle(e)} id="serialnumber" value={data.serialnumber}/>
+              <input type='text' required placeholder='serial number' onChange={(e) => setSerialnumber(e.target.value)} id="serialnumber" value={serialnumber}/>
             </div>
             <div className='password'>
               <h4>PRICE</h4>
-              <input type='number' required placeholder='price' onChange={(e) => handle(e)} id="price" value={data.price}/>
+              <input type='number' required placeholder='price' onChange={(e) => setPrice(e.target.value)} id="price" value={price}/>
             </div>
             <div className='password'>
               <h4>DATE PURCHASED</h4>
-              <input type='date' required placeholder='price' onChange={(e) => handle(e)} id="purchase_date" value={data.purchase_date}/>
+              <input type='date' required placeholder='price' onChange={(e) => setPurchase_date(e.target.value)} id="purchase_date" value={purchase_date}/>
             </div>
             <div className='assign-assets'>
               <h4>CATEGORY</h4>
-              <select required>
+              <select required onChange={(e) => setCategory(e.target.value)} > 
                 <option disabled selected value="">select category</option>
                 {
               categories.map((val) => {
                 return(
-                <option onChange={(e) => handle(e)} id="category" value={data.category}>{val.title}</option>
+                <option id="category" value={val.ID}>{val.title}</option>
                                 )})
                               }
               </select>
             </div>
             <div className='accessories'>
               <h4>DESCRIPTION</h4>
-              <input type='text' required placeholder='give more info' onChange={(e) => handle(e)} id="description" value={data.description}/>
+              <input type='text' required placeholder='give more info' onChange={(e) => setDescription(e.target.value)} id="description" value={description}/>
             </div>
             <button className='createuser'>
               ADD ASSET
@@ -111,16 +105,3 @@ const [categories, setCategories] =  useState([]);
 export default Addasset
 
 
-// function getDepartment(){
-//       axios.get('/department', {
-//           responseType: 'json'
-//       }).then(response => {
-//           if(response.status === 200){
-//               setDepartment(response.data.data)
-//           } 
-//       })
-//     }
-  
-//     useEffect(() => {
-//       getDepartment();
-//   }, [])

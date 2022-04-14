@@ -36,7 +36,7 @@ const Sidebar = ({val}) => {
               responseType: 'json'
           }).then(response => {
               if(response.status === 200){
-                  setAdmin(response.data.data)
+                  setAdmin(response.data)
               }
           })
         }

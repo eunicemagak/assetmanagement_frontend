@@ -13,8 +13,8 @@ const Admindash = ()   => {
         responseType: 'json'
     }).then(response => {
         if(response.status === 200){
-              console.log(response.data.data)
-            setAssets(response.data.data)
+              console.log(response.data)
+            setAssets(response.data)
         } 
     })
   }
@@ -28,13 +28,18 @@ const Admindash = ()   => {
       responseType: 'json'
     }).then(response => {
       if(response.status === 200){
-        setAdmin(response.data.data)
+        console.log(response.data)
+        setAdmin(response.data)
       }
     })
   }
   useEffect(() => {
     getAdmin();
   }, [])
+  const assignedAsset = assets.filter(asset => asset.is_assigned === true)
+  const unassignedAsset = assets.filter(asset => asset.is_assigned === false)
+  // const unassignedAssets = assets.filter( asset =>  asset.is_assigned = false)
+  // const assignedAssets = assets.filter( asset =>  asset.is_assigned = true)
   return (
     /**
      * * Admin dashboard on login with basic informative widgets on current system state
@@ -61,14 +66,14 @@ const Admindash = ()   => {
           </div>
           <div className='widget'>
             <div className='data'>
-              <h1>{assets.length}</h1>
+              <h1>{assignedAsset.length}</h1>
               <p>assigned assets</p>
             </div>
             <BsCheckCircle  className='widget-img'/>
           </div>
           <div className='widget'>
             <div className='data'>
-              <h1>{assets.length}</h1>
+              <h1>{unassignedAsset.length}</h1>
               <p>unassigned assets</p>
             </div>
             <ImCross  className='widget-img'/>

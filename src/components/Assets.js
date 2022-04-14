@@ -27,7 +27,7 @@ class Assets extends Component{
     axios.get('/assets')
       .then(res => {
         this.setState({
-          assets: res.data.data
+          assets: res.data
         })
       })
     }
@@ -66,7 +66,7 @@ const setPage = (pageNum) => {
   const assetsList = assets.length ? (
     currentAssets.map(asset => {
       return (
-        <tbody key={asset.id}>
+        <tbody key={asset.ID}>
           <Link to={'/assets/' + asset.ID}>
             <tr>
               <td>{asset.ID}</td>

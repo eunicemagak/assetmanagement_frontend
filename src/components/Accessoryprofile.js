@@ -73,7 +73,7 @@ const Accessoryprofile = () => {
                     </div>
                     <div id='card-item'>
                         <h3>DATE PURCHASED</h3>
-                        <p></p>
+                        <p>{profile.purchase_date}</p>
                     </div>
                     <div id='card-item'>
                         <h3>CURRENT STATUS</h3>
