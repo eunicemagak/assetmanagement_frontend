@@ -6,81 +6,71 @@ import { IoIosCloseCircle } from "react-icons/io";
 import axios from 'axios';
 
 const Adduser = ({handleClose, show}) => {  
-const [assets, setAssets] =  useState([]);
-const [departments, setDepartments] =  useState([]);
-const [accessories, setAccessories] =  useState([]);
-const [data, setData] = useState ({
-  username: "",
-  email: "",
-  department: "department_id",
-  asset: "asset_id",
-  accessory: "accesorie_id",
-  success: ""
-})
-  function getAllAssets(){
+const [assets, setAsset] =  useState([]);
+const [department, setDepartment] =  useState([]);
+const [accessory, setAccessory] =  useState([]);
+const [name, setName]= useState()
+const [email, setEmail] = useState()
+const [val, setUserdpt] = useState()
+const [asset, setUserasset] = useState()
+const [res, setUseraccessory] = useState()
+  function submit(e) {
+    e.preventDefault();
+    axios.post("/users", {
+      name: name,
+      email: email,
+      department_id:parseInt(val),
+      asset_id:parseInt(asset),
+      accesorie_id:parseInt(res),
+    })
+  .then(res => {
+    console.log(res.data)
+    // window.location.href = "../Users";
+  })
+}
+  function getAllAsset(){
       axios.get('/assets', {
           responseType: 'json'
       }).then(response => {
           if(response.status === 200){
-              setAssets(response.data)
+           setAsset(response.data)
           }
-      })
-    }
+    })
+  }
+    
     useEffect(() => {
-      getAllAssets();
+      getAllAsset();
   }, []);
   const popup = show ? "popup display-block" : "popup display-none";
-  function getAllDepartments(){
+  function getAllDepartment(){
         axios.get('/department', {
             responseType: 'json'
         }).then(response => {
             if(response.status === 200){
-                setDepartments(response.data)
+                setDepartment(response.data)
             }
         })
       }
     
       useEffect(() => {
-        getAllDepartments();
-    }, [])
-
-    function getAllAccessories(){
+        getAllDepartment();
+    }, []);
+    function getAllAccessory(){
           axios.get('/accessories', {
               responseType: 'json'
           }).then(response => {
               if(response.status === 200){
-                  setAccessories(response.data)
+                  setAccessory(response.data)
               }
           })
         }
       
         useEffect(() => {
-          getAllAccessories();
-      }, [])
+          getAllAccessory();
+      }, []);
 
-function submit(e) {
-  e.preventDefault();
-  axios.post('/users', {
-    name: data.name,
-    email: data.email,
-    department: data.department_id,
-    asset: data.asset_id,
-    accessory: data.accesorie_id,
-    success: data.success
-  })
-  // .then(res => {
-  //   console.log(res.data)
-  //   window.location.href = "../Users";
-  // })
-}
-
-function handle(e) {
-  const newdata ={ ...data }
-  newdata[e.target.id] = e.target.value
-  setData(newdata)
-  console.log(newdata)
-}
-
+const unassignedAsset = assets.filter(asset => asset.is_assigned === false)
+const unassignedAccessory = accessory.filter(accessorie => accessorie.is_assigned === false)
   return (
     /**
      * *Add new user interface with a form to capture user details
@@ -101,44 +91,44 @@ function handle(e) {
           <form onSubmit={(e) => submit(e)}>
             <div className='email'>
               <h4>EMAIL ADDRESS</h4>
-              <input type='email' required placeholder='email address' onChange={(e) => handle(e)} id="email" value={data.email}/>
+              <input type='email' required placeholder='email address' onChange={(e) => setEmail(e.target.value)} id="email" value={email}/>
             </div>
             <div className='username'>
               <h4>USERNAME</h4>
-              <input type='text' required placeholder='username' onChange={(e) => handle(e)} id="name" value={data.name}/>
+              <input type='text' required placeholder='username' onChange={(e) => setName(e.target.value)} id="name" value={name}/>
             </div>
             <div className='password'>
               <h4>DEPARTMENT</h4>
-              <select required>
+              <select required onChange={(e) => setUserdpt(e.target.value)} >
                 <option disabled selected value="">department</option>
             {
-              departments.map((val) => {
+              department.map((val) => {
                 return(
-                <option onChange={(e) => handle(e)} id="department" value={data.department}>{val.title}</option>
+                <option id="department" value={val.ID}>{val.title}</option>
                                 )})
                               }
               </select>
             </div>
             <div className='assign-assets'>
               <h4>ASSIGN ASSET</h4>
-              <select required>
+              <select required onChange={(e) => setUserasset(e.target.value)} >
                 <option disabled selected value="">select asset to assign</option>
             {
-              assets.map((val) => {
+              unassignedAsset.map((asset) => {
                 return(
-                <option onChange={(e) => handle(e)} id="asset" value={data.asset}>{val.title}</option>
+                <option id="asset" value={asset.ID}>{asset.title}</option>
                                 )})
                               }
               </select>
             </div>
             <div className='accessories'>
               <h4>ACCOMPANING ACCESSORIES</h4>
-              <select required>
+              <select onChange={(e) => setUseraccessory(e.target.value)} >
                 <option disabled selected value="">select accompaning accessories</option>
             {
-              accessories.map((val) => {
+              unassignedAccessory.map((res) => {
                 return(
-                <option onChange={(e) => handle(e)} id="accessory" value={data.accessory.is_assigned === 'false'}>{val.title}</option>
+                <option id="accessory" value={res.ID}>{res.title}</option>
                )})
             }
               </select>
@@ -153,5 +143,4 @@ function handle(e) {
     </div>
   )
 }
-
 export default Adduser

@@ -25,7 +25,7 @@ class Users extends Component{
   componentDidMount (){
     axios.get('/users')
       .then(res => {
-        
+        console.log(res.data)
         this.setState({
           users: res.data
         })
@@ -66,7 +66,7 @@ const setPage = (pageNum) => {
   const usersList = users.length ? (
     currentUsers.map(user => {
       return (
-        <tbody key={user.id}>
+        <tbody key={user.ID}>
           <Link to={'/users/' + user.ID}>
             <tr>
               <td>{user.ID}</td>
