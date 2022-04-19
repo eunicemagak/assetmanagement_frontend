@@ -33,10 +33,11 @@ const [res, setUseraccessory] = useState()
           responseType: 'json'
       }).then(response => {
           if(response.status === 200){
-              setAsset(response.data)
+           setAsset(response.data)
           }
-      })
-    }
+    })
+  }
+    
     useEffect(() => {
       getAllAsset();
   }, []);
@@ -53,7 +54,7 @@ const [res, setUseraccessory] = useState()
     
       useEffect(() => {
         getAllDepartment();
-    }, [])
+    }, []);
     function getAllAccessory(){
           axios.get('/accessories', {
               responseType: 'json'
@@ -66,7 +67,7 @@ const [res, setUseraccessory] = useState()
       
         useEffect(() => {
           getAllAccessory();
-      }, [])
+      }, []);
 
 const unassignedAsset = assets.filter(asset => asset.is_assigned === false)
 const unassignedAccessory = accessory.filter(accessorie => accessorie.is_assigned === false)
@@ -142,5 +143,4 @@ const unassignedAccessory = accessory.filter(accessorie => accessorie.is_assigne
     </div>
   )
 }
-
 export default Adduser
