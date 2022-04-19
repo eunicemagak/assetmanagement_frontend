@@ -2,36 +2,11 @@ import { FaBell, FaUser, FaSearch } from "react-icons/fa";
 import React, { useState,useEffect } from 'react';
 import SearchInput from './SearchInput';
 import axios from 'axios'
+import DynamicSearch from "./SearchPage";
 
 
 const Nav = () => {
-//   const [alldata, setAllData]= useState([]);
-//   const[q, setQ]=useState('');
-//   const [param, setParam]= useState(["title"]);
-//   const getAllData = () => {
-//     axios.get(`https://asset.rnd.emalify.com/api/v1`, {
-//         responseType: 'json'
-//     }).then(response => {
-//         if (response.status === 200) {
-//             console.log(response.data)
-//             setAllData(response.data)
-//         }
-//     })
-// }
-// useEffect(() => {
-//         getAllData();
-// }, []);
-// function search(rows){
-// return rows.filter((row)=>
-//    param.some((column)=>
-//    row[column]
-//       .toString()
-//       .toLowerCase()
-//       .indexOf(q.toLowerCase()) > -1,
-//     ),
-//   );
-
-// }
+  
   return (
   
     <div className='nav-wrapper'>
@@ -41,8 +16,8 @@ const Nav = () => {
       </img>
       <ul className='nav'>
         <li>
-            {/* <SearchInput  search={q} setSearch={setQ}/> */}
-            <FaSearch  className='nav-icon' />   
+            <DynamicSearch/>
+            
         </li>
     
         <li>

@@ -31,7 +31,7 @@ const [categories, setCategories] =  useState([]);
             responseType: 'json'
         }).then(response => {
             if(response.status === 200){
-                setCategories(response.data.data)
+                setCategories(response.data)
             }
         })
       }

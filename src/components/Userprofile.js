@@ -16,7 +16,7 @@ import {useParams } from 'react-router-dom';
     const[showComponent, setShowComponent] = useState(false);
     const[assignComponent, setAssignComponent]=useState(false);
     const[generateComponent, setGenerateComponent]=useState(false);
-    const [profile, setProfile] = useState([]);
+    const [profile, setProfile] = useState(null);
     const {userId } = useParams();
 
     const getUserProfile = (userId) => {
@@ -24,7 +24,7 @@ import {useParams } from 'react-router-dom';
             responseType: 'json'
         }).then(response => {
             if (response.status === 200) {
-                console.log(response.data.data)
+                console.log(response.data)
                 setProfile(response.data)
             }
         })
@@ -36,7 +36,10 @@ import {useParams } from 'react-router-dom';
         }
     }, [userId])
    
-      
+      const handleDeleteItem=(e)=> {
+          const del=e.target.getAttribute('asset')
+
+      }
     return (
         <div>
             {generateComponent && <Generatereport closeComponent={setGenerateComponent}/>}
@@ -80,29 +83,18 @@ import {useParams } from 'react-router-dom';
                 
                     </div>
                     <div className='asset-prof-card-main'>
+                        {profile && 
                         <div class='card-item'>
                             <p>{profile.assets[0].title}</p>
                             <p>{profile.assets[0].serialnumber}</p>
                             <p>{profile.assets[0].price}</p>
                             <a href=''><RiDeleteBin5Line className='user-img'/></a>
-                            <a href=""><BiEdit className='user-img'/></a>
                         </div>
+                        }  
                     
                     </div>
                 </div>
-                <div className='asset-prof-card'>
-                    <div className='asset-prof-card-header'>
-                        <h2>USER COMPLAINTS</h2>       
-                    </div>
-                    {/* <div className='asset-prof-card-main'>
-                        <div className='card-item'>
-                            <p>HP SPECTRE</p>
-                            <p>hp2345ygu6k</p>
-                            <p>Faulty Charger</p>
-                            
-                        </div>
-                    </div> */}
-                </div>
+               
             </div>
         </div>
         </div>
