@@ -59,7 +59,7 @@ const [damaged, setDamaged] = useState(false)
             </div>
             <div className='department'>
               <h4>Category</h4>
-              {/* <p>{profile.categorie[0].title}</p> */}
+              <p>{profile.categorie[0].title}</p>
             </div>
             <div className='department'>
               <h4>Is Damaged</h4>

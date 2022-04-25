@@ -3,10 +3,16 @@ import {NavLink} from 'react-router-dom'
 import { BiArrowBack, BiEdit } from 'react-icons/bi';
 import '../assets/css/assetprofile.css'
 import axios from 'axios';
+import Edit from './Edit'
+import Clearoff from './Clearoff'
+import Damage from './Damage'
 import {useParams } from 'react-router-dom';
 
 
 const Accessoryprofile = () => {
+    const[showComponent, setShowComponent] = useState(false);
+    const[showClearoff, setShowClearoff] = useState(false);
+    const[showDamage, setShowDamage] = useState(false);
     const [profile, setProfile] = useState([]);
     const {accessoryId } = useParams();
 
@@ -28,6 +34,10 @@ const Accessoryprofile = () => {
     }, [accessoryId])
 
     return (
+        <div>
+        {showClearoff && <Clearoff closeClearoff={setShowClearoff}/>}
+        {showDamage && <Damage closeDamage={setShowDamage}/>}
+        {showComponent && <Edit closeSuspenduser={setShowComponent}/>}
         <div className='asset-wrapper'>
             <div className='asset-prof-main'>
                 <NavLink to='/accessories' className='back'>
@@ -88,7 +98,7 @@ const Accessoryprofile = () => {
                     <div id='card-item'>
                         <h3>COMPLAINTS</h3>
                         <div id='list'>
-                            <div className='complain-details'>
+                            {/* <div className='complain-details'>
                                 <p></p>
                                 <p></p>
                             </div>
@@ -103,20 +113,21 @@ const Accessoryprofile = () => {
                             <div className='complain-details'>
                                 <p>Faulty Charger</p>
                                 <p>Suasn </p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
                 <div className='asset-prof-card-buttons'>
-                    <button className='report'>
-                        GENERATE REPORT
+                    <button className='report'  onClick={() => setShowDamage(true)}>
+                        MARK AS DAMAGED
                     </button>
-                    <button className='clear'>
+                    <button className='clear'  onClick={() => setShowClearoff(true)}>
                         CLEAR OFF
                     </button>
                 </div>
             </div>
-        </div>
+            </div>
+            </div>
     )
 
 }

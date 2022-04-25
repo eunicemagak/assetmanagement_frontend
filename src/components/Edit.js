@@ -99,7 +99,7 @@ const Edit= ({closeSuspenduser}) => {
             </div>
             <div className='assign-assets'>
               <h4>CATEGORY</h4>
-              {/* <select>
+              <select>
                 <option disabled selected value="">{profile.categorie[0].title}</option>
                 {
               categories.map((val) => {
@@ -107,7 +107,7 @@ const Edit= ({closeSuspenduser}) => {
                 <option onChange={(e) => handle(e)} id="category" value={data.category}>{val.title}</option>
                                 )})
                               }
-              </select> */}
+              </select>
             </div>
             <div className='accessories'>
               <h4>DESCRIPTION</h4>
