@@ -25,7 +25,7 @@ const [res, setUseraccessory] = useState()
     })
   .then(res => {
     console.log(res.data)
-    // window.location.href = "../Users";
+    window.location.href = "../Users";
   })
 }
   function getAllAsset(){

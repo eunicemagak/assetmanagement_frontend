@@ -1,47 +1,78 @@
-import React from "react";
+
+import React, { useEffect, useState } from 'react'
 import '../assets/css/popup.css';
 import { IoIosCloseCircle } from "react-icons/io";
+import axios from 'axios';
+import {useParams } from 'react-router-dom';
 
-const Clearoff = ({closeClear}) => {
+const Clearoff = ({closeDamage}) => {
   
-  return (
-    /**
-     * *Add new user interface with a form to capture user details
-     * *This will play off as a popup module on the ALL USERS page and once all fields are inserted, redirect back to ALL USERS page
-     * TODO: implement add user functionality
-     * TODO: connet to DB to push new user details to DB
-     */
+  const [profile, setProfile] = useState([]);
+const [damaged, setDamaged] = useState(false)
+        const {assetId } = useParams();
+    
+    
+        const getAssetProfile = (assetId) => {
+            axios.get(`/assets/${assetId}`, {
+                responseType: 'json'
+            }).then(response => {
+                if (response.status === 200) {
+                    console.log(response.data)
+                    setProfile(response.data)
+                }
+            })
+        }
+        useEffect(() => {
+            if (assetId) {
+                getAssetProfile(assetId);
+    
+            } 
+        }, [assetId])
+        function submit(e) {
+          e.preventDefault();
+          axios.patch(`/assets/${assetId}`, {
+            is_cleared_of: damaged
+          })
+          .then(res => {
+            console.log(res.data)
+          })
+        }
+  return(
     <div>
     <div className='popup'>
       <div className='popup-content'>
         <div className='popupheader'>
-          <h3>CLEAROFF ASSETS</h3>
-          <button className='close'onClick={() => closeClear(false)}>
+          <h3>MARK ASSET AS DAMAGED</h3>
+          <button className='close'onClick={() => closeDamage(false)}>
             <IoIosCloseCircle size='2rem' color='var(--gray)' className='closebtn'/>
           </button>
         </div>
-        <div className="popup-main">
-        <div class='rowname'>
-             <div class='col-sm-3'>
-                <h6 class='name_c'>NAME</h6>
-                  </div>
-                   <p>hp spectre</p>
-                      </div>
-                      <div class='rowserial'>
-                        <div class="col-sm-3">
-                          <h6 class="mb-0">SERIAL NUMBER</h6>                                  
-                              </div>
-                               <p>hp2345ygu6k</p>
-                               </div>     
-                           
-            <button className='clearoff'>
-              CLEAR
+          {profile &&
+        <form className='popup-main'  onSubmit={(e) => submit(e)}> 
+          <div className='name'>
+              <h4>Title</h4>
+             <p>{profile.title}</p>
+            </div>
+            <div className='email_address'>
+              <h4>Serial Number</h4>
+              <p>{profile.serialnumber}</p>
+            </div>
+            <div className='department'>
+              <h4>Category</h4>
+              {/* <p>{profile.categorie[0].title}</p> */}
+            </div>
+            <div className='department'>
+              <h4>Is Cleared Off</h4>
+              <p>{profile.is_cleared_of? <p>CLEARED</p> : <p>ACTIVE</p>}</p>
+            </div>
+            <button className='suspenduser' onClick={() => setDamaged(true)}>
+              Mark As Cleared
             </button>
-        </div>
+        </form>
+}
       </div>
     </div>
     </div>
   )
 }
-
-export default Clearoff
+          export default Clearoff

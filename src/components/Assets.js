@@ -65,10 +65,10 @@ const setPage = (pageNum) => {
   const assetsList = assets.length ? (
     currentAssets.map(asset => {
       return (
-        <tbody key={asset.ID}>
-          <Link to={'/assets/' + asset.ID}>
+        <tbody key={asset.id}>
+          <Link to={'/assets/' + asset.id}>
             <tr>
-              <td>{asset.ID}</td>
+              <td>{asset.id}</td>
               <td>{asset.title}</td>
               <td>{asset.serialnumber}</td>
               <td>KES {asset.price}</td>

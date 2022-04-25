@@ -36,10 +36,10 @@ import {useParams } from 'react-router-dom';
         }
     }, [userId])
    
-      const handleDeleteItem=(e)=> {
-          const del=e.target.getAttribute('asset')
+    //   const handleDeleteItem=(e)=> {
+    //       const del=e.target.getAttribute('asset')
 
-      }
+    //   }
     return (
         <div>
             {generateComponent && <Generatereport closeComponent={setGenerateComponent}/>}
@@ -57,7 +57,7 @@ import {useParams } from 'react-router-dom';
                     <div className='profile-info'>
                         <h3>{profile.name}</h3>
                         <p>{profile.email}</p>
-                        {/* <p>{profile.departments[0].title}</p> */}
+                        <p>{profile.departments[0].title}</p>
                     </div>
   }
                     <button className='assign-btn' onClick={() => setAssignComponent(true)}> 

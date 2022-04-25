@@ -66,10 +66,10 @@ const setPage = (pageNum) => {
   const usersList = users.length ? (
     currentUsers.map(user => {
       return (
-        <tbody key={user.ID}>
-          <Link to={'/users/' + user.ID}>
+        <tbody key={user.id}>
+          <Link to={'/users/' + user.id}>
             <tr>
-              <td>{user.ID}</td>
+              <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.departments[0].title}</td>

@@ -5,15 +5,15 @@ import { IoIosCloseCircle } from "react-icons/io";
 import axios from 'axios';
 import {useParams } from 'react-router-dom';
 
-const Suspenduser = ({closeDamage}) => {
+const Damage = ({closeDamage}) => {
   
   const [profile, setProfile] = useState([]);
 const [damaged, setDamaged] = useState(false)
-        const {userId } = useParams();
+        const {assetId } = useParams();
     
     
-        const getAssetProfile = (userId) => {
-            axios.get(`/users/${userId}`, {
+        const getAssetProfile = (assetId) => {
+            axios.get(`/assets/${assetId}`, {
                 responseType: 'json'
             }).then(response => {
                 if (response.status === 200) {
@@ -23,15 +23,15 @@ const [damaged, setDamaged] = useState(false)
             })
         }
         useEffect(() => {
-            if (userId) {
-                getAssetProfile(userId);
+            if (assetId) {
+                getAssetProfile(assetId);
     
             } 
-        }, [userId])
+        }, [assetId])
         function submit(e) {
           e.preventDefault();
-          axios.patch(`/users/${userId}`, {
-            is_cleared_of: damaged
+          axios.patch(`/assets/${assetId}`, {
+            is_damaged: damaged
           })
           .then(res => {
             console.log(res.data)
@@ -50,23 +50,23 @@ const [damaged, setDamaged] = useState(false)
           {profile &&
         <form className='popup-main'  onSubmit={(e) => submit(e)}> 
           <div className='name'>
-              <h4>Username</h4>
-             <p>{profile.name}</p>
+              <h4>Title</h4>
+             <p>{profile.title}</p>
             </div>
             <div className='email_address'>
-              <h4>Email Address</h4>
-              <p>{profile.email}</p>
+              <h4>Serial Number</h4>
+              <p>{profile.serialnumber}</p>
             </div>
             <div className='department'>
-              <h4>Department</h4>
-              {/* <p>{profile.department[0].title}</p> */}
+              <h4>Category</h4>
+              {/* <p>{profile.categorie[0].title}</p> */}
             </div>
             <div className='department'>
-              <h4>Is Active</h4>
-              <p>{profile.is_active? <p>SUSPENDED</p> : <p>ACTIVE</p>}</p>
+              <h4>Is Damaged</h4>
+              <p>{profile.is_damaged ? <p>DAMAGED</p> : <p>NOT DAMAGED</p>}</p>
             </div>
             <button className='suspenduser' onClick={() => setDamaged(true)}>
-              Mark As Cleared
+              Mark As Damaged
             </button>
         </form>
 }
@@ -75,4 +75,4 @@ const [damaged, setDamaged] = useState(false)
     </div>
   )
 }
-          export default Suspenduser
+          export default Damage

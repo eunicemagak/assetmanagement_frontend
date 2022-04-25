@@ -67,9 +67,9 @@ const setPage = (pageNum) => {
     currentAccessories.map(accessory => {
       return (
         <tbody key={accessory.id}>
-          <Link to={'/accessories/' + accessory.ID}>
+          <Link to={'/accessories/' + accessory.id}>
             <tr>
-              <td>{accessory.ID}</td>
+              <td>{accessory.id}</td>
               <td>{accessory.title}</td>
               <td>{accessory.serialnumber}</td>
               <td>KES {accessory.price}</td>

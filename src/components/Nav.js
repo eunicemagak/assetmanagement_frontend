@@ -16,8 +16,7 @@ const Nav = () => {
       </img>
       <ul className='nav'>
         <li>
-            <DynamicSearch/>
-            
+       <FaSearch  className='nav-icon' /> 
         </li>
     
         <li>

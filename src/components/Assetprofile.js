@@ -5,10 +5,14 @@ import '../assets/css/assetprofile.css'
 import axios from 'axios';
 import {useParams } from 'react-router-dom';
 import Edit from './Edit'
+import Clearoff from './Clearoff'
+import Damage from './Damage'
 
 
 const Assetprofile = () => {
     const[showComponent, setShowComponent] = useState(false);
+    const[showClearoff, setShowClearoff] = useState(false);
+    const[showDamage, setShowDamage] = useState(false);
     const [profile, setProfile] = useState([]);
     const {assetId } = useParams();
     
@@ -42,6 +46,8 @@ const Assetprofile = () => {
 
     return (
         <div>
+        {showClearoff && <Clearoff closeClearoff={setShowClearoff}/>}
+        {showDamage && <Damage closeDamage={setShowDamage}/>}
 
         {showComponent && <Edit closeSuspenduser={setShowComponent}/>}
         <div className='asset-wrapper'>
@@ -49,22 +55,24 @@ const Assetprofile = () => {
                 <NavLink to='/assets' className='back'>
                     <BiArrowBack />
                 </NavLink>
-                <div className='profile-main'>
-                    <h2 className='asset-prof-title'>ASSET PROFILE</h2>
-                    <img src="{profile.image}" className="asset-profile-img" />
                     {
                      profile &&
+                <div className='profile-main'>
+                    <h2 className='asset-prof-title'>ASSET PROFILE</h2>
+                    <img src={profile.image_url} className="asset-profile-img" />
                         <div className='profile-info'>
                             <h3>{profile.title}</h3>
                             <p>{profile.serialnumber}</p>
-                            <p></p>
                         </div>
-
-                    }
                     <div className='profile-status'>
                     {profile.is_assigned ? <span>ASSIGNED</span> : <span>UNASSIGNED</span>}
                     </div> 
-                </div>
+                    <button className='report'>
+                        GENERATE REPORT
+                    </button>
+            </div>
+
+}
             </div>
             <div className='asset-prof-card'>
                 <div className='asset-prof-card-header'>
@@ -101,21 +109,21 @@ const Assetprofile = () => {
                             <p>{profile.assigned_to}</p>
                         </div>
                     </div>
-                    <div id='card-item'>
+                    {/* <div id='card-item'>
                         <h3>COMPLAINTS</h3>
                         <div id='list'>
-                            {/* <div className='complain-details'>
+                            <div className='complain-details'>
                                 <p></p>
                                 <p></p>
-                            </div> */}
+                            </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='asset-prof-card-buttons'>
-                    <button className='report'>
-                        GENERATE REPORT
+                    <button className='report'  onClick={() => setShowDamage(true)}>
+                        MARK AS DAMAGED
                     </button>
-                    <button className='clear'>
+                    <button className='clear'  onClick={() => setShowClearoff(true)}>
                         CLEAR OFF
                     </button>
                 </div>

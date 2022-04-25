@@ -38,7 +38,7 @@ const Edit= ({closeSuspenduser}) => {
 
         function submit(e) {
             e.preventDefault();
-            axios.put(`/assets/${assetId}`, {
+            axios.patch(`/assets/${assetId}`, {
               title: data.title,
               serialnumber: data.serialnumber,
               price: data.price,

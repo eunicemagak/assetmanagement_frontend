@@ -13,7 +13,7 @@ const Addcategory = ({handleClose, show}) => {
   const [purchase_date, setPurchase_date] =useState()
     function submit(e) {
       e.preventDefault();
-      axios.post("/assets", {
+      axios.post("/accessories", {
         title: title,
         serialnumber: serialnumber,
         price: price,

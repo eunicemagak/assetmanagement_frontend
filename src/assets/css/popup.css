@@ -122,10 +122,11 @@ select{
 .suspenduser{
     background-color: var(--pinkish);
     font-weight: bold;
-    padding: .5vw .5vw;
-    width: 50%;
+    padding: 10px;
+    width: 100%;
     border-radius: 5px;
     margin-top: 2vw;
+    text-transform: uppercase;
 }
 .logout{
     background-color: var(--danger);
