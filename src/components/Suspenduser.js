@@ -59,14 +59,14 @@ const [damaged, setDamaged] = useState(false)
             </div>
             <div className='department'>
               <h4>Department</h4>
-              <p>{profile.department[0].title}</p>
+              {/* <p>{profile.department[0].title}</p> */}
             </div>
             <div className='department'>
               <h4>Is Active</h4>
-              <p>{profile.is_active? <p>SUSPENDED</p> : <p>ACTIVE</p>}</p>
+              <p>{profile.is_active? <p>ACTIVE</p> : <p>SUSPENDED</p>}</p>
             </div>
             <button className='suspenduser' onClick={() => setDamaged(true)}>
-              Mark As Cleared
+              Suspend User
             </button>
         </form>
 }

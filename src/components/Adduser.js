@@ -25,7 +25,7 @@ const [res, setUseraccessory] = useState()
     })
   .then(res => {
     console.log(res.data)
-    window.location.href = "../Users";
+    // window.location.href = "../Users";
   })
 }
   function getAllAsset(){
@@ -104,7 +104,7 @@ const unassignedAccessory = accessory.filter(accessorie => accessorie.is_assigne
             {
               department.map((val) => {
                 return(
-                <option id="department" value={val.ID}>{val.title}</option>
+                <option id="department" value={val.id}>{val.title}</option>
                                 )})
                               }
               </select>
@@ -116,7 +116,7 @@ const unassignedAccessory = accessory.filter(accessorie => accessorie.is_assigne
             {
               unassignedAsset.map((asset) => {
                 return(
-                <option id="asset" value={asset.ID}>{asset.title}</option>
+                <option id="asset" value={asset.id}>{asset.serialnumber}</option>
                                 )})
                               }
               </select>
@@ -128,7 +128,7 @@ const unassignedAccessory = accessory.filter(accessorie => accessorie.is_assigne
             {
               unassignedAccessory.map((res) => {
                 return(
-                <option id="accessory" value={res.ID}>{res.title}</option>
+                <option id="accessory" value={res.id}>{res.title}</option>
                )})
             }
               </select>
