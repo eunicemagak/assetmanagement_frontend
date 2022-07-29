@@ -116,7 +116,7 @@ const unassignedAccessory = accessory.filter(accessorie => accessorie.is_assigne
             {
               unassignedAsset.map((asset) => {
                 return(
-                <option id="asset" value={asset.id}>{asset.serialnumber}</option>
+                <option id="asset" value={asset.id}>{asset.title}</option>
                                 )})
                               }
               </select>

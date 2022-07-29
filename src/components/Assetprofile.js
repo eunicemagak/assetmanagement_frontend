@@ -106,7 +106,7 @@ const Assetprofile = () => {
                     <div id='card-item'>
                         <h3>JOURNEY</h3>
                         <div id='list'>
-                            <p>{profile.assigned_to}</p>
+                            <p>{profile.name}</p>
                         </div>
                     </div>
                     {/* <div id='card-item'>
